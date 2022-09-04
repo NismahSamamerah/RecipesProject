@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="container mt-5">
+  <h1>Login</h1>
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+  <div class="mb-3">
+    <label class="form-label">Email Address</label>
+    <input type="email" class="form-control" formControlName="email">
+    <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    {{
+      loginForm.get('email')?.errors?.['required'] ? 'Email feild is required' : ''
+    }}
+    {{
+      loginForm.get('email')?.errors?.['email'] ? 'not valid email' : ''
+    }}
+  </p>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password">
+    <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+    role="alert">
+    {{
+      loginForm.get('password')?.errors?.['required'] ? 'password feild is required' : ''
+    }}
+  </p>
+  </div>
+  <button type="submit" [disabled]="loginForm.invalid && isSubmitted===false" class="btn btn-success">Login</button>
+  <p *ngIf="isSubmitted===true">*Somthing Error email address or password is mistake</p>
+</form>
+</div>

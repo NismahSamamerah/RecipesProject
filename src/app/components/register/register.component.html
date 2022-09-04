@@ -1,1 +1,96 @@
-<p>register works!</p>
+<div class="container mt-3">
+  <h1>Sign Up</h1>
+<form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" class="row g-3 mt-3">
+  <div class="col-md-6">
+    <label  class="form-label">First Name</label>
+    <input type="text" formControlName="firstName" class="form-control" >
+    <p *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+    *{{
+      registerForm.get('firstName')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+    {{
+      registerForm.get('firstName')?.errors?.['minlength'] ? 'min length should be 3' : ''
+    }}
+    {{
+      registerForm.get('firstName')?.errors?.['maxlength'] ? 'max length should be 30' : ''
+    }}
+  </p>
+  </div>
+  <div class="col-md-6">
+    <label  class="form-label">Last Name</label>
+    <input type="text" class="form-control" formControlName="lastName">
+    <p *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched"
+    role="alert">
+    *{{
+      registerForm.get('lastName')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+    {{
+      registerForm.get('lastName')?.errors?.['minlength'] ? 'min length should be 3' : ''
+    }}
+    {{
+      registerForm.get('lastName')?.errors?.['maxlength'] ? 'max length should be 30' : ''
+    }}
+  </p>
+  </div>
+  <div class="col-md-6">
+    <label  class="form-label">Gender</label>
+    <select  class="form-select" formControlName="gender" >
+
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+    <p *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">
+    *{{
+      registerForm.get('gender')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+  </p>
+  </div>
+  <div class="col-md-6" >
+    <label class="form-label">Age</label>
+    <input type="number" class="form-control" formControlName="age">
+    <p *ngIf="registerForm.get('age')?.invalid && registerForm.get('age')?.touched">
+    *{{
+      registerForm.get('age')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+    {{
+      registerForm.get('age')?.errors?.['min'] ? 'your age should be between 13 and 80 years old' : ''
+    }}
+    {{
+      registerForm.get('age')?.errors?.['max'] ? 'your age should be between 13 and 80 years old' : ''
+    }}
+  </p>
+  </div>
+  <div class="col-md-6">
+    <label  class="form-label">Email address</label>
+    <input type="email" class="form-control" formControlName="email">
+    <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+    *{{
+      registerForm.get('email')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+    {{
+      registerForm.get('email')?.errors?.['email'] ? 'not valid email' : ''
+    }}
+  </p>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password">
+    <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+    *{{
+      registerForm.get('password')?.errors?.['required'] ? 'this feild is required' : ''
+    }}
+    {{
+      registerForm.get('password')?.errors?.['minlength'] ? 'min length should be 6' : ''
+    }}
+    {{
+      registerForm.get('password')?.errors?.['maxlength'] ? 'max length should be 15' : ''
+    }}
+  </p>
+  </div>
+
+  <button  type="submit" [disabled]="registerForm.invalid"  class="btn btn-success col-md-2 ">Sign Up</button>
+
+</form>
+</div>
+
+

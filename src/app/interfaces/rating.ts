@@ -3,5 +3,4 @@ export interface IRating {
   user_id: number,
   rating :string,
   type :string,
-
 }

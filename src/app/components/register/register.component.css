@@ -1,0 +1,28 @@
+
+.container{
+  width: 70%;
+  border-left: 1px solid rgb(215, 223, 232);
+  border-right: 1px solid rgb(215, 223, 232);
+  padding: 30px;
+  background-image: url("src/assets/images/food3.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  font-family: sans-serif;
+
+}
+h1{
+  text-align: center;
+}
+input.ng-touched.ng-invalid{
+  border: 1px solid rgb(205, 25, 25);
+}
+button{
+  margin: auto;
+  margin-top: 30px
+}
+p{
+  font-size: 14px;
+  color: rgb(205, 25, 25);
+}
+
