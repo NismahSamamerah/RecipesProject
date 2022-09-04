@@ -14,6 +14,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AuthComponent } from './services/auth/auth.component';
 import { ApiComponent } from './services/api/api.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ApiComponent } from './services/api/api.component';
     DetailsComponent,
     ContactUsComponent,
     AuthComponent,
-    ApiComponent
+    ApiComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
