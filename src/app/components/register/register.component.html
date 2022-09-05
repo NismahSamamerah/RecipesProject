@@ -7,7 +7,7 @@
     <input type="text" formControlName="firstName" class="form-control" >
     <p *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
     *{{
-      registerForm.get('firstName')?.errors?.['required'] ? 'this feild is required' : ''
+      registerForm.get('firstName')?.errors?.['required'] ? 'this felid is required' : ''
     }}
     {{
       registerForm.get('firstName')?.errors?.['minlength'] ? 'min length should be 3' : ''
@@ -23,7 +23,7 @@
     <p *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched"
     role="alert">
     *{{
-      registerForm.get('lastName')?.errors?.['required'] ? 'this feild is required' : ''
+      registerForm.get('lastName')?.errors?.['required'] ? 'this felid is required' : ''
     }}
     {{
       registerForm.get('lastName')?.errors?.['minlength'] ? 'min length should be 3' : ''

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -32,8 +33,27 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(15),
     ]),
   });
-  constructor(public authService: AuthService) {}
+ 
+  constructor(public auth:AuthService, private userService: UserService) {
+     
+  }
 
   ngOnInit(): void {}
-  register(newUser: any) {}
+  register(newUser: any ) {
+  
+      this.auth.user.subscribe(user => {
+        this.auth.userID = user?.uid;
+        console.log(user?.uid);
+      });
+
+      this.auth.register(newUser.email, newUser.password).then(res => {
+        this.userService.saveUserInfo(newUser).then(res => {
+          console.log(res);
+        }).catch(err => {
+          console.log(err);
+        })
+      }).catch(err => {
+        console.log(err);
+      })
+  }
 }
