@@ -1,4 +1,6 @@
-<div class="container mt-5">
+
+<div class="bac">
+<div class="container">
   <h1>Login</h1>
 <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
   <div class="mb-3">
@@ -26,4 +28,6 @@
   <button type="submit" [disabled]="loginForm.invalid && isSubmitted===false" class="btn btn-success">Login</button>
   <p *ngIf="isSubmitted===true">*Somthing Error email address or password is mistake</p>
 </form>
+</div>
+
 </div>
