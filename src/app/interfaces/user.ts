@@ -3,7 +3,7 @@ export interface IUser {
   first_name: string,
     last_name: string,
     DOB: Date,
-    gender: string,
+    gender: number,
     email :string ,
     password :string ,
 }

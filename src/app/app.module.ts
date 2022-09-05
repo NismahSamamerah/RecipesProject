@@ -14,6 +14,10 @@ import { DetailsComponent } from './components/details/details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireAuth } from '@angular/fire/compat/auth'
+
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
