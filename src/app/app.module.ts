@@ -12,9 +12,8 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { CocktailComponent } from './components/cocktail/cocktail.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { AuthComponent } from './services/auth/auth.component';
-import { ApiComponent } from './services/api/api.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +27,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CocktailComponent,
     DetailsComponent,
     ContactUsComponent,
-    AuthComponent,
-    ApiComponent,
     NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
