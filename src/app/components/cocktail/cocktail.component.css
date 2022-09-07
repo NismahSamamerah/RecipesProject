@@ -2,7 +2,6 @@
   font-family:Tahoma ;
 }
 h1 {
-
   font-family:  Tahoma;
   font-weight: 500;
   width: 30%;
@@ -10,7 +9,6 @@ h1 {
 }
 .card-text{
   padding: 5px;
-
 }
 .fa-heart{
   font-size: 35px;
@@ -38,7 +36,6 @@ button:hover{
   border:  2px solid #d54215;
   color: black;
 }
-
 .image{
   position: relative;
 }
@@ -66,6 +63,7 @@ ul{
 }
 li{
   margin-left: 10px;
+
 }
 .details{
   text-decoration: none;
