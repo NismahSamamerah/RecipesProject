@@ -1,0 +1,23 @@
+.container{
+    font-family:Tahoma ;
+}
+h1 {                        
+    font-family:  Tahoma;
+    font-weight: 500;
+    width: 30%;
+    border-bottom: 5px solid #d54215;
+}
+.card-text{
+    padding: 5px;                           
+}
+.fa-heart{
+   font-size: 35px;
+                              color: rgb(245, 226, 226);
+                              position: absolute;
+                              right: 10px;
+                              top: 10px;
+                              cursor: pointer;
+                            }
+                            .fa-heart:hover{
+                              color: #d54215;
+                            }
