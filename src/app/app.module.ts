@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 import { environment } from 'src/environments/environment';
+import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { environment } from 'src/environments/environment';
     CocktailComponent,
     DetailsComponent,
     ContactUsComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserCocktailComponent,
   ],
   imports: [
     BrowserModule,

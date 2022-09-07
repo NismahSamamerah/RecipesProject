@@ -1,0 +1,83 @@
+.container{
+  font-family:Tahoma ;
+}
+h1 {
+  margin-right:  auto;
+  font-family:  Tahoma;
+  font-weight: 500;
+  width: 40%;
+  border-bottom: 5px solid #d54215;
+}
+span{
+  color: #d54215;
+}
+.card-text{
+  padding: 5px;
+
+}
+.fa-heart{
+  font-size: 35px;
+  color: rgb(245, 226, 226);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.fa-heart:hover{
+  color: #d54215;
+}
+
+.fa-plus-square-o{
+  font-size: 80px;
+  color: #d54215;
+}
+button{
+  border: 2px solid #d54215;
+  border-radius: 5px;
+  background-color: #d54215;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.4s;
+}
+button:hover{
+  background-color: transparent;
+  border:  2px solid #d54215;
+  color: black;
+}
+
+.image{
+  position: relative;
+}
+.details{
+  font-weight: 700;
+}
+.details:hover{
+  color: #d54215;
+}
+.searchGroup{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.card{
+  box-shadow:  5px 5px 10px #c1c1c1;
+}
+.card-body{
+  border: 1px solid lightgray;
+
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+li{
+  margin-left: 10px;
+
+}
+.details{
+  text-decoration: none;
+  color: black;
+}

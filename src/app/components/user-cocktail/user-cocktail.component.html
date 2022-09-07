@@ -1,0 +1,85 @@
+<div class="container">
+  <h1 class="h1 mt-3 mb-5" ><span>Cocktail</span> List You Added</h1>
+  <p>You Can Add Your Special Cocktail<span><a> Click Here</a> </span> </p>
+  <div class="searchGroup">
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="&#xf002; Search by Name" style="font-family: FontAwesome, Arial; font-style: normal"/>
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control"placeholder="&#xf002; Search by Ingredients" style="font-family: FontAwesome, Arial; font-style: normal"/>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+<ul>
+  <li>
+    <div class="card mt-5" style="width: 15rem">
+      <div class="image">
+        <img src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
+      </div>
+      <div class="card-text">
+        <h5 class="card-title">smothi</h5>
+        <div class="details">
+          <a class="details" href="#">View Details </a>
+          <i class="fa fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="card mt-5" style="width: 15rem">
+      <div class="image">
+        <img src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
+      </div>
+      <div class="card-text">
+        <h5 class="card-title">smothi</h5>
+
+        <div class="details">
+          <a class="details" href="#">View Details </a>
+          <i class="fa fa-arrow-right"></i>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+  <div class="card mt-5 bg-light" style="width: 15rem ; height: 300px; display: flex; justify-content: center; align-items: center;">
+    <div class="empty-card">
+      <i class="fa fa-plus-square-o"></i>
+  </div>
+  </div>
+</a>
+</li>
+  </ul>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Put Here Your New Cocktail</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="cocktailsForm">
+            <div class="mb-3">
+              <label class="form-label" formControlName="firstName">Cocktail Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">ingredients</label>
+              <input type="text" class="form-control" formControlName="firstName">
+            </div>
+            <div class="mb-3">
+              <label  class="form-label">instructions</label>
+              <textarea class="form-control" style="height: 100px" formControlName="firstName"></textarea>
+            </div>
+            <button type="submit" >Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
