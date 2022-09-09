@@ -38,13 +38,12 @@
         <div class="details">
           <a class="details" href="#">View Details </a>
           <i class="fa fa-arrow-right"></i>
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
         </div>
       </div>
     </div>
   </li>
   <li>
-    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    <a href=""  >
   <div class="card mt-5 bg-light" style="width: 15rem ; height: 300px; display: flex; justify-content: center; align-items: center;">
     <div class="empty-card">
       <i class="fa fa-plus-square-o"></i>
@@ -53,33 +52,4 @@
 </a>
 </li>
   </ul>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Put Here Your New Cocktail</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="cocktailsForm">
-            <div class="mb-3">
-              <label class="form-label" formControlName="firstName">Cocktail Name</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">ingredients</label>
-              <input type="text" class="form-control" formControlName="firstName">
-            </div>
-            <div class="mb-3">
-              <label  class="form-label">instructions</label>
-              <textarea class="form-control" style="height: 100px" formControlName="firstName"></textarea>
-            </div>
-            <button type="submit" >Save</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 </div>

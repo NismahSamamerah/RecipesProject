@@ -19,6 +19,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 import { environment } from 'src/environments/environment';
 import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
+import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.
     ContactUsComponent,
     NavbarComponent,
     UserCocktailComponent,
+    RecipeFormComponent,
   ],
   imports: [
     BrowserModule,

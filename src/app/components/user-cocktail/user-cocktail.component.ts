@@ -26,7 +26,7 @@ export class UserCocktailComponent implements OnInit {
   ngOnInit(): void {
   }
   addNewCocktail(){
-    this.route.navigate(["/cocktail-form"])
+    this.route.navigate(["/recipe-form"])
   }
 
 }

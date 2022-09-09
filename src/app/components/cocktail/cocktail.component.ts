@@ -12,7 +12,7 @@ export class CocktailComponent implements OnInit {
   ngOnInit(): void {
   }
   goToMyCocktails(){
-    this.router.navigate(['/user-cocktail']);
+    this.router.navigate(['user-cocktail']);
   }
 
 }
