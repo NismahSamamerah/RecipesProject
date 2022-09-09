@@ -17,8 +17,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { environment } from 'src/environments/environment';
 import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
+import { SlidesComponent } from './components/slides/slides.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +38,13 @@ import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.
     ContactUsComponent,
     NavbarComponent,
     UserCocktailComponent,
+    SlidesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgbCarouselModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
