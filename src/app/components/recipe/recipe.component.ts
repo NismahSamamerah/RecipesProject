@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-  
-  constructor() { }
+
+  constructor(public route :Router) { }
 
   ngOnInit(): void {
+  }
+  goToUserRecipes(){
+    this.route.navigate(['/user-recipe'])
+
   }
 
 }
