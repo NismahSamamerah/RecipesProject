@@ -5,6 +5,11 @@
   --primary-color: #d54215;
   --shadow: 5px 5px 10px #c1c1c1;
 }
+
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
 /*
 @font-face {
   font-family:'SF Pro Display italic' ;
