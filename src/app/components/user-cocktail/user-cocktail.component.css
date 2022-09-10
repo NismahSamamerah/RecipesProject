@@ -1,12 +1,12 @@
 .container{
-  font-family:Tahoma ;
+  font-family: 'SF Pro Display reguler';
 }
 h1 {
   margin-right:  auto;
-  font-family:  Tahoma;
   font-weight: 500;
   width: 40%;
   border-bottom: 5px solid #d54215;
+
 }
 span{
   color: #d54215;
@@ -45,6 +45,7 @@ button:hover{
   background-color: transparent;
   border:  2px solid #d54215;
   color: black;
+
 }
 
 .image{
