@@ -7,14 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-
-  constructor(public route :Router) { }
+  searchActive = false;
+  constructor(public route : Router) { }
 
   ngOnInit(): void {
   }
   goToUserRecipes(){
     this.route.navigate(['/user-recipe'])
-
   }
-
+  isActive(){
+    this.searchActive=true;
+  }
 }

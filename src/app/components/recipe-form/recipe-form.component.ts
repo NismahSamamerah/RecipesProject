@@ -17,15 +17,26 @@ export class RecipeFormComponent implements OnInit {
     instructions:new FormControl('', [Validators.required
     ]),
   });
+
+  ingredientItem: FormGroup = new FormGroup({
+    item: new FormControl(''),
+});
+
   constructor() { }
 
   ngOnInit(): void {
   }
-submitRecipe(newRecipe :any){}
+  submitRecipe(newRecipe :any){}
 
-addNewIngredient(){
-  (this.recipeForm.get('ingredients') as FormArray).push
-     new FormControl('', [Validators.required,
-        ])
+  addNewIngredient(){
+    (this.recipeForm.get('ingredients') as FormArray).push(new FormGroup({
+      item: new FormControl(''),
+  }));
+  console.log(this.ingredientItem);
+  }
+
+  getIngredientsArray() {
+    const array =  this.recipeForm.get('ingredients') as FormArray;
+    return array.controls as FormGroup[];
 }
 }
