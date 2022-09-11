@@ -14,7 +14,7 @@
     align-items: center
 }
 img{
-    width: inherit;
+    max-height: 40vh;
 }
 .footer div div{
     display: inline-block;

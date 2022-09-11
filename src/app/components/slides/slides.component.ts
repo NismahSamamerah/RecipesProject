@@ -24,7 +24,7 @@ export class SlidesComponent implements OnInit {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 10,
           }
       }
