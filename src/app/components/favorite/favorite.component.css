@@ -1,0 +1,84 @@
+.searchbox{
+    width: 70%;
+    margin: auto;
+    background-color: #e9e9e9;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .searchbox ul{
+    background-color: #e9e9e9;
+    margin-left: auto;
+  }
+.card{ 
+    box-shadow:  5px 5px 10px #c1c1c1;
+    width: 20vw;
+}
+.card-body{
+    border: 1px solid lightgray;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-items: center;
+    justify-content: space-around;
+}
+li{
+    width: 30%;
+    box-shadow:  5px 5px 10px #c1c1c1;
+    transition: 0.4s;
+}
+.card-text{
+    padding: 5px;                           
+}
+.card-text .card-title{
+    min-width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+.fa-heart{
+    color: rgb(245, 226, 226);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.fa-heart:hover{
+    color: #d54215;
+}
+.image{
+    position: relative;
+}
+.details{
+    color: black;
+    text-decoration: none;
+    font-family:'SF Pro Display bold' ;
+} 
+.details:hover{
+    color: #d54215;
+}
+
+span{
+    color :var(--primary-color)
+  }
+  button{
+    max-height:50px;
+    background-color: #d54215;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    opacity: 1;
+    border: none;
+    padding: 0 5px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  button:hover{
+    background-color: #fd6537;
+    border:  1px solid #d54215;
+    color: black;
+  }
