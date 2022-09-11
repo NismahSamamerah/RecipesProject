@@ -13,7 +13,7 @@ export class RecipeComponent implements OnInit {
   ngOnInit(): void {
   }
   goToUserRecipes(){
-    this.route.navigate(['/recipe-form'])
+    this.route.navigate(['/user-recipe'])
   }
   isActive(){
     this.searchActive=true;

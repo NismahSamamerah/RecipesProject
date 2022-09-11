@@ -6,7 +6,7 @@
   --shadow: 5px 5px 10px #c1c1c1;
 }
 
-<<<<<<< HEAD
+
 /* @font-face {
 =======
 body{
@@ -78,4 +78,9 @@ button:hover{
   background-color: #fd6537;
   border:  1px solid #d54215;
   color: black;
+}
+.searchGroup{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
