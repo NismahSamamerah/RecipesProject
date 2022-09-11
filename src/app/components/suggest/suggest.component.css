@@ -1,23 +1,87 @@
 .container{
-    font-family:Tahoma ;
+  align-items: center;
+  height: 40vh;
+  margin: 5vh 5vw; 
+  font-family: 'SF Pro Display regular';  
 }
-h1 {                        
-    font-family:  Tahoma;
-    font-weight: 500;
-    width: 30%;
-    border-bottom: 5px solid #d54215;
+h1{                        
+  font-size: 60px;
+  width: 50%;
+  margin-left: 5vw;
+}
+p{
+  width: 60%;
+  text-align: center;
+  margin-left: 5vw;
+  font-size: 40px;
+  border-bottom: 5px solid #d54215;
 }
 .card-text{
-    padding: 5px;                           
+  padding: 5px;                           
+}
+.card-text .card-title{
+  min-width: 100%;
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.card-text svg{
+  width: 20px;
+  height: 20px;
+  fill: #d54215;
+
 }
 .fa-heart{
-   font-size: 35px;
-                              color: rgb(245, 226, 226);
-                              position: absolute;
-                              right: 10px;
-                              top: 10px;
-                              cursor: pointer;
-                            }
-                            .fa-heart:hover{
-                              color: #d54215;
-                            }
+  color: rgb(245, 226, 226);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.fa-heart:hover{
+  color: #d54215;
+}
+.image{
+  position: relative;
+}
+
+.details:hover{
+  color: #d54215;
+}
+.card{ 
+  box-shadow:  5px 5px 10px #c1c1c1;
+  width: 20vw;
+}
+.card-body{
+  border: 1px solid lightgray;
+}
+ul{
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  justify-content: space-around;
+}
+.details{
+  text-decoration: none;
+  color: black;
+}
+input{
+  border: 5px solid #d54215;
+  border-radius: 10px;
+  margin-left: auto;
+  width: 30%;
+}
+.button{
+  margin-left: 5vw;
+} 
+button{
+  background-color: #d54215;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 5vh;
+}
+

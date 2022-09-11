@@ -1,0 +1,197 @@
+.main{
+    display: flex;
+    list-style: none;
+    font-family: 'SF Pro Display regular';
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-left: 10vw;
+    font-size: 20px;
+    background-color: rgba(225, 183, 151, 0.771);
+    border-radius: 10%;
+    padding: 5vw;
+    
+}
+h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+ul{
+    margin-top: 5vh;
+}
+img{
+    margin-top: 10vh;
+    margin-left: 5vw;
+    border-radius: 10%;
+    
+}
+h3{
+    margin-top: 5vh;
+    margin-left: 5vw;
+    font-size: 50px;
+    font-weight: bolder;
+}
+p{
+    margin-left: 5vw;
+    font-size: 20px;
+}
+.comment{
+    display: flex;
+    justify-content: flex-end;
+    color: #d54215;
+}
+.button{
+    display: flex;
+    justify-content: flex-end;   
+}
+.rating{
+    position: absolute;
+    margin-top: 10vh;
+    margin-left: 25vw; 
+    justify-content: space-between;
+    transform: translate(-50%, -50%);
+}
+.stars input{
+    display: none;
+}
+.stars label{
+    float: right;
+    font-size: 50px;
+    color:  grey;
+    text-shadow: 1px 1px #bbb;
+}
+.stars label:before{
+    content: '★';
+}
+.stars input:checked ~ label{
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+.stars:not(:checked) > label:hover,
+.stars:not(:checked) > label:hover ~ label{
+    color: gold;
+}
+.stars input:checked > label:hover,
+.stars input:checked > label:hover ~ label{
+    color: gold;
+}
+.stars .result:before{
+    position: absolute;
+    content: '';
+    left: 30%;
+    bottom: -30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: gold;
+    font-family: 'poppins',sans-serif;
+    display: none;
+}
+.stars input:checked ~ .result:before{
+    display: block;
+}
+.stars #five:checked ~ .result::before{
+    content: "I Love it 😍";
+}
+.stars #four:checked ~ .result::before{
+    content: "I Like it 😍";
+}
+.stars #three:checked ~ .result::before{
+    content: "Very Good 😎";
+}
+.stars #two:checked ~ .result::before{
+    content: "It's Good 😄";
+}
+.stars #one:checked ~ .result::before{
+    content: "I don't like it 😒";
+}
+h5{
+    margin-left: 13vw;
+    margin-top: 5vh;
+    font-size: 30px;
+    border-bottom: 5px solid #d54215;
+}
+.container{
+    font-size: 16px;
+    min-height: 50vh;
+    width: min(90%, 1140px);
+    margin-top: 10vh;
+    
+}
+.editDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+.edit{
+    margin-right: 5vw;
+}
+textarea{
+    width: inherit;
+}
+.comment-container{
+    position: relative;
+}
+.comment-container::before{
+    content: "";
+    background-color: rgb(171, 171, 171);
+    position: absolute;
+    min-height: 100%;
+    width: 1px;
+    left: -10px;
+}
+.comment-container:not(:first-child){
+    margin-left: 3vw;
+    margin-top: 1rem;
+}
+.comment-card{
+    padding: 20px;
+    background-color: white;
+    border: 1px solid rgb(0,0,0,3);
+    border-radius: 10px;
+    min-width: 100%;
+    box-shadow: 0 0 10px rgb(0, 0, 0.1);
+    
+}
+.comment-card h6, .comment-card p{
+    margin-bottom: 1vh;
+    margin-left: 3vh;
+}
+.comment-footer{
+    display: flex;
+    font-size: 15px;
+    opacity: .6;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.show-replies{
+    cursor: pointer;
+}
+
+textarea{
+    width:inherit;
+    height: 10vh;
+    margin-bottom: 10px;
+    border-radius: 1px solid black;
+}
+.textform{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    background-color: #d54215;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.commentbutton{
+    width: 20%;
+    align-content: center;
+}
+
