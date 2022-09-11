@@ -11,7 +11,7 @@ export class CocktailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  goToMyCocktails(){
+  goToUserRecipes(){
     this.router.navigate(['user-cocktail']);
   }
 

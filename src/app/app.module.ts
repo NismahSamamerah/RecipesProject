@@ -22,6 +22,8 @@ import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { SlidesComponent } from './components/slides/slides.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CardComponent } from './components/card/card.component';
+import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { FooterComponent } from './components/footer/footer.component';
     UserCocktailComponent,
     RecipeFormComponent,
     SlidesComponent,
-    FooterComponent
+    FooterComponent,
+    CardComponent,
+    UserRecipeComponent
   ],
   imports: [
     BrowserModule,

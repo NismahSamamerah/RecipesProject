@@ -8,19 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-cocktail.component.css']
 })
 export class UserCocktailComponent implements OnInit {
-  cocktailsForm :FormGroup = new FormGroup({
-    name : new FormControl('',[
-      Validators.required ,Validators.minLength(3),Validators.maxLength(30)
-    ]
-    ),
-    ingredients : new FormControl('',[
-      Validators.required ,Validators.minLength(3),Validators.maxLength(30)
-    ]),
-    instructions : new FormControl('',[
-      Validators.required ,Validators.minLength(3)
-    ]),
+  // cocktailsForm :FormGroup = new FormGroup({
+  //   name : new FormControl('',[
+  //     Validators.required ,Validators.minLength(3),Validators.maxLength(30)
+  //   ]
+  //   ),
+  //   ingredients : new FormControl('',[
+  //     Validators.required ,Validators.minLength(3),Validators.maxLength(30)
+  //   ]),
+  //   instructions : new FormControl('',[
+  //     Validators.required ,Validators.minLength(3)
+  //   ]),
 
-  })
+  // })
   constructor(public route : Router) { }
 
   ngOnInit(): void {
