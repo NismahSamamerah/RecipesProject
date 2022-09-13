@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -78,4 +79,5 @@ export class RecipeFormComponent implements OnInit {
         for (var i=0; i < m; i++) { s += r.charAt(Math.floor(Math.random()*r.length)); }
         return s;
     }
+
 }
