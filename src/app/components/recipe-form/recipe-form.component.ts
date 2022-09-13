@@ -78,4 +78,5 @@ export class RecipeFormComponent implements OnInit {
         for (var i=0; i < m; i++) { s += r.charAt(Math.floor(Math.random()*r.length)); }
         return s;
     }
+
 }
