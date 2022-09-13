@@ -1,0 +1,102 @@
+#home{
+    display: flex;
+    justify-content: center;
+    margin-top: 7vh;
+    height: 90vh;
+}
+h1 {
+    font-family:  "SF Pro Display bold";
+    font-weight: 500;
+    border-bottom: 5px solid #d54215;
+}
+.home-card{
+    display: inline-flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin: 1.2vw;
+    box-shadow:  5px 5px 10px #c1c1c1;
+    border-radius: 30px;
+    transition: 0.4s;
+    width: 30%;
+    height: 70vh;
+    
+    background-color: rgb(247, 212, 167);
+}
+.home-card h5{
+    margin: 1vw;
+}
+.rating{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.rate{
+    display: inline-flex;
+    margin: 1vw;
+    padding: 0.5vw;
+    
+    height: 100%;
+}
+.home-card img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+p{
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+}
+#rating{
+    margin-top: 25px;
+}
+card{ 
+    box-shadow:  5px 5px 10px #c1c1c1;
+    width: 20vw;
+}
+.card-body{
+    border: 1px solid lightgray;
+}
+ul{
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    justify-items: center;
+    justify-content: space-around;
+}
+li{
+    width: 30%;
+    box-shadow:  5px 5px 10px #c1c1c1;
+    transition: 0.4s;
+}
+.card-text{
+    padding: 5px;                           
+}
+.card-text .card-title{
+    min-width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+.fa-heart{
+    color: rgb(245, 226, 226);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.fa-heart:hover{
+    color: #d54215;
+}
+.image{
+    position: relative;
+}
+.details{
+    color: black;
+    text-decoration: none;
+    font-family:'SF Pro Display bold' ;
+} 
+.details:hover{
+    color: #d54215;
+}

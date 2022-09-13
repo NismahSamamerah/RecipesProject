@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cocktail',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cocktail.component.css']
 })
 export class CocktailComponent implements OnInit {
-
-  constructor() { }
+  constructor(public router : Router) { }
 
   ngOnInit(): void {
+  }
+  goToUserRecipes(){
+    this.router.navigate(['user-cocktail']);
   }
 
 }

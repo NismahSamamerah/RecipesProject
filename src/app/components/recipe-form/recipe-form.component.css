@@ -1,0 +1,72 @@
+
+.container{
+  font-family: 'SF Pro Display regular';
+  font-style: italic;
+  font-weight: bold;
+}
+h1 {
+  margin-top: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  position: relative;
+  font-style: italic;
+  font-weight: bold;
+  border: none;
+}
+h1:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background: #e7e3e1;
+  margin-left: 20px;
+  margin-top: 15px;
+
+}
+img{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: -50px;
+    left: auto;
+    top: 40px;
+}
+form{
+background-color: white;
+height: 100%;
+padding: 20px;
+border: 1px solid lightgrey;
+}
+.error-messege{
+  color: rgb(189, 8, 8);
+  font-size: 18px;
+  font-style: italic;
+}
+.ingredients{
+  display: flex;
+  justify-content: space-between;
+}
+.fa-plus{
+  font-size: 20px;
+  color: white;
+}
+a{
+  max-height:50px;
+  margin-top: 40px;
+  background-color: #d54215;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.4s;
+  opacity: 1;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+button:hover{
+  background-color: #fd6537;
+  border:  1px solid #d54215;
+}

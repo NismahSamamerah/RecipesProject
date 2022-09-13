@@ -1,1 +1,39 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="col-md-3">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/logo.png" alt="">
+      </a>
+    </div>
+      <div class="collapse navbar-collapse col-md-3">
+            <ul class="navbar-nav mt-5">
+                <li class="nav-item">
+                    <a class="nav-link "  routerLink="home"aria-current="page" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="recipe" href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="cocktail" href="#"><i class="fa fa-glass" aria-hidden="true"></i> Cocktails</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contact Us</a>
+              </li>
+            </ul>
+        </div>
+        <div class="col-md-3 ">
+        <form class="container-fluid justify-content-start mt-5">
+          <button class="btn btn-outline me-2" routerLink="register , login" type="button">Sign Up ?</button>
+          <button class="btn btn-outline me-2" type="button" routerLink="login">Login</button>
+          <i class="fa fa-facebook" aria-hidden="true" style="margin-left:10px" ></i>
+          <i class="fa fa-twitter" aria-hidden="true" style="margin-left:5px"></i>
+          <i class="fa fa-google-plus" aria-hidden="true"style="margin-left:5px"></i>
+        </form>
+        <div class="social">
+
+        </div>
+      </div>
+    </div>
+</nav>
+

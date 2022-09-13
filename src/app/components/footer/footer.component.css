@@ -1,0 +1,22 @@
+.footer{
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,83,0,1) 80%);
+    display: flex;
+    justify-content: space-around;
+
+    flex-wrap: nowrap;
+    align-items: center
+}
+.footer div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center
+}
+img{
+    max-height: 40vh;
+}
+.footer div div{
+    display: inline-block;
+   
+}
