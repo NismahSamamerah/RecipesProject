@@ -33,14 +33,14 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(15),
     ]),
   });
- 
+
   constructor(public auth:AuthService, private userService: UserService) {
-     
+  
   }
 
   ngOnInit(): void {}
   register(newUser: any ) {
-  
+
       this.auth.user.subscribe(user => {
         this.auth.userID = user?.uid;
         console.log(user?.uid);

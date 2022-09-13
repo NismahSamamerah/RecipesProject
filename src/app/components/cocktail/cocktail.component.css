@@ -23,6 +23,20 @@ h4{
   display: flex;
   justify-content: space-between;
 }
+.searchbox{
+  width: 70%;
+  margin: auto;
+  background-color: #e9e9e9;
+  padding: 20px 40px;
+
+}
+form{
+  display: flex;
+  justify-content: space-between;
+}
+form button{
+  width: 10%;
+}
 .fa-star{
   color:#afaaaa ;
   cursor: pointer;
