@@ -14,4 +14,8 @@ export class UserService {
   saveUserInfo(user: any){
     return this.angularFirestore.doc(`users/${this.auth.userID}`).set(user);
   }
+  saveRecipeInfo(recipe: any){
+    return this.angularFirestore.collection("recipe").doc(recipe.id).set(recipe);
+  }
+ 
 }
