@@ -1,56 +1,54 @@
 
 <div class="container">
-  <div class="title">
-  <h1>Submit Recipe</h1>
-  <img src="/assets/images/transparent-removebg-preview.png" alt="">
-</div>
-<form [formGroup]="recipeForm" (ngSubmit)="submitRecipe(recipeForm.value)" class="row g-2 mt-2 mb-3">
-  <div class="col-md-8">
-    <label  class="form-label">Recipe Name</label>
-    <input type="text" formControlName="name" class="form-control" >
-    <p class="error-messege" *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched">
-      *{{
-        recipeForm.get('name')?.errors?.['required'] ? 'this felid is required !' : ''
-      }}
-  </p>
-  </div>
-<div class="ingredients" >
-    <div class="mb-3 col-md-6">
-      <label class="form-label">ingredients</label>
-      <div *ngFor="let itemGroup of getIngredientsArray()">
-        <div [formGroup]="itemGroup">
-          <input formControlName="item" type="text" class="form-control" style="margin-bottom:5px" >
+
+    <div class="title">
+        <h1>Submit Recipe</h1>
+        <img src="/assets/images/transparent-removebg-preview.png" alt="">
+    </div>
+    <form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()" class="row g-2 mt-2 mb-3">
+        <div class="col-md-8">
+            <label  class="form-label">Recipe Name</label>
+            <input type="text" formControlName="name" class="form-control" >
+            <p class="error-messege" *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched">
+                *{{
+                recipeForm.get('name')?.errors?.['required'] ? 'this felid is required !' : ''
+                }}
+            </p>
         </div>
-      </div>
-  </div>
-  <div class="col-md-5 mt-4">
-  <button (click)="addNewIngredient()" style="padding: 7px 12px"> <i class="fa fa-plus" aria-hidden="true"></i></button>
-  </div>
-    <p class="error-messege" *ngIf="recipeForm.get('ingredients')?.invalid && recipeForm.get('ingredients')?.touched"
-    role="alert">
-    *{{
-      recipeForm.get('ingredients')?.errors?.['required'] ? 'this felid is required !' : ''
-    }}
-  </p>
-</div>
-  <div class="col-md-8">
-    <label  class="form-label">Servings</label>
-    <input type="text" class="form-control" formControlName="servings">
-    <p class="error-messege" *ngIf="recipeForm.get('servings')?.invalid && recipeForm.get('servings')?.touched"
-    role="alert">
-    *{{
-      recipeForm.get('servings')?.errors?.['required'] ? 'this felid is required !' : ''
-    }}
-  </p>
-  </div>
-  <div class="col-md-8">
-    <label for="floatingTextarea2">Instructions</label>
-  <textarea class="form-control"  style="height: 100px"></textarea>
+        <div class="ingredients" >
+            <div class="mb-3 col-md-6">
+                <label class="form-label">ingredients</label>
+                <div *ngFor="let itemGroup of getIngredientsArray()">
+                    <div [formGroup]="itemGroup">
+                        <input formControlName="item" type="text" class="form-control" style="margin-bottom:5px" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mt-4">
+                <a (click)="addNewIngredient()" style="padding: 7px 12px" aria-placeholder=""> <i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+            <p class="error-messege" *ngIf="recipeForm.get('ingredients')?.invalid && recipeForm.get('ingredients')?.touched" role="alert">
+                *{{
+                recipeForm.get('ingredients')?.errors?.['required'] ? 'this felid is required !' : ''
+                }}
+            </p>
+        </div>
+        <div class="col-md-8">
+            <label  class="form-label">Servings</label>
+            <input type="text" class="form-control" formControlName="servings">
+            <p class="error-messege" *ngIf="recipeForm.get('servings')?.invalid && recipeForm.get('servings')?.touched" role="alert">
+                *{{
+                recipeForm.get('servings')?.errors?.['required'] ? 'this felid is required !' : ''
+                }}
+            </p>
+        </div>
+        <div class="col-md-8">
+            <label for="floatingTextarea2">Instructions</label>
+            <textarea formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
+        </div>
+        <button class="col-md-8" type="submit"  style="max-height:50px ;">Submit Your Recipe</button>
+    </form>
 
-</div>
-  <button class="col-md-8" type="button"  style="max-height:50px ;">Submit Your Recipe</button>
-
-</form>
 </div>
 
 
