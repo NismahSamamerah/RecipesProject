@@ -52,10 +52,6 @@ border: 1px solid lightgrey;
   font-size: 20px;
   color: white;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> ea53ccf42d9d3c4b17980c8eaa1d8c7a0840b9d1
 a{
   max-height:50px;
   margin-top: 40px;
@@ -72,10 +68,4 @@ a{
 }
 button:hover{
   background-color: #fd6537;
-  border:  1px solid #d54215;
-<<<<<<< HEAD
-}
-=======
-}
-
->>>>>>> ea53ccf42d9d3c4b17980c8eaa1d8c7a0840b9d1
+  border:  1px solid #d54215;}
