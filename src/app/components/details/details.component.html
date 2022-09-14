@@ -80,7 +80,7 @@
     </div>
     <h5 class="tittle">Leave a Comment</h5>
     <div class="container comment-box">
-        <form class="textform" action="#">
+        <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment()"  >
             <textarea class="textarea"name="Comment" placeholder="Add Your Comment.." cols="30" rows="10"></textarea>
             <button class="commentbutton" type="submit">Add Comment</button>
 

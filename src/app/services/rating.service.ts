@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-
 @Injectable({
     providedIn: 'root'
 })
-export class CommentService {
+export class RatingService {
 
     constructor(private angularFirestore: AngularFirestore) { }
 
-
-    saveCommentInfo(comment: any) {
-        return this.angularFirestore.collection("comment").doc(comment.id).set(comment);
+    saveRatingInfo(rating: any) {
+        return this.angularFirestore.collection("rating").doc(rating.id).set(rating);
     }
-
 }
