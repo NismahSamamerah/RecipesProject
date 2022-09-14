@@ -24,6 +24,8 @@ import { SlidesComponent } from './components/slides/slides.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -49,9 +51,10 @@ import { UserRecipeComponent } from './components/user-recipe/user-recipe.compon
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RecipeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

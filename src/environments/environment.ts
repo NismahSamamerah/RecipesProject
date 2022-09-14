@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  RecipesninjaApi :'https://api.api-ninjas.com/v1/recipe?query=',
+
+  CocktailsninjaApi :'https://api.api-ninjas.com/v1/cocktil?query=',
+
   firebase: {
     apiKey: "AIzaSyA-988lQbBk_hxtdfdFCEFb7804Zb5Vhn4",
     authDomain: "recipesproject-70617.firebaseapp.com",
