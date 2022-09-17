@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-recipe',
@@ -12,9 +13,10 @@ import { ApiService } from 'src/app/services/api.service';
 export class RecipeComponent implements OnInit {
 
     recipes: any = [];
-    public recipeTitleForDitals :any = 'asdf';
+    recipeTitle :any ;
 
-    constructor(public http: HttpClient, public route: Router, public apiService: ApiService) {
+    constructor( public http: HttpClient, public route: Router, public apiService: ApiService,
+        private userService: UserService) {
     }
     ngOnInit(): void {
         this.getRecipes();
@@ -37,10 +39,13 @@ export class RecipeComponent implements OnInit {
     }
     getRecipeDetails(recipeTitle: string) {
         if (recipeTitle) {
-            console.log(recipeTitle);
-            this.recipeTitleForDitals=recipeTitle
-            this.route.navigate([`recipe-details/${recipeTitle}`])
+            console.log(recipeTitle +"from recipe");
+            this.route.navigate([`recipe-details/${recipeTitle}`], {
+            })
         }
+    }
+    getRecipeDetails1(recipeTitle: string) {
+        this.route.navigate([`/recipe-details`, {recipeTitle: recipeTitle}]);
     }
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])

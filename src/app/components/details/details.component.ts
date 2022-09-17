@@ -5,7 +5,7 @@ import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { RatingService } from 'src/app/services/rating.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
@@ -24,9 +24,8 @@ export class DetailsComponent implements OnInit {
         comment: new FormControl('', [Validators.required,
         ]),
     });
-    
 
-  constructor( public route : Router , public apiService :ApiService , public recipeComponent : RecipeComponent, 
+  constructor(  private router: ActivatedRoute,public route : Router , public apiService :ApiService , public recipeComponent : RecipeComponent, 
         private commentService: CommentService,private ratingService: RatingService, private auth: AuthService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
@@ -34,10 +33,12 @@ export class DetailsComponent implements OnInit {
         })
     }
     ngOnInit(): void {
+        const recipeTitle= this.router.snapshot.paramMap.get('recipeTitle');
+        console.log(recipeTitle+"from details");
     // this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
     //     if (this.recipeTitle) {
     //         const queryParams = new HttpParams().set('', this.recipeTitle)
-    //         this.apiService.get('/student-details', { params: queryParams }).subscribe(
+    //         this.apiService.get('/details', { params: queryParams }).subscribe(
     //             (data) => {
     //                 this.recipe = data as any;
     //             },
@@ -51,7 +52,7 @@ export class DetailsComponent implements OnInit {
 
     setRate(rate: number) {
         const rating: IRating ={
-            type_id: "this.recipeComponent.recipeTitleForDitals",
+            type_id: "this.recipeComponent.recipeTitle",
             user_id: this.auth.userID as string,
             rating: rate,
             type: 'recipe'
@@ -64,9 +65,9 @@ export class DetailsComponent implements OnInit {
         })
     }
     saveComment() {
-        console.log(this.recipeComponent.recipeTitleForDitals);
+        console.log(this.recipeComponent.recipeTitle);
         const comment: IComment = {
-            type_id: this.recipeComponent.recipeTitleForDitals,//TODO:
+            type_id: this.recipeComponent.recipeTitle,//TODO:
             user_id: this.auth.userID as string,
             comment: this.commentForm.value.comment,
             type: 'recipe'

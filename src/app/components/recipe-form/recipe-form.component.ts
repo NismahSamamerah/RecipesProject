@@ -48,7 +48,7 @@ export class RecipeFormComponent implements OnInit {
         }).catch(err => {
             console.log(err);
         })
-    }
+    } 
 
     ngOnInit(): void {
     }
