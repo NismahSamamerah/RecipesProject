@@ -1,6 +1,6 @@
 export interface IRating {
-  type_id :number,
-  user_id: number,
-  rating :string,
+  type_id :number|string,
+  user_id: string,
+  rating :number,
   type :string,
 }

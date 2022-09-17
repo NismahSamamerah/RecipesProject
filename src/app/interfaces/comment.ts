@@ -1,6 +1,6 @@
 export interface IComment {
-  type_id :number,
-  user_id: number,
+  type_id :string|number,
+  user_id: string,
   comment :string,
   type :string,
 }
