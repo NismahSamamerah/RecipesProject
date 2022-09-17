@@ -1,9 +1,9 @@
 export interface IRecipe {
-  id : number,
-  user_id :number,
+  id : string,
+  user_id :string,
   title: string,
-  ingredients :string,
+  ingredients :string[],
   servings :string,
-  instuctions :string
+  instructions :string
 
 }

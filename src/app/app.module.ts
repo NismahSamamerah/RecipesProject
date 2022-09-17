@@ -13,7 +13,7 @@ import { CocktailComponent } from './components/cocktail/cocktail.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 
@@ -52,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [RecipeComponent],
   bootstrap: [AppComponent]

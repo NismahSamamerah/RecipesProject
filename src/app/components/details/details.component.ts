@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 
@@ -16,7 +16,7 @@ import { RecipeComponent } from '../recipe/recipe.component';
 export class DetailsComponent implements OnInit {
   recipeTitle?:string;
 recipe :any=[]
-  activeRouter: any;
+
     commentForm: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required,
         ]),
@@ -24,28 +24,34 @@ recipe :any=[]
 
   constructor(public route : Router , public apiService :ApiService , public recipeComponent : RecipeComponent
 
-   , private commentService: CommentService,
-        private auth: AuthService) {
+  , private commentService: CommentService,
+        private auth: AuthService , public activeRouter: ActivatedRoute,) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
     }
     ngOnInit(): void {
-    // this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
-    //     if (this.recipeTitle) {
-    //         const queryParams = new HttpParams().set('', this.recipeTitle)
-    //         this.apiService.get('/student-details', { params: queryParams }).subscribe(
-    //             (data) => {
-    //                 this.recipe = data as any;
-    //             },
-    //             (error) => {
-    //                 console.log(error);
-    //             }
-    //         )
-    //     }
+      // let recipe = this.recipeComponent.getRecipes();
+      // console.log(recipe);
 
-    }
+      // this.recipeComponent.getRecipeDetails(this.recipe.title);
+      this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
+      if (this.recipeTitle) {
+          const queryParams = new HttpParams().set('recipe_title', this.recipeTitle)
+          this.apiService.get('/recipe-details', { params: queryParams }).subscribe(
+              (data) => {
+                  this.recipe = data ;
+                  console.log(this.recipe);
+              },
+
+              (error) => {
+                  console.log(error);
+              }
+          )
+      }
+  }
+
 
     setRate(rate: number) {
         console.log(rate);
