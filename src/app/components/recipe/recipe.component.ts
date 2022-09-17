@@ -5,9 +5,9 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+    selector: 'app-recipe',
+    templateUrl: './recipe.component.html',
+    styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
 
@@ -30,26 +30,20 @@ export class RecipeComponent implements OnInit {
     this.loadRecipe();
   }
 
+    searchRecipe(value: string) {
+        this.apiService.getRecipesByName(value).subscribe((data) => {
+            console.log(data, "searchable");
+        });
+    }
+    getRecipeDetails(recipeTitle: string) {
+        if (recipeTitle) {
+            console.log(recipeTitle);
+            this.recipeTitleForDitals=recipeTitle
+            this.route.navigate([`recipe-details/${recipeTitle}`])
+        }
+    }
+    goToUserRecipes() {
+        this.route.navigate(['/user-recipe'])
+    }
 
-getRecipeDetails(recipeTitle :string){
-  if (recipeTitle){
-  console.log(recipeTitle);
-  this.route.navigate([`recipe-details/${recipeTitle}`])
-  }
-}
-loadRecipe(): void {
-  this.apiService.getRecipesByName(`${this.item}`).subscribe(
-      (data: any) => {
-        console.log(data);
-
-          this.recipes = data ;
-      },
-      (error) => {
-          console.log(error);
-      }
-  );
-}
-  goToUserRecipes(){
-    this.route.navigate(['/user-recipe'])
-  }
 }

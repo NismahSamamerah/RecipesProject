@@ -52,7 +52,6 @@ border: 1px solid lightgrey;
   font-size: 20px;
   color: white;
 }
-
 a{
   max-height:50px;
   margin-top: 40px;
@@ -69,9 +68,4 @@ a{
 }
 button:hover{
   background-color: #fd6537;
-  border:  1px solid #d54215;
-
-}
-
-
-
+  border:  1px solid #d54215;}
