@@ -9,8 +9,8 @@
 </div>
     <div class="searchbox">
         <form>
-        <input #searchInput type="text" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
-        <button  (click)="searchRecipe(searchInput.value)" class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input [(ngModel)]="item" type="text" name="search" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
+        <button  (click)="loadRecipe()"  class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
 
     </div>

@@ -12,13 +12,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { SuggestComponent } from './components/suggest/suggest.component';
 import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
+import { AuthGuard } from './guards/auth.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 const routes: Routes = [
-  {path : "register" , component : RegisterComponent},
-  {path : "login" , component : LoginComponent},
-  {path : "home" , component : HomeComponent},
-  {path : "recipe" , component : RecipeComponent},
-  {path : "cocktail" , component : CocktailComponent},
+  {path : "register" , component : RegisterComponent ,canActivate :[GuestGuard]},
+  {path : "login" , component : LoginComponent ,canActivate :[GuestGuard]},
+  {path : "home" , component : HomeComponent, },
+  {path : "recipe" , component : RecipeComponent , canActivate :[AuthGuard]},
+  {path : "cocktail" , component : CocktailComponent , canActivate :[AuthGuard]},
   {path : "user-recipe" , component : UserRecipeComponent},
   {path : "user-cocktail" , component : UserCocktailComponent},
   {path : "recipe-form" , component : RecipeFormComponent},

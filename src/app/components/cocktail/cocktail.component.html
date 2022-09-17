@@ -10,8 +10,8 @@
 
 <div class="searchbox">
   <form>
-  <input #searchInput type="text" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
-  <button   class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+    <input [(ngModel)]="cocktail" type="text" name="search" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
+  <button  (click)="loadCocktail()" class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
 </form>
 
 </div>
@@ -24,7 +24,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body" >
-              <h4 class="card-title" >{{cocktail.title}} <i class="fa fa-star" aria-hidden="true"></i></h4>
+              <h4 class="card-title" >{{cocktail.name}} <i class="fa fa-star" aria-hidden="true"></i></h4>
               <p class="card-text">{{cocktail.ingredients}}</p>
 
             </div>

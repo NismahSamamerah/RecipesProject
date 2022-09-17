@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,25 +12,37 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RecipeComponent implements OnInit {
 
-    recipes: any = [];
-    recipeTitle :any ;
 
-    constructor( public http: HttpClient, public route: Router, public apiService: ApiService,
-        private userService: UserService) {
-    }
-    ngOnInit(): void {
-        this.getRecipes();
-    }
+  recipes : any = [];
+  public recipe :string = '';
+   recipeTitle :any ;
 
-    getRecipes() {
-        this.apiService.getRecipesByName("fish").subscribe((data) => {
-            this.recipes = data;
-            return this.recipes;
+  constructor(public http: HttpClient, public route : Router , public apiService :ApiService, private userService: UserService) {
+  }
+  ngOnInit(): void {
+    this.apiService.getRecipesByName("fish").subscribe(
+      (data: any) => {
+        console.log(data);
 
-        }, (error) => {
+
+          this.recipes = data ;
+      },
+      (error) => {
+          console.log(error);
+      }
+  );}
+  loadRecipe(): void {
+    this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
+        (data: any) => {
+          console.log(data);
+
+            this.recipes = data ;
+        },
+        (error) => {
             console.log(error);
-        });
-    }
+        }
+    );
+  }
 
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
@@ -50,4 +62,5 @@ export class RecipeComponent implements OnInit {
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])
     }
+
 }

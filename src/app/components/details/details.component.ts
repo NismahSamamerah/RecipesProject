@@ -5,7 +5,7 @@ import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { RatingService } from 'src/app/services/rating.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
@@ -17,9 +17,9 @@ import { IRating } from 'src/app/interfaces/rating';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-    recipeTitle?:string;
-    recipe :any=[]
-    activeRouter: any;
+  recipeTitle?:string;
+recipe :any=[]
+
     commentForm: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required,
         ]),
@@ -33,22 +33,26 @@ export class DetailsComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        const recipeTitle= this.router.snapshot.paramMap.get('recipeTitle');
-        console.log(recipeTitle+"from details");
-    // this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
-    //     if (this.recipeTitle) {
-    //         const queryParams = new HttpParams().set('', this.recipeTitle)
-    //         this.apiService.get('/details', { params: queryParams }).subscribe(
-    //             (data) => {
-    //                 this.recipe = data as any;
-    //             },
-    //             (error) => {
-    //                 console.log(error);
-    //             }
-    //         )
-    //     }
+      // let recipe = this.recipeComponent.getRecipes();
+      // console.log(recipe);
 
-    }
+      // this.recipeComponent.getRecipeDetails(this.recipe.title);
+      this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
+      if (this.recipeTitle) {
+          const queryParams = new HttpParams().set('recipe_title', this.recipeTitle)
+          this.apiService.get('/recipe-details', { params: queryParams }).subscribe(
+              (data) => {
+                  this.recipe = data ;
+                  console.log(this.recipe);
+              },
+
+              (error) => {
+                  console.log(error);
+              }
+          )
+      }
+  }
+
 
     setRate(rate: number) {
         const rating: IRating ={
