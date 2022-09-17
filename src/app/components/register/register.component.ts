@@ -35,15 +35,19 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(public auth:AuthService, private userService: UserService) {
-  
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+
+  }
   register(newUser: any ) {
 
       this.auth.user.subscribe(user => {
         this.auth.userID = user?.uid;
         console.log(user?.uid);
+        console.log('helllo');
+
       });
 
       this.auth.register(newUser.email, newUser.password).then(res => {

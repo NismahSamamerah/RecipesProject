@@ -9,20 +9,30 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CocktailComponent implements OnInit {
   cocktails : any = [];
+  cocktail : string = '';
   constructor(public router : Router , public apiService :ApiService) { }
 
   ngOnInit(): void {
-    this.getCocktails()
-  }
-  getCocktails(){
-    this.apiService.getRecipesByName("bloody mary").subscribe((data: any) => {
+    this.apiService.getCocktailsByName("orange").subscribe((data: any) => {
       this.cocktails = data;
-      console.log(data,"this is data from api nismah cocktails");
 
     },(error)=>{
       console.log(error);
     });
-}
+  }
+
+  loadCocktail(): void {
+    this.apiService.getCocktailsByName(`${this.cocktail}`).subscribe(
+        (data: any) => {
+          console.log(data);
+
+            this.cocktails = data ;
+        },
+        (error) => {
+            console.log(error);
+        }
+    );
+  }
   goToUserRecipes(){
     this.router.navigate(['user-cocktail']);
   }

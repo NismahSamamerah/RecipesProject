@@ -61,4 +61,7 @@ img{
 i:hover{
   color: var(--primary-color);
 }
+.active{
+  color: var(--primary-color);
 
+}
