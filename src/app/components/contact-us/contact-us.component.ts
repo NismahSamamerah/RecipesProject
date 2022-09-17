@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,12 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  contactUsForm: FormGroup = new FormGroup({
+    Name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('', [Validators.required]),
     
+  });
+  isSumbitted = false;
 
-
+  constructor(public auth:AuthService, private UserService: UserService) {}
+  ngOnInit(): void {
   }
-
+  contactUs(newContact :any){
+    console.log();
+    
+  }
 }
+

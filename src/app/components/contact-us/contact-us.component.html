@@ -1,1 +1,50 @@
-<p>contact-us works!</p>
+
+<div class="bac">
+  <div class="container mt-3">
+    <h1>Contact Us</h1>
+    <form [formGroup]="contactUsForm"  (ngSubmit)="contactUsForm">
+      <div class="col-md-6">
+        <label class="form-label">Name</label>
+    <input type="Name" class="form-control" formControlName="Name">
+    <p *ngIf="contactUsForm.get('Name')?.invalid && contactUsForm.get('Name')?.touched">
+      *{{
+        contactUsForm.get('Name')?.errors?.['required'] ? 'this felid is required' : ''
+      }}
+      {{
+        contactUsForm.get('Name')?.errors?.['minlength'] ? 'min length should be 3' : ''
+      }}
+      {{
+        contactUsForm.get('Name')?.errors?.['maxlength'] ? 'max length should be 30' : ''
+      }}
+    </p>
+    </div>
+    <div class="col-md-6">
+      <label  class="form-label">Email address</label>
+      <input type="email" class="form-control" formControlName="email">
+      <p *ngIf="contactUsForm.get('email')?.invalid && contactUsForm.get('email')?.touched">
+      *{{
+        contactUsForm.get('email')?.errors?.['required'] ? 'this feild is required' : ''
+      }}
+      {{
+        contactUsForm.get('email')?.errors?.['email'] ? 'not valid email' : ''
+      }}
+    </p>
+    </div>
+    <div class="col-md-6">
+      <label  class="form-label">Message</label>
+      <textarea type="message" class="form-control" formControlName="message"></textarea>
+      <p *ngIf="contactUsForm.get('email')?.invalid && contactUsForm.get('email')?.touched">
+      *{{
+        contactUsForm.get('message')?.errors?.['required'] ? 'this feild is required' : ''
+      }}
+      
+    </p>
+    </div>
+    <button  type="submit" [disabled]="contactUsForm.invalid"  class="btn btn-success col-md-2 ">send</button>  
+    </form>
+  </div>
+  </div>
+
+  
+    
+
