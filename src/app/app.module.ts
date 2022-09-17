@@ -45,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     SlidesComponent,
     FooterComponent,
     CardComponent,
-    UserRecipeComponent
+    UserRecipeComponent,
+    
   ],
   imports: [
     BrowserModule,
