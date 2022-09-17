@@ -43,7 +43,8 @@ import { UserRecipeComponent } from './components/user-recipe/user-recipe.compon
     SlidesComponent,
     FooterComponent,
     CardComponent,
-    UserRecipeComponent
+    UserRecipeComponent,
+    
   ],
   imports: [
     BrowserModule,
