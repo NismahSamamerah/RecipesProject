@@ -15,12 +15,13 @@ import { UserRecipeComponent } from './components/user-recipe/user-recipe.compon
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
 
+
 const routes: Routes = [
   {path : "register" , component : RegisterComponent ,canActivate :[GuestGuard]},
-  {path : "login" , component : LoginComponent ,canActivate :[GuestGuard]},
-  {path : "home" , component : HomeComponent, },
-  {path : "recipe" , component : RecipeComponent },
-  {path : "cocktail" , component : CocktailComponent},
+  {path : "login" , component : LoginComponent, canActivate: [GuestGuard]},
+  {path : "home" , component : HomeComponent,  },
+  {path : "recipe" , component : RecipeComponent ,canActivate: [AuthGuard]},
+  {path : "cocktail" , component : CocktailComponent , canActivate: [AuthGuard]},
   {path : "user-recipe" , component : UserRecipeComponent},
   {path : "user-cocktail" , component : UserCocktailComponent},
   {path : "recipe-form" , component : RecipeFormComponent},

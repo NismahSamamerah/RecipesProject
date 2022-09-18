@@ -10,7 +10,7 @@
     background-color: #e9e9e9;
     margin-left: auto;
   }
-.card{ 
+.card{
     box-shadow:  5px 5px 10px #c1c1c1;
     width: 20vw;
 }
@@ -30,24 +30,24 @@ li{
     transition: 0.4s;
 }
 .card-text{
-    padding: 5px;                           
+    padding: 5px;
 }
 .card-text .card-title{
     min-width: 100%;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
 }
-.fa-heart{
-    color: rgb(245, 226, 226);
+.fa-star{
+    color:var(--primary-color);
     position: absolute;
     right: 10px;
     top: 10px;
     cursor: pointer;
 }
-.fa-heart:hover{
-    color: #d54215;
+.fa-star:hover{
+    color: rgb(245, 226, 226);;
 }
 .image{
     position: relative;
@@ -56,7 +56,7 @@ li{
     color: black;
     text-decoration: none;
     font-family:'SF Pro Display bold' ;
-} 
+}
 .details:hover{
     color: #d54215;
 }

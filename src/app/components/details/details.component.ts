@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
         comment: new FormControl('', [Validators.required,
         ]),
     });
-    
+
 
 
     constructor(
@@ -78,5 +78,5 @@ export class DetailsComponent implements OnInit {
             console.log(err);
         })
     }
-    
+
 }

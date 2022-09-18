@@ -8,16 +8,22 @@ import { AuthService } from '../services/auth.service';
 })
 export class GuestGuard implements CanActivate {
   constructor(public authService: AuthService, public router: Router) { }
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): boolean{
-          if(!this.authService.isLogin()){
-            return true;
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return new Promise(resolve => {
+      const sub = this.authService.user.subscribe(user => {
+        if(!user){
+          resolve(true);
+        } else {
+          this.router.navigateByUrl('/home');
+          resolve(false);
         }
-        return false;
+        sub.unsubscribe();
+      })
+    })
     }
-    }
-
+  }
 
 
 

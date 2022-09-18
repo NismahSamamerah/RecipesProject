@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(public auth:AuthService, private userService: UserService , public route :Router) {}
 
   ngOnInit(): void {}
-  login(newUser: any) {
-    this.auth.login(newUser.email, newUser.password).then(res => {
+  login() {
+    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).then(res => {
       console.log(res);
       this.route.navigate(['recipe'])
     }).catch(err => {

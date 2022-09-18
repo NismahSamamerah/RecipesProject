@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ApiService } from 'src/app/services/api.service';
+import { IFavorite } from 'src/app/interfaces/favorit';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,7 +23,8 @@ export class RecipeComponent implements OnInit {
         public http: HttpClient,
         public route: Router,
         public apiService: ApiService,
-        private userService: UserService) {
+        private user: UserService,
+        private auth : AuthService) {
     }
     ngOnInit(): void {
         this.apiService.getRecipesByName("fish").subscribe(
@@ -55,9 +58,21 @@ export class RecipeComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
     }
-   
+
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])
     }
 
+    addFavorite(title :string){
+      const favoriteItem: IFavorite = {
+        type_id: title,
+        user_id: this.auth.userID,
+        type: 'recipe'
+      }
+      this.user.addFavorite(favoriteItem).then(res => {
+        console.log(favoriteItem);
+    }).catch(err => {
+        console.log(err);
+    })
+    }
 }

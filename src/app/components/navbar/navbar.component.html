@@ -24,9 +24,9 @@
         </div>
         <div class="col-md-3 ">
         <form class="container-fluid justify-content-start mt-5">
-          <button *ngIf="!authService.isLogin()" class="btn btn-outline me-2" routerLink="register" >Sign Up ?</button>
-          <button *ngIf="!authService.isLogin()" class="btn btn-outline me-2" type="button" routerLink="login" >Login</button>
-          <button *ngIf="authService.isLogin()" (click)="logout()" class="btn btn-outline me-2" type="button">Logout</button>
+          <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register" >Sign Up ?</button>
+          <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" type="button" routerLink="/login" >Login</button>
+          <button *ngIf="isLoggedIn == true" (click)="logout()" class="btn btn-outline me-2" type="button">Logout</button>
 
         </form>
         <div class="social">
