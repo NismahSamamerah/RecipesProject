@@ -28,7 +28,8 @@ const routes: Routes = [
   {path : "contact-us" , component : ContactUsComponent},
   {path : "suggest" , component : SuggestComponent},
   {path : "favorite" , component : FavoriteComponent},
-  {path : "recipe-details/:id" , component : DetailsComponent}
+  {path : "recipe-details/:id" , component : DetailsComponent},
+  {path: "recipee", component: DetailsComponent}
 ];
 
 @NgModule({

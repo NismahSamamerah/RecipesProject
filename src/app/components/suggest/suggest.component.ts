@@ -11,5 +11,8 @@ export class SuggestComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  addToFavorite(){
+    
+  }
 
 }

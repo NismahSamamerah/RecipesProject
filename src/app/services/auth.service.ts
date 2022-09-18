@@ -29,7 +29,6 @@ export class AuthService {
   }
   isLogin() :boolean{
     const loggedIn = Boolean(this.userID);
-    console.log('user?'+loggedIn);
     return loggedIn;
   }
 }

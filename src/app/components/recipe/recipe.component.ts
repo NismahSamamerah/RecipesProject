@@ -14,54 +14,51 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RecipeComponent implements OnInit {
 
-  recipes : any = [];
-  public recipe :string = '';
 
+    recipes: any = [];
+    public recipe: string = '';
+    recipeTitle: any;
 
-  constructor(public http: HttpClient, public route : Router , public apiService :ApiService , public auth : AuthService ,public user : UserService) {
-    const sub = this.auth.user.subscribe(user => {
-      this.auth.userID = user?.uid;
-      sub.unsubscribe();
-  })
-  }
-  ngOnInit(): void {
-    this.apiService.getRecipesByName("fish").subscribe(
-      (data: any) => {
-        console.log(data);
-
-          this.recipes = data ;
-      },
-      (error) => {
-          console.log(error);
-      }
-  );
-    this.loadRecipe();
-  }
-
-    // searchRecipe(value: string) {
-    //     this.apiService.getRecipesByName(value).subscribe((data) => {
-    //         console.log(data, "searchable");
-    //     });
-    // }
-    loadRecipe(){
-    this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
-      (data: any) => {
-        console.log(data);
-
-          this.recipes = data ;
-      },
-      (error) => {
-          console.log(error);
-      }
-  );
-}
-    getRecipeDetails(recipeTitle: string) {
-        if (recipeTitle) {
-            console.log(recipeTitle);
-
-            this.route.navigate([`recipe-details/${recipeTitle}`])
-        }
+    constructor(
+        public http: HttpClient,
+        public route: Router,
+        public apiService: ApiService,
+        private user: UserService,
+        private auth : AuthService) {
     }
+    ngOnInit(): void {
+        this.apiService.getRecipesByName("fish").subscribe(
+            (data: any) => {
+                this.recipes = data;
+                console.log(this.recipes);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+    loadRecipe(): void {
+        this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
+            (data: any) => {
+                console.log(data);
+
+                this.recipes = data;
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+    searchRecipe(value: string) {
+        this.apiService.getRecipesByName(value).subscribe((data) => {
+            console.log(data, "searchable");
+        });
+    }
+    getRecipeDetails(recipe: any) {
+        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+    }
+
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])
     }

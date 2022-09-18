@@ -1,0 +1,27 @@
+.details{
+    text-decoration: none;
+    color: black;
+  }
+  img {
+    transition:  0.4s;
+  }
+  img:hover {
+    transform: scale(1.1);
+  }
+  .more{
+    display: flex;
+    padding: 5px 20px;
+  }
+  .btn{
+    width: 20%;
+    margin: auto;
+  }
+  .fa-star{
+    color:#afaaaa ;
+    cursor: pointer;
+  }
+  .fa-star:hover{
+    color:var(--primary-color) ;
+  }
+  
+  

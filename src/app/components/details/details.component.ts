@@ -17,47 +17,42 @@ import { IRating } from 'src/app/interfaces/rating';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  recipeTitle?:string;
-recipe :any=[]
-
+    public data: any;
+    comments: any[] = [];
     commentForm: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required,
         ]),
     });
 
 
-  constructor( public route : Router , public apiService :ApiService , public recipeComponent : RecipeComponent,
-        private commentService: CommentService,private ratingService: RatingService, private auth: AuthService) {
+
+    constructor(
+        private router: ActivatedRoute,
+        public route: Router,
+        public apiService: ApiService,
+        public recipeComponent: RecipeComponent,
+        private commentService: CommentService,
+        private ratingService: RatingService,
+        private auth: AuthService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
     }
+
     ngOnInit(): void {
-      // let recipe = this.recipeComponent.getRecipes();
-      // console.log(recipe);
-
-      // this.recipeComponent.getRecipeDetails(this.recipe.title);
-      // this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
-      // if (this.recipeTitle) {
-      //     const queryParams = new HttpParams().set('recipe_title', this.recipeTitle)
-      //     this.apiService.get('/recipe-details', { params: queryParams }).subscribe(
-      //         (data) => {
-      //             this.recipe = data ;
-      //             console.log(this.recipe);
-      //         },
-
-      //         (error) => {
-      //             console.log(error);
-      //         }
-      //     )
-      // }
-  }
+        this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
+        console.log(this.data);
+        this.commentService.readCommentInfo()?.subscribe(comments => {
+            this.comments=comments;
+        });
+        console.log(this.comments)
+    }
 
 
     setRate(rate: number) {
-        const rating: IRating ={
-            type_id: "this.recipeComponent.recipeTitleForDitals",
+        const rating: IRating = {
+            type_id: this.data.title,
             user_id: this.auth.userID as string,
             rating: rate,
             type: 'recipe'
@@ -69,19 +64,19 @@ recipe :any=[]
             console.log(err);
         })
     }
-    saveComment() {
-    //     console.log(this.recipeComponent.recipeTitleForDitals);
-    //     const comment: IComment = {
-    //         type_id: this.recipeComponent.recipeTitleForDitals,//TODO:
-    //         user_id: this.auth.userID as string,
-    //         comment: this.commentForm.value.comment,
-    //         type: 'recipe'
-    //     }
-    //     this.commentService.saveCommentInfo(comment).then(res => {
-    //         console.log(comment);
-    //     }).catch(err => {
-    //         console.log(err);
-    //     })
+    saveComment(comment: any) {
+
+         const commentI: IComment = {
+            type_id: this.data.title as string,
+            user_id: this.auth.userID as string,
+            comment: comment.comment,
+            type: 'recipe'
+        }
+        this.commentService.saveCommentInfo(commentI).then(res => {
+            console.log(commentI);
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
 }

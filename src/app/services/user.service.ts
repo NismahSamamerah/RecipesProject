@@ -8,15 +8,18 @@ import { IUser } from '../interfaces/user';
 import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
+    items: Observable<any[]>;
+    itemDoc: AngularFirestoreDocument<any> | undefined;
 favorites : Observable<any[]> ;
 favoriteDoc :AngularFirestoreDocument<any> | undefined;
 
-  constructor(private angularFirestore: AngularFirestore, private auth: AuthService) {
-    this.favorites = this.angularFirestore.collection(`favorite`).valueChanges();
-  }
+    constructor(private angularFirestore: AngularFirestore, private auth: AuthService) {
+        this.items = this.angularFirestore.collection(`recipe`).valueChanges();
+        this.favorites = this.angularFirestore.collection(`favorite`).valueChanges();
+    }
 
   saveUserInfo(user: IUser){
     return this.angularFirestore.doc(`users/${this.auth.userID}`).set(user);
@@ -24,12 +27,19 @@ favoriteDoc :AngularFirestoreDocument<any> | undefined;
   saveRecipeInfo(recipe: IRecipe){
     return this.angularFirestore.collection("recipe").doc(recipe.id).set(recipe);
   }
+  getRecipes() {
+    return this.items;
+}
   addFavorite(item : IFavorite){
     return this.angularFirestore.collection('favorite').doc().set(item);
   }
   getFavorite(){
     return this.favorites;
   }
+  delete(recipe: any) {
+    this.itemDoc = this.angularFirestore.doc(`recipe/${recipe.id}`);
+    this.itemDoc.delete();
+}
   deleteFromFavorite(item : any){
     console.log("from serves");
     this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.type_id}`);

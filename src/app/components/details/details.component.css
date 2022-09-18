@@ -13,11 +13,6 @@
     background-color: rgba(225, 183, 151, 0.771);
     border-radius: 10%;
     padding: 5vw;
-    
-}
-h2{
-    font-size: 50px;
-    font-weight: bold;
 }
 ul{
     margin-top: 5vh;
@@ -107,15 +102,16 @@ p{
 .stars #one:checked ~ .result::before{
     content: "I don't like it 😒";
 }
-h5{
+h5,h2{
+    font-size: 50px;
+    font-weight: bold;
     margin-left: 13vw;
     margin-top: 5vh;
-    font-size: 30px;
     border-bottom: 5px solid #d54215;
 }
 .container{
     font-size: 16px;
-    min-height: 50vh;
+    min-height: 10vh;
     width: min(90%, 1140px);
     margin-top: 10vh;
     
@@ -137,7 +133,6 @@ textarea{
     content: "";
     background-color: rgb(171, 171, 171);
     position: absolute;
-    min-height: 100%;
     width: 1px;
     left: -10px;
 }
