@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class UserRecipeComponent implements OnInit {
     recipes:IRecipe[] =[];
 
-    constructor(public route: Router, private userService: UserService) { }
+    constructor(public route: Router, 
+        private userService: UserService) { }
 
     ngOnInit(): void {
         this.userService.getRecipes().subscribe(recipes => {
@@ -22,8 +23,8 @@ export class UserRecipeComponent implements OnInit {
         this.route.navigate(["/recipe-form"])
     }
     deleteRecipe(recipe:IRecipe){
-        console.log(1);
+    
         this.userService.delete(recipe);
-        console.log(2);
+        
     }
 }

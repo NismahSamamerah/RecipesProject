@@ -19,15 +19,16 @@ const routes: Routes = [
   {path : "register" , component : RegisterComponent ,canActivate :[GuestGuard]},
   {path : "login" , component : LoginComponent ,canActivate :[GuestGuard]},
   {path : "home" , component : HomeComponent, },
-  {path : "recipe" , component : RecipeComponent , canActivate :[AuthGuard]},
-  {path : "cocktail" , component : CocktailComponent , canActivate :[AuthGuard]},
+  {path : "recipe" , component : RecipeComponent },
+  {path : "cocktail" , component : CocktailComponent},
   {path : "user-recipe" , component : UserRecipeComponent},
   {path : "user-cocktail" , component : UserCocktailComponent},
   {path : "recipe-form" , component : RecipeFormComponent},
   {path : "contact-us" , component : ContactUsComponent},
   {path : "suggest" , component : SuggestComponent},
   {path : "favorite" , component : FavoriteComponent},
-  {path : "recipe-details/:id" , component : DetailsComponent}
+  {path : "recipe-details/:id" , component : DetailsComponent},
+  {path: "recipee", component: DetailsComponent}
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@ import { IRecipe } from '../interfaces/recipe';
     providedIn: 'root'
 })
 export class UserService {
-    items: Observable<any[]> ;
+    items: Observable<any[]>;
     itemDoc: AngularFirestoreDocument<any> | undefined;
 
     constructor(private angularFirestore: AngularFirestore, private auth: AuthService) {
@@ -23,8 +23,8 @@ export class UserService {
     getRecipes() {
         return this.items;
     }
-    delete(recipe: any){
-        this.itemDoc=this.angularFirestore.doc(`recipe/${recipe.id}`);
+    delete(recipe: any) {
+        this.itemDoc = this.angularFirestore.doc(`recipe/${recipe.id}`);
         this.itemDoc.delete();
     }
 
