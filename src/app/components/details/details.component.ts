@@ -38,20 +38,20 @@ recipe :any=[]
       // console.log(recipe);
 
       // this.recipeComponent.getRecipeDetails(this.recipe.title);
-      this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
-      if (this.recipeTitle) {
-          const queryParams = new HttpParams().set('recipe_title', this.recipeTitle)
-          this.apiService.get('/recipe-details', { params: queryParams }).subscribe(
-              (data) => {
-                  this.recipe = data ;
-                  console.log(this.recipe);
-              },
+      // this.recipeTitle = String(this.activeRouter.snapshot.paramMap.get('id'));
+      // if (this.recipeTitle) {
+      //     const queryParams = new HttpParams().set('recipe_title', this.recipeTitle)
+      //     this.apiService.get('/recipe-details', { params: queryParams }).subscribe(
+      //         (data) => {
+      //             this.recipe = data ;
+      //             console.log(this.recipe);
+      //         },
 
-              (error) => {
-                  console.log(error);
-              }
-          )
-      }
+      //         (error) => {
+      //             console.log(error);
+      //         }
+      //     )
+      // }
   }
 
 
@@ -70,18 +70,18 @@ recipe :any=[]
         })
     }
     saveComment() {
-        console.log(this.recipeComponent.recipeTitleForDitals);
-        const comment: IComment = {
-            type_id: this.recipeComponent.recipeTitleForDitals,//TODO:
-            user_id: this.auth.userID as string,
-            comment: this.commentForm.value.comment,
-            type: 'recipe'
-        }
-        this.commentService.saveCommentInfo(comment).then(res => {
-            console.log(comment);
-        }).catch(err => {
-            console.log(err);
-        })
+    //     console.log(this.recipeComponent.recipeTitleForDitals);
+    //     const comment: IComment = {
+    //         type_id: this.recipeComponent.recipeTitleForDitals,//TODO:
+    //         user_id: this.auth.userID as string,
+    //         comment: this.commentForm.value.comment,
+    //         type: 'recipe'
+    //     }
+    //     this.commentService.saveCommentInfo(comment).then(res => {
+    //         console.log(comment);
+    //     }).catch(err => {
+    //         console.log(err);
+    //     })
     }
 
 }

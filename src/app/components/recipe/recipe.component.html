@@ -9,7 +9,7 @@
 </div>
     <div class="searchbox">
         <form>
-        <input [(ngModel)]="item" type="text" name="search" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
+        <input [(ngModel)]="recipe" type="text" name="search" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
         <button  (click)="loadRecipe()"  class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
 
@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body" >
-                <h4 class="card-title" >{{recipe.title}} <i class="fa fa-star" aria-hidden="true"></i></h4>
+                <h4 class="card-title" >{{recipe.title}} <i class="fa fa-star" aria-hidden="true" (click)="addFavorite(recipe.title)"></i></h4>
                 <p class="card-text">{{recipe.ingredients}}</p>
 
               </div>
