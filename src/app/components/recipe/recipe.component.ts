@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
-import { IRecipe } from 'src/app/interfaces/recipe';
+import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
-import { IFavorite } from 'src/app/interfaces/favorit';
+import { FavoriteService } from 'src/app/services/favorite.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { IRecipe } from 'src/app/interfaces/recipe';
 
 @Component({
     selector: 'app-recipe',
@@ -24,7 +25,12 @@ export class RecipeComponent implements OnInit {
         public route: Router,
         public apiService: ApiService,
         private user: UserService,
-        private auth : AuthService) {
+        private auth : AuthService,
+        private favorite : FavoriteService) {
+            const sub = this.auth.user.subscribe(user => {
+                this.auth.userID = user?.uid;
+                sub.unsubscribe();
+            })
     }
     ngOnInit(): void {
         this.apiService.getRecipesByName("fish").subscribe(
@@ -53,7 +59,7 @@ export class RecipeComponent implements OnInit {
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
             console.log(data, "searchable");
-        });
+        }).unsubscribe();
     }
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
@@ -63,16 +69,23 @@ export class RecipeComponent implements OnInit {
         this.route.navigate(['/user-recipe'])
     }
 
-    addFavorite(title :string){
+    addFavorite(recipe: IRecipe){
       const favoriteItem: IFavorite = {
-        type_id: title,
+        id: this.generateID(),
+        type_id: recipe.title,
         user_id: this.auth.userID,
-        type: 'recipe'
-      }
-      this.user.addFavorite(favoriteItem).then(res => {
-        console.log(favoriteItem);
+        type: recipe,
+      } 
+      console.log(favoriteItem);
+      this.favorite.addFavorite(favoriteItem).then(res => {
+       
     }).catch(err => {
         console.log(err);
     })
+    }
+    generateID() {
+        let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
+        return s;
     }
 }

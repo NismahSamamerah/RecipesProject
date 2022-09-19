@@ -111,7 +111,7 @@ h5,h2{
 }
 .container{
     font-size: 16px;
-    min-height: 10vh;
+    min-height: 8vh;
     width: min(90%, 1140px);
     margin-top: 10vh;
     

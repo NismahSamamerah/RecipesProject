@@ -23,8 +23,6 @@ export class UserRecipeComponent implements OnInit {
         this.route.navigate(["/recipe-form"])
     }
     deleteRecipe(recipe:IRecipe){
-    
         this.userService.delete(recipe);
-        
     }
 }

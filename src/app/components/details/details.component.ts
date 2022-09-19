@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
         console.log(this.data);
         this.commentService.readCommentInfo()?.subscribe(comments => {
             this.comments=comments;
-        });
+        }).unsubscribe();
         console.log(this.comments)
     }
 
