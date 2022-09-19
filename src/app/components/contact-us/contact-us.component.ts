@@ -20,14 +20,17 @@ export class ContactUsComponent implements OnInit {
     message: new FormControl('', [Validators.required]),
     
   });
-  isSumbitted = false;
+  
 
-  constructor(public auth:AuthService, private UserService: UserService) {}
+  constructor(public auth:AuthService, private userService: UserService) {}
   ngOnInit(): void {
   }
-  contactUs(newContact :any){
-    console.log();
-    
+  saveInfo(item:any){
+    this.userService.contactInfo(item).then(res => {
+      console.log(item);
+  }).catch(err => {
+      console.log(err);
+  })
   }
 }
 
