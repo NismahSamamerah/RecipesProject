@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
-import { IRecipe } from 'src/app/interfaces/recipe';
+import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
-import { IFavorite } from 'src/app/interfaces/favorit';
+import { FavoriteService } from 'src/app/services/favorite.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { IRecipe } from 'src/app/interfaces/recipe';
 
 @Component({
     selector: 'app-recipe',
@@ -13,26 +14,24 @@ import { UserService } from 'src/app/services/user.service';
     styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-
-
-    recipes: any = []
+    recipes: any = [];
     public recipe: string = '';
-
-    recipeTitle: any;
-
 
     constructor(
         public http: HttpClient,
         public route: Router,
         public apiService: ApiService,
-        private user: UserService,
-        private auth : AuthService) {
+        private auth : AuthService,
+        private favorite : FavoriteService) {
+            const sub = this.auth.user.subscribe(user => {
+                this.auth.userID = user?.uid;
+                sub.unsubscribe();
+            })
     }
     ngOnInit(): void {
         this.apiService.getRecipesByName("fish").subscribe(
             (data: any) => {
                 this.recipes = data;
-                console.log(this.recipes);
             },
             (error) => {
                 console.log(error);
@@ -44,8 +43,6 @@ export class RecipeComponent implements OnInit {
     loadRecipe(): void {
         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
             (data: any) => {
-                console.log(data);
-
                 this.recipes = data;
             },
             (error) => {
@@ -62,21 +59,27 @@ export class RecipeComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
     }
-
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])
     }
 
-    addFavorite(title :string){
+    addFavorite(recipe: IRecipe){
       const favoriteItem: IFavorite = {
-        type_id: title,
+        id: this.generateID(),
+        type_id: recipe.title,
         user_id: this.auth.userID,
-        type: 'recipe'
+        type: recipe,
       }
-      this.user.addFavorite(favoriteItem).then(res => {
-        console.log(favoriteItem);
+      console.log(favoriteItem);
+      this.favorite.addFavorite(favoriteItem).then(res => {
+
     }).catch(err => {
         console.log(err);
     })
+    }
+    generateID() {
+        let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
+        return s;
     }
 }

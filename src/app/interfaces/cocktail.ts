@@ -1,5 +1,5 @@
 export interface ICocktail {
-  id : number,
+  id : string,
   user_id :number,
   ingredients :string,
   name :string,
