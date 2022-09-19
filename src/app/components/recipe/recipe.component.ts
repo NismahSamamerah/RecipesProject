@@ -15,9 +15,11 @@ import { UserService } from 'src/app/services/user.service';
 export class RecipeComponent implements OnInit {
 
 
-    recipes: any = [];
+    recipes: any = []
     public recipe: string = '';
+
     recipeTitle: any;
+
 
     constructor(
         public http: HttpClient,
@@ -36,6 +38,8 @@ export class RecipeComponent implements OnInit {
                 console.log(error);
             }
         );
+        // this.apiService.getImages('fish').subscribe()
+        console.log(this.apiService.getImages('fish'));
     }
     loadRecipe(): void {
         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(

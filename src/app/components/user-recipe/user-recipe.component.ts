@@ -1,7 +1,10 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { UserService } from 'src/app/services/user.service';
+import { isTemplateExpression } from 'typescript';
 
 @Component({
     selector: 'app-user-recipe',
@@ -9,9 +12,10 @@ import { UserService } from 'src/app/services/user.service';
     styleUrls: ['./user-recipe.component.css']
 })
 export class UserRecipeComponent implements OnInit {
-    recipes:IRecipe[] =[];
+    recipes:any[] =[];
+    recipe :string =''
 
-    constructor(public route: Router, 
+    constructor(public route: Router,
         private userService: UserService) { }
 
     ngOnInit(): void {
@@ -23,8 +27,9 @@ export class UserRecipeComponent implements OnInit {
         this.route.navigate(["/recipe-form"])
     }
     deleteRecipe(recipe:IRecipe){
-    
+
         this.userService.delete(recipe);
-        
+
     }
-}
+  
+  }

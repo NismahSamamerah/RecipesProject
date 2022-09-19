@@ -18,18 +18,25 @@
                   <a class="nav-link " routerLink="cocktail" ><i class="fa fa-glass" aria-hidden="true" routerLinkActive ="active" [routerLinkActiveOptions]="{exact : true}"></i> Cocktails</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="contact-us"><i class="fa fa-phone" aria-hidden="true" routerLinkActive ="active" [routerLinkActiveOptions]="{exact : true}"></i> Contact Us</a>
+                <a class="nav-link" routerLink="contact-us"><i class="fa fa-phone" aria-hidden="true" routerLinkActive ="active" [routerLinkActiveOptions]="{exact : true}"></i> ContactUs</a>
             </li>
+            <li class="nav-item" *ngIf="isLoggedIn == true">
+              <a class="nav-link" routerLink="suggest"> Suggest</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn == true">
+            <a class="nav-link" routerLink="favorite"> Favorite</a>
+        </li>
           </ul>
         </div>
-        <div class="col-md-3 ">
-        <form class="container-fluid justify-content-start mt-5">
+        <div class="col-md-3 ml-5" style="display: flex;
+        margin-left: 45px;">
+        <form class="container-fluid justify-content-start mt-5 ">
           <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register" >Sign Up ?</button>
           <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" type="button" routerLink="/login" >Login</button>
           <button *ngIf="isLoggedIn == true" (click)="logout()" class="btn btn-outline me-2" type="button">Logout</button>
 
         </form>
-        <div class="social">
+        <div class="social mt-5" style="width :100%" >
           <i class="fa fa-facebook" aria-hidden="true" style="margin-left:10px" ></i>
           <i class="fa fa-twitter" aria-hidden="true" style="margin-left:5px"></i>
           <i class="fa fa-google-plus" aria-hidden="true"style="margin-left:5px"></i>

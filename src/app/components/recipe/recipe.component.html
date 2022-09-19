@@ -18,8 +18,9 @@
 
 
     </div>
-    <ul *ngFor="let recipe of this.recipes">
-        <li> <!-- <app-details *ngFor="let recipe of recipes" [data]="recipe" [type]="'recipe'"></app-details> -->
+    <div >
+    <ul>
+        <li class="cards" *ngFor="let recipe of this.recipes"> <!-- <app-details *ngFor="let recipe of recipes" [data]="recipe" [type]="'recipe'"></app-details> -->
             <div class="card  mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -40,6 +41,7 @@
             </div>
         </li>
     </ul>
+  </div>
     <div class="more" style="padding: 5px 20px; ">
         <button class="btn ">Load More</button>
     </div>
