@@ -46,13 +46,13 @@ export class RecipeComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
-        ).unsubscribe();
+        );
     }
 
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
             console.log(data, "searchable");
-        }).unsubscribe();
+        });
     }
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
