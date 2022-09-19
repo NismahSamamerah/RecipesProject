@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,15 +16,15 @@ export class LoginComponent implements OnInit {
   });
 
   isSubmitted = false;
-  constructor(public auth:AuthService, private userService: UserService) {}
+  constructor(public auth:AuthService, private userService: UserService , public route :Router) {}
 
   ngOnInit(): void {}
-  login(newUser: any) {
-     this.auth.login(newUser.email, newUser.password).then(res => {
+  login() {
+    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).then(res => {
       console.log(res);
+      this.route.navigate(['recipe'])
     }).catch(err => {
       console.log(err);
     })
   }
 }
-

@@ -1,15 +1,15 @@
 .container{
   align-items: center;
   height: 40vh;
-  margin: 5vh 5vw; 
-  font-family: 'SF Pro Display regular';  
+  margin: 5vh 5vw;
+  font-family: 'SF Pro Display regular';
 }
-h1{                        
+h1{
   font-size: 60px;
   width: 50%;
   margin-left: 5vw;
 }
-p{
+p{margin-top: 3vh;
   width: 60%;
   text-align: center;
   margin-left: 5vw;
@@ -17,11 +17,11 @@ p{
   border-bottom: 5px solid #d54215;
 }
 .card-text{
-  padding: 5px;                           
+  padding: 5px;
 }
 .card-text .card-title{
   min-width: 100%;
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
@@ -49,7 +49,7 @@ p{
 .details:hover{
   color: #d54215;
 }
-.card{ 
+.card{
   box-shadow:  5px 5px 10px #c1c1c1;
   width: 20vw;
 }
@@ -74,7 +74,7 @@ input{
 }
 .button{
   margin-left: 5vw;
-} 
+}
 button{
   background-color: #d54215;
   border: none;
@@ -84,9 +84,3 @@ button{
   font-size: 16px;
   margin-top: 5vh;
 }
-
-
-
-
-
-

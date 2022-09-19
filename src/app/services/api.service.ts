@@ -23,10 +23,10 @@ export class ApiService {
     return data;
   }
 
-  getCocktailssByName(name: string) {
+  getCocktailsByName(name: string) {
     const headers = new HttpHeaders().append('x-Api-key','CIckCSgByIWKRq1fhZGTAg==yFTKTPQRlEUONEQc'
     );
-    let data = this.http.get(`https://api.api-ninjas.com/v1/cocktail?query= ${name}`,{
+    let data = this.http.get(`https://api.api-ninjas.com/v1/cocktail?name= ${name}`,{
         headers,
       }
     );
@@ -36,11 +36,11 @@ export class ApiService {
   get(
     subUrl: string,
     options?: {
-      headers?: HttpHeaders;
+      params?: HttpParams;
     }
   ) {
     return this.http.get(this.RecipebaseUrl + subUrl, {
-      headers: options?.headers,
+      params: options?.params,
     });
   }
 }

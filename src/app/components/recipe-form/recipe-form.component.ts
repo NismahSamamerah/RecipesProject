@@ -3,7 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 @Component({
     selector: 'app-recipe-form',
     templateUrl: './recipe-form.component.html',
@@ -31,6 +31,14 @@ export class RecipeFormComponent implements OnInit {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
+        this.isLoggedIn()
+        this.auth.isLogin()
+    }
+    isLoggedIn() {
+        const loggedIn = Boolean(this.auth.userID);
+        console.log(loggedIn);
+
+        return loggedIn;
     }
 
     saveRecipe() {
@@ -73,10 +81,11 @@ export class RecipeFormComponent implements OnInit {
         return arr;
     }
     generateID() {
-        let m = 9; 
+        let m = 9;
         let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (var i=0; i < m; i++) { s += r.charAt(Math.floor(Math.random()*r.length)); }
+        for (var i = 0; i < m; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
         return s;
     }
+
 
 }

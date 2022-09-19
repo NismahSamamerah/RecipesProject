@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IFavorite } from 'src/app/interfaces/favorite';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-favorite',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+favorites:IFavorite[] =[];
 
-  ngOnInit(): void {
-  }
+    constructor(public route: Router, private favoriteService: FavoriteService) { }
+
+    ngOnInit(): void {
+        this.favoriteService.getFavorite().subscribe( favorites=> {
+            this.favorites= favorites;
+        });
+    }
+    deleteFromFavorite(favorite :IFavorite){
+      this.favoriteService.deleteFromFavorite(favorite);
+    }
 
 }
