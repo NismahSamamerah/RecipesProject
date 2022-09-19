@@ -16,7 +16,7 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 export class RecipeComponent implements OnInit {
     recipes: any = [];
     public recipe: string = '';
-    
+
     constructor(
         public http: HttpClient,
         public route: Router,
@@ -37,6 +37,8 @@ export class RecipeComponent implements OnInit {
                 console.log(error);
             }
         );
+        // this.apiService.getImages('fish').subscribe()
+        console.log(this.apiService.getImages('fish'));
     }
     loadRecipe(): void {
         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
@@ -67,10 +69,10 @@ export class RecipeComponent implements OnInit {
         type_id: recipe.title,
         user_id: this.auth.userID,
         type: recipe,
-      } 
+      }
       console.log(favoriteItem);
       this.favorite.addFavorite(favoriteItem).then(res => {
-       
+
     }).catch(err => {
         console.log(err);
     })

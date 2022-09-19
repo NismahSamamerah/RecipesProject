@@ -26,8 +26,8 @@ const routes: Routes = [
   {path : "user-cocktail" , component : UserCocktailComponent},
   {path : "recipe-form" , component : RecipeFormComponent},
   {path : "contact-us" , component : ContactUsComponent},
-  {path : "suggest" , component : SuggestComponent},
-  {path : "favorite" , component : FavoriteComponent},
+  {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
+  {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details/:id" , component : DetailsComponent},
   {path: "recipee", component: DetailsComponent}
 ];

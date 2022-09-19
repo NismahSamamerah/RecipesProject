@@ -32,7 +32,9 @@ export class ApiService {
     );
     return data;
   }
-
+getImages(name :string){
+  return this.http.get(`https://api.unsplash.com/photos?query=${name}&client_id=JEyCXkuqJSigTZ95jQDe_SECbBf1B5AKsTmtxOkC5-Q`)
+}
   get(
     subUrl: string,
     options?: {
