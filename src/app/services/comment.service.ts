@@ -17,7 +17,7 @@ export class CommentService {
         return this.angularFirestore.collection("comment").doc(comment.id).set(comment);
     }
     readCommentInfo(){
-        
+        //TODO:
             return this.comments;
     }
 

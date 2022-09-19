@@ -1,8 +1,7 @@
 <main>
     <div class="main">
-        
         <div>
-            <h2 >{{data?.title}}</h2>
+            <h2>{{data.name}}{{data.title}}</h2>
             <img src="../../../assets/images/pexels-ash-376464.jpg">
             <form class="rating">
                 <div class="stars">
@@ -28,35 +27,30 @@
         </div>
     </div>
     <div class="Directions">
-    <h3>Directions</h3>
-    <p>
-       {{data.instructions}} 
-    </p>
-    <div class="editDiv">
-        <button type="button" class="edit">Edit Your Recipe</button>
+        <h3>Directions</h3>
+        <p>
+            {{data.instructions}}
+        </p>
+        <div class="editDiv">
+            <button type="button" class="edit">Edit Your Recipe</button>
+        </div>
     </div>
-</div>
     <h5 class="tittle">Comments</h5>
-    <div class="container" *ngFor="let comment of comments">
-        <div class="comment-container">
-            <div class="comment-card" id="first-comment">
-                <h6 class="comment-tittle">Aya Oweinah</h6>
-                <p>
-                    noor edit{{comment.comment}}
-                    <br>Thank You
-                </p>
-            </div>
+    <div class="container comment-container" *ngFor="let comment of comments">
+        <div class="comment-card" id="first-comment">
+            <h6 class="comment-tittle">Aya Oweinah</h6>
+            <p>
+                noor edit{{comment.comment}}
+                <br>Thank You
+            </p>
         </div>
     </div>
     <h5 class="tittle">Leave a Comment</h5>
     <div class="container comment-box">
-        <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment(commentForm.value)"  >
-            <textarea formControlName="comment" name="comment" class="textarea" placeholder="Add Your Comment.." cols="30" rows="10"></textarea>
+        <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment(commentForm.value)">
+            <textarea formControlName="comment" name="comment" class="textarea" placeholder="Add Your Comment.."
+                cols="30" rows="10"></textarea>
             <button class="commentbutton" type="submit">Add Comment</button>
-
         </form>
     </div>
 </main>
-
-
-

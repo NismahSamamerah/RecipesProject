@@ -1,43 +1,47 @@
-  <div class="container">
+<div class="container">
     <div class="title">
-    <div class="text">
-    <h1 class="h1  pt-5"> Cocktails Menu</h1>
-    <p>Find the <span>Best Recipes</span> and seasonal menu ideas for people who love to cook.</p>
-  </div>
-  <button type="button" (click)="goToUserRecipes()" style="max-height:60px; height:50px;">Go To My Cocktails</button>
-</div>
-
-
-<div class="searchbox">
-  <form>
-    <input [(ngModel)]="cocktail" type="text" name="search" class="form-control" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal;">
-  <button  (click)="loadCocktail()" class="btn " type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
-</form>
-
-</div>
-  <ul *ngFor="let cocktail of cocktails">
-    <li>
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="assets/images/smothi.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body" >
-              <h4 class="card-title" >{{cocktail.name}} <i class="fa fa-star" aria-hidden="true"></i></h4>
-              <p class="card-text">{{cocktail.ingredients}}</p>
-
-            </div>
-            <div class="details">
-                <a class="details" href="#">View Details<i class="fa fa-arrow-right"></i> </a>
-              </div>
-          </div>
+        <div class="text">
+            <h1 class="h1  pt-5"> Cocktails Menu</h1>
+            <p>Find the <span>Best cocktails</span> and seasonal menu ideas for people who love to cook.</p>
         </div>
-      </div>
-    </li>
+        <button type="button" (click)="goToUserRecipes()" style="max-height:60px; height:50px;">Go To My
+            Cocktails</button>
+    </div>
 
-  </ul>
-  <div class="more" style="padding: 5px 20px; ">
-    <button class="btn " >Load More</button>
-  </div>
+
+    <div class="searchbox">
+        <form>
+            <input [(ngModel)]="cocktail" type="text" name="search" class="form-control" placeholder="&#xf002; Search"
+                style="font-family: FontAwesome, Arial; font-style: normal;">
+            <button (click)="loadCocktail()" class="btn " type="submit"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
+        </form>
+
+    </div>
+    <ul *ngFor="let cocktail of cocktails">
+        <li>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/images/smothi.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">{{cocktail.name}} <i class="fa fa-star" aria-hidden="true"(click)="addFavorite(cocktail)"></i></h4>
+                            <p class="card-text">{{cocktail.ingredients}}</p>
+
+                        </div>
+                        <div class="details">
+                            <a class="details" (click)="getRecipeDetails(cocktail)">View Details<i
+                                    class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <div class="more" style="padding: 5px 20px; ">
+        <button class="btn ">Load More</button>
+    </div>
 </div>

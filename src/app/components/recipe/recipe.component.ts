@@ -14,17 +14,13 @@ import { IRecipe } from 'src/app/interfaces/recipe';
     styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-
-
     recipes: any = [];
     public recipe: string = '';
-    recipeTitle: any;
-
+    
     constructor(
         public http: HttpClient,
         public route: Router,
         public apiService: ApiService,
-        private user: UserService,
         private auth : AuthService,
         private favorite : FavoriteService) {
             const sub = this.auth.user.subscribe(user => {
@@ -36,7 +32,6 @@ export class RecipeComponent implements OnInit {
         this.apiService.getRecipesByName("fish").subscribe(
             (data: any) => {
                 this.recipes = data;
-                console.log(this.recipes);
             },
             (error) => {
                 console.log(error);
@@ -46,14 +41,12 @@ export class RecipeComponent implements OnInit {
     loadRecipe(): void {
         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
             (data: any) => {
-                console.log(data);
-
                 this.recipes = data;
             },
             (error) => {
                 console.log(error);
             }
-        );
+        ).unsubscribe();
     }
 
     searchRecipe(value: string) {
@@ -64,7 +57,6 @@ export class RecipeComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
     }
-
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])
     }

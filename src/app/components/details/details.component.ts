@@ -9,6 +9,8 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
+import { IRecipe } from 'src/app/interfaces/recipe';
+import { ICocktail } from 'src/app/interfaces/cocktail';
 
 
 @Component({
@@ -17,14 +19,13 @@ import { IRating } from 'src/app/interfaces/rating';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-    public data: any;
+    type: string = '';
+    public data: IRecipe | ICocktail | any;
     comments: any[] = [];
     commentForm: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required,
         ]),
     });
-
-
 
     constructor(
         private router: ActivatedRoute,
@@ -39,23 +40,24 @@ export class DetailsComponent implements OnInit {
             sub.unsubscribe();
         })
     }
-
     ngOnInit(): void {
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
-        console.log(this.data);
         this.commentService.readCommentInfo()?.subscribe(comments => {
-            this.comments=comments;
-        }).unsubscribe();
-        console.log(this.comments)
+            this.comments = comments;
+        });
+        if(this.data.hasOwnProperty('title')) {
+            this.type = 'recipe' 
+        }else{this.type = 'cocktail'
     }
 
-
+    }
+  
     setRate(rate: number) {
         const rating: IRating = {
-            type_id: this.data.title,
+            type_id: this.data.title | this.data.name,
             user_id: this.auth.userID as string,
             rating: rate,
-            type: 'recipe'
+            type: this.type
         }
         console.log(rating);
         this.ratingService.saveRatingInfo(rating).then(res => {
@@ -65,12 +67,11 @@ export class DetailsComponent implements OnInit {
         })
     }
     saveComment(comment: any) {
-
-         const commentI: IComment = {
-            type_id: this.data.title as string,
+        const commentI: IComment = {
+            type_id: this.data.title | this.data.name,
             user_id: this.auth.userID as string,
             comment: comment.comment,
-            type: 'recipe'
+            type: this.type
         }
         this.commentService.saveCommentInfo(commentI).then(res => {
             console.log(commentI);
