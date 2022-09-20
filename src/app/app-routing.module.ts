@@ -29,7 +29,7 @@ const routes: Routes = [
   {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
   {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details" , component : DetailsComponent},
-  
+
 ];
 
 @NgModule({

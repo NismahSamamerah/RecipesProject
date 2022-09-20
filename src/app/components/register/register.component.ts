@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       this.auth.register(newUser.email, newUser.password).then(res => {
         this.userService.saveUserInfo(newUser).then(res => {
           console.log(res);
-          this.route.navigate(['recipe'])
+          this.route.navigate(['/home'])
         }).catch(err => {
           console.log(err);
         })

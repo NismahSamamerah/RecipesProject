@@ -61,7 +61,10 @@ export class UserRecipeComponent implements OnInit {
     deleteRecipe(recipe: any) {
         this.userService.delete(recipe);
     }
+
+
     getRecipeDetails(recipe: any) {
-        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
-    }
+      this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+  }
+
 }

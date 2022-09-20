@@ -55,6 +55,8 @@ export class DetailsComponent implements OnInit {
         })
     }
     ngOnInit(): void {
+
+
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
         if (this.data.hasOwnProperty('title')) {
             this.type = 'recipe';
@@ -116,11 +118,22 @@ export class DetailsComponent implements OnInit {
                 }
             }
         });
+
+        console.log(this.data);
+        if(this.data.hasOwnProperty('title')) {
+            this.type = 'recipe'
+        }else{this.type = 'cocktail'
     }
+
+    }
+
+
+   
 
     setRate(rate: number) {
         const rating: IRating = {
             type_id: this.type_id,
+
             user_id: this.auth.userID as string,
             rating: rate,
             type: this.type
