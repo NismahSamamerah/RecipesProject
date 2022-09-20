@@ -18,13 +18,14 @@ export class ContactUsComponent implements OnInit {
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', [Validators.required]),
-    
+
   });
-  
+
 
   constructor(public auth:AuthService, private userService: UserService) {}
   ngOnInit(): void {
   }
+
   saveInfo(item:any){
     this.userService.contactInfo(item).then(res => {
       console.log(item);
@@ -32,5 +33,6 @@ export class ContactUsComponent implements OnInit {
       console.log(err);
   })
   }
+
 }
 

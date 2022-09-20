@@ -25,4 +25,7 @@ export class FavoriteService {
 		this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.id}`);
 		this.favoriteDoc.delete();
 	}
+  search(){
+    
+  }
 }

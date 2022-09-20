@@ -1,4 +1,5 @@
 <div class="bac">
+
     <div class="container mt-3">
         <h1>Contact Us</h1>
         <form [formGroup]="contactUsForm" (ngSubmit)="saveInfo(contactUsForm.value)">
@@ -36,6 +37,7 @@
                     *{{
                     contactUsForm.get('message')?.errors?.['required'] ? 'this feild is required' : ''
                     }}
+
 
                 </p>
             </div>

@@ -11,14 +11,28 @@ import { FavoriteService } from 'src/app/services/favorite.service';
 export class FavoriteComponent implements OnInit {
 
 favorites:IFavorite[] =[];
+favValue :string ='';
+fovoritesSearch :IFavorite[]=[];
 
     constructor(public route: Router, private favoriteService: FavoriteService) { }
 
     ngOnInit(): void {
+      this.fovoritesSearch;
         this.favoriteService.getFavorite().subscribe( favorites=> {
             this.favorites= favorites;
         });
     }
+    search(){
+      //TODO:
+      this.fovoritesSearch=[];
+      for(let favorite of this.favorites){
+        if(favorite.type_id.includes(this.favValue)){
+          this.fovoritesSearch.push(favorite);
+        }
+      }
+      this.favorites = [];
+  }
+
     deleteFromFavorite(favorite :IFavorite){
       this.favoriteService.deleteFromFavorite(favorite);
     }
