@@ -1,5 +1,4 @@
 .bac{
-  background-image: url('src/assets/images/fruite.png');
   background-repeat: no-repeat;
   background-position: top right;
 }
@@ -38,22 +37,8 @@ span{
   font-size: 80px;
   color: #d54215;
 }
-button{
-  border: 2px solid #d54215;
-  border-radius: 5px;
-  background-color: #d54215;
-  padding: 5px;
-  color: white;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: 0.4s;
-}
-button:hover{
-  background-color: transparent;
-  border:  2px solid #d54215;
-  color: black;
 
-}
+
 
 .image{
   position: relative;
