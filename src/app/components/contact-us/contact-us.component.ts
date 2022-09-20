@@ -18,16 +18,12 @@ export class ContactUsComponent implements OnInit {
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', [Validators.required]),
-    
+
   });
-  isSumbitted = false;
 
   constructor(public auth:AuthService, private UserService: UserService) {}
   ngOnInit(): void {
   }
-  contactUs(newContact :any){
-    console.log();
-    
-  }
+  
 }
 
