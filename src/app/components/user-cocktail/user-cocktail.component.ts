@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ICocktail } from 'src/app/interfaces/cocktail';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-user-cocktail',
-  templateUrl: './user-cocktail.component.html',
-  styleUrls: ['./user-cocktail.component.css']
+    selector: 'app-user-cocktail',
+    templateUrl: './user-cocktail.component.html',
+    styleUrls: ['./user-cocktail.component.css']
 })
 export class UserCocktailComponent implements OnInit {
-  // cocktailsForm :FormGroup = new FormGroup({
-  //   name : new FormControl('',[
-  //     Validators.required ,Validators.minLength(3),Validators.maxLength(30)
-  //   ]
-  //   ),
-  //   ingredients : new FormControl('',[
-  //     Validators.required ,Validators.minLength(3),Validators.maxLength(30)
-  //   ]),
-  //   instructions : new FormControl('',[
-  //     Validators.required ,Validators.minLength(3)
-  //   ]),
+    cocktails: any[] = [];
+    constructor(public route: Router,
+        private userService: UserService) { }
 
-  // })
-  constructor(public route : Router) { }
+    ngOnInit(): void {
+        this.userService.getCocktails().subscribe(cocktails => {
+            this.cocktails = cocktails;
+        });
+    }
+    addNewCocktail(type: string) {
+        if (type) {
+            this.route.navigate([`/recipe-form`, { id: type }])
+        }
+    }
+    deleteCocktail(cocktail: ICocktail) {
+        this.userService.deleteCocktail(cocktail);
+    }
 
-  ngOnInit(): void {
-  }
-  addNewCocktail(){
-    this.route.navigate(["/recipe-form"])
-  }
 
 }

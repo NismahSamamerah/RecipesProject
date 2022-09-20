@@ -1,10 +1,8 @@
 import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { UserService } from 'src/app/services/user.service';
-import { isTemplateExpression } from 'typescript';
 
 @Component({
     selector: 'app-user-recipe',
@@ -12,10 +10,12 @@ import { isTemplateExpression } from 'typescript';
     styleUrls: ['./user-recipe.component.css']
 })
 export class UserRecipeComponent implements OnInit {
+
     recipes:IRecipe[] =[];
     recipe :string ='';
     searchValue :string =''
     recipesSearch :IRecipe[] =[];
+
 
     constructor(public route: Router,
         private userService: UserService) { }
@@ -23,9 +23,10 @@ export class UserRecipeComponent implements OnInit {
     ngOnInit(): void {
       this.recipesSearch;
         this.userService.getRecipes().subscribe(recipes => {
-            this.recipes=recipes;
+            this.recipes = recipes;
         });
     }
+
     searchByName(){
       //TODO:
       this.recipesSearch=[];
@@ -36,12 +37,14 @@ export class UserRecipeComponent implements OnInit {
       }
       this.recipes = [];
   }
-    addNewRecipe() {
-        this.route.navigate(["/recipe-form"])
+
+    addNewRecipe(type: string) {
+        if (type) {
+            this.route.navigate(["/recipe-form", { id: type }])
+        }
     }
-    deleteRecipe(recipe:IRecipe){
-        this.userService.delete(recipe);
+    deleteRecipe(recipe: IRecipe) {
         this.userService.delete(recipe);
     }
 
-  }
+}

@@ -25,6 +25,7 @@ const routes: Routes = [
   {path : "contact-us" , component : ContactUsComponent},
   {path : "user-recipe" , component : UserRecipeComponent},
   {path : "user-cocktail" , component : UserCocktailComponent},
+  // {path : "recipe-form/:id" , component : RecipeFormComponent},
   {path : "recipe-form" , component : RecipeFormComponent},
   {path : "contact-us" , component : ContactUsComponent},
   {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},

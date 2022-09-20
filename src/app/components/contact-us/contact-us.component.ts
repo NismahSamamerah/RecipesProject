@@ -21,9 +21,18 @@ export class ContactUsComponent implements OnInit {
 
   });
 
-  constructor(public auth:AuthService, private UserService: UserService) {}
+
+  constructor(public auth:AuthService, private userService: UserService) {}
   ngOnInit(): void {
   }
-  
+
+  saveInfo(item:any){
+    this.userService.contactInfo(item).then(res => {
+      console.log(item);
+  }).catch(err => {
+      console.log(err);
+  })
+  }
+
 }
 

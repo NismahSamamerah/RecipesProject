@@ -4,12 +4,15 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { ActivatedRoute } from '@angular/router';
+import { ICocktail } from 'src/app/interfaces/cocktail';
 @Component({
     selector: 'app-recipe-form',
     templateUrl: './recipe-form.component.html',
     styleUrls: ['./recipe-form.component.css']
 })
 export class RecipeFormComponent implements OnInit {
+    public type: string | null = '';
     recipeForm: FormGroup = new FormGroup({
         name: new FormControl('', [
             Validators.required,
@@ -25,24 +28,26 @@ export class RecipeFormComponent implements OnInit {
         item: new FormControl(''),
     });
 
-    constructor(private userService: UserService,
+    constructor(private userService: UserService, private router: ActivatedRoute,
         private auth: AuthService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
-        this.isLoggedIn()
-        this.auth.isLogin()
+        // this.isLoggedIn()
+        // this.auth.isLogin()
+    }
+    ngOnInit(): void {
+        this.type = this.router.snapshot.paramMap.get('id');
     }
     isLoggedIn() {
         const loggedIn = Boolean(this.auth.userID);
         console.log(loggedIn);
-
         return loggedIn;
     }
 
     saveRecipe() {
-        const recipe: IRecipe = {
+        const recipe: IRecipe | ICocktail = {
             id: this.generateID(),
             user_id: this.auth.userID as string,
             title: this.recipeForm.value.name,
@@ -50,18 +55,21 @@ export class RecipeFormComponent implements OnInit {
             servings: this.recipeForm.value.servings,
             instructions: this.recipeForm.value.instructions
         }
-        console.log(recipe);
-        this.userService.saveRecipeInfo(recipe).then(res => {
-            console.log(recipe);
-        }).catch(err => {
-            console.log(err);
-        })
+        if (this.type == 'Cocktail') {
+            this.userService.saveCocktailInfo(recipe).then(res => {
+                console.log(recipe);
+            }).catch(err => {
+                console.log(err);
+            })
+        } else if (this.type == 'Recipe') {
+            this.userService.saveRecipeInfo(recipe).then(res => {
+                console.log(recipe);
+            }).catch(err => {
+                console.log(err);
+            })
+        } 
     }
-
-    ngOnInit(): void {
-    }
-    submitRecipe(newRecipe: any) { }
-
+    
     addNewIngredient() {
         (this.recipeForm.get('ingredients') as FormArray).push(new FormGroup({
             item: new FormControl(''),

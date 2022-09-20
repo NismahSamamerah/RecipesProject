@@ -1,4 +1,5 @@
 <div class="bac">
+
 <div class="container">
   <h1 class="h1 mt-3 mb-5" ><span>Cocktail</span> List You Added</h1>
   <p>You Can Add Your Special Cocktail<span><a routerLink="/recipe-form"> Click Here</a> </span> </p>
@@ -47,19 +48,37 @@
         <div class="details">
           <a class="details" href="#">View Details </a>
           <i class="fa fa-arrow-right"></i>
+
         </div>
-      </div>
+        <ul>
+            <li *ngFor="let cocktail of cocktails">
+                <div class="card mt-5" style="width: 15rem; ">
+                    <div class="icons">
+                        <i class="fa fa-share-square-o" aria-hidden="true" ></i>
+                        <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteCocktail(cocktail)"></i>
+                    </div>
+                    <div class="image">
+                        <img src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
+                    </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{cocktail.title}}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </li>       
+            <li>
+                <a>
+                    <div class="card mt-5 bg-light"
+                        style="width: 15rem ; height: 300px; display: flex; justify-content: center; align-items: center;">
+                        <div class="empty-card" (click)="addNewCocktail('Cocktail')">
+                            <i class="fa fa-plus-square-o"></i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
     </div>
-  </li>
-  <li>
-    <a href=""  >
-  <div class="card mt-5 bg-light" style="width: 15rem ; height: 300px; display: flex; justify-content: center; align-items: center;">
-    <div class="empty-card" (click)="addNewCocktail()">
-      <i class="fa fa-plus-square-o"></i>
-  </div>
-  </div>
-</a>
-</li>
-  </ul>
-</div>
 </div>
