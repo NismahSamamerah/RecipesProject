@@ -51,12 +51,15 @@
 
         </div>
         <ul>
+
             <li *ngFor="let cocktail of cocktails">
                 <div class="card mt-5" style="width: 15rem; ">
                     <div class="icons">
                         <i class="fa fa-share-square-o" aria-hidden="true" ></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteCocktail(cocktail)"></i>
+                        <i class="fa fa-minus-circle" aria-hidden="true"  ></i>
                     </div>
+
+                    <!-- Modal -->
                     <div class="image">
                         <img src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
                     </div>
@@ -68,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-            </li>       
+            </li>
             <li>
                 <a>
                     <div class="card mt-5 bg-light"

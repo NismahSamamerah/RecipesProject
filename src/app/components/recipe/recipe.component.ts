@@ -16,6 +16,8 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 export class RecipeComponent implements OnInit {
     recipes: any = [];
     public recipe: string = '';
+    totalPages: number[] = [];
+    currentPage: number = 1;
 
     constructor(
         public http: HttpClient,

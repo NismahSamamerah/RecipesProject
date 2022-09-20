@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.loginForm.value.email, this.loginForm.value.password).then(res => {
       console.log(res);
+      this.isSubmitted = true;
       this.route.navigate(['recipe'])
     }).catch(err => {
       console.log(err);
