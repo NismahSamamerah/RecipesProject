@@ -1,6 +1,6 @@
 <div class="bac">
   <div class="container">
-    <h1 class="h1 mt-3 mb-5"><span>Recipe</span> List You Added</h1>
+    <h1 class="h1 mt-3 mb-5"><span>{{type}}</span> List You Added</h1>
     <p>
       You Can Add Your Special Cocktail<span
         ><a routerLink="/recipe-form"> Click Here</a>
@@ -47,6 +47,31 @@
             <h5 class="card-title">{{ recipe.title }}</h5>
             <div class="details">
               <a class="details">View Details </a>
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li *ngFor="let cocktail of cocktails">
+        <div class="card mt-5" style="width: 15rem">
+          <div class="image">
+            <div class="icons">
+              <i class="fa fa-share-square-o" aria-hidden="true"></i>
+              <button type="button" (click)="deleteRecipe(recipe)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+              </button>
+
+            </div>
+            <img
+              src="assets/images/food03.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
+          <div class="card-text">
+            <h5 class="card-title">{{cocktail.id}}</h5>
+            <div class="details">
+              <a class="details" >View Details </a>
               <i class="fa fa-arrow-right"></i>
             </div>
           </div>

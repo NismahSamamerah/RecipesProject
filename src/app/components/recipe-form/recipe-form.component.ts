@@ -67,9 +67,9 @@ export class RecipeFormComponent implements OnInit {
             }).catch(err => {
                 console.log(err);
             })
-        } 
+        }
     }
-    
+
     addNewIngredient() {
         (this.recipeForm.get('ingredients') as FormArray).push(new FormGroup({
             item: new FormControl(''),
