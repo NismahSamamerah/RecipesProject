@@ -17,25 +17,23 @@ import { GuestGuard } from './guards/guest.guard';
 
 
 const routes: Routes = [
-  {path : "register" , component : RegisterComponent ,canActivate :[GuestGuard]},
-  {path : "login" , component : LoginComponent, canActivate: [GuestGuard]},
-  {path : "home" , component : HomeComponent,  },
-  {path : "recipe" , component : RecipeComponent ,canActivate: [AuthGuard]},
-  {path : "cocktail" , component : CocktailComponent , canActivate: [AuthGuard]},
-  {path : "contact-us" , component : ContactUsComponent},
-  {path : "user-recipe" , component : UserRecipeComponent},
-  {path : "user-cocktail" , component : UserCocktailComponent},
-  // {path : "recipe-form/:id" , component : RecipeFormComponent},
-  {path : "recipe-form" , component : RecipeFormComponent},
-  {path : "contact-us" , component : ContactUsComponent},
-  {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
-  {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
-  {path : "recipe-details/:id" , component : DetailsComponent},
-  {path: "recipee", component: DetailsComponent}
+    { path: "register", component: RegisterComponent, canActivate: [GuestGuard] },
+    { path: "login", component: LoginComponent, canActivate: [GuestGuard] },
+    { path: "home", component: HomeComponent, },
+    { path: "recipe", component: RecipeComponent, canActivate: [AuthGuard] },
+    { path: "cocktail", component: CocktailComponent, canActivate: [AuthGuard] },
+    { path: "contact-us", component: ContactUsComponent },
+    { path: "user-recipe", component: UserRecipeComponent },
+    { path: "user-cocktail", component: UserCocktailComponent },
+    { path: "recipe-form", component: RecipeFormComponent },
+    { path: "contact-us", component: ContactUsComponent },
+    { path: "suggest", component: SuggestComponent, canActivate: [AuthGuard] },
+    { path: "favorite", component: FavoriteComponent, canActivate: [AuthGuard] },
+    { path: "recipe-details", component: DetailsComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

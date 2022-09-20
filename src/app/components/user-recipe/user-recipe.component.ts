@@ -12,8 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class UserRecipeComponent implements OnInit {
 
     recipes: IRecipe[] = [];
-
     searchValue: string = ''
+
     recipesSearch: IRecipe[] = [];
 
 
@@ -28,7 +28,7 @@ export class UserRecipeComponent implements OnInit {
     }
 
     searchByName() {
-        //TODO:
+
         this.recipesSearch = [];
         for (let recipe of this.recipes) {
             if (recipe.title.includes(this.searchValue)) {
@@ -46,5 +46,7 @@ export class UserRecipeComponent implements OnInit {
     deleteRecipe(recipe: IRecipe) {
         this.userService.delete(recipe);
     }
-
+    getRecipeDetails(recipe: any) {
+        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+    }
 }

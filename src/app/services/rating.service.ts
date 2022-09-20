@@ -10,4 +10,5 @@ export class RatingService {
     saveRatingInfo(rating: any) {
         return this.angularFirestore.collection("rating").doc(rating.id).set(rating);
     }
+   
 }

@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IComment } from 'src/app/interfaces/comment';
@@ -11,6 +10,7 @@ import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ICocktail } from 'src/app/interfaces/cocktail';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -19,6 +19,9 @@ import { ICocktail } from 'src/app/interfaces/cocktail';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+    name:string = "";
+    users: any[] = [];
+    type_id: string = '';
     type: string = '';
     public data: IRecipe | ICocktail | any;
     comments: any[] = [];
@@ -27,6 +30,7 @@ export class DetailsComponent implements OnInit {
         ]),
     });
 
+
     constructor(
         private router: ActivatedRoute,
         public route: Router,
@@ -34,7 +38,8 @@ export class DetailsComponent implements OnInit {
         public recipeComponent: RecipeComponent,
         private commentService: CommentService,
         private ratingService: RatingService,
-        private auth: AuthService) {
+        private auth: AuthService,
+        private user: UserService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -43,41 +48,56 @@ export class DetailsComponent implements OnInit {
     ngOnInit(): void {
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
         this.commentService.readCommentInfo()?.subscribe(comments => {
-            this.comments = comments;
+            for (let comment of comments) {
+                if (comment.type_id == this.type_id) {
+                    this.comments.push(comment);
+                }
+            } 
         });
-        if(this.data.hasOwnProperty('title')) {
-            this.type = 'recipe' 
-        }else{this.type = 'cocktail'
-    }
-
-    }
-  
-    setRate(rate: number) {
-        const rating: IRating = {
-            type_id: this.data.title | this.data.name,
-            user_id: this.auth.userID as string,
-            rating: rate,
-            type: this.type
+            if (this.data.hasOwnProperty('title')) {
+                this.type = 'recipe';
+                this.type_id = this.data.title;
+            } else {
+                this.type = 'cocktail';
+                this.type_id = this.data.name;
+            }
         }
-        console.log(rating);
-        this.ratingService.saveRatingInfo(rating).then(res => {
+
+        setRate(rate: number) {
+            const rating: IRating = {
+                type_id: this.type_id,
+                user_id: this.auth.userID as string,
+                rating: rate,
+                type: this.type
+            }
             console.log(rating);
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-    saveComment(comment: any) {
-        const commentI: IComment = {
-            type_id: this.data.title | this.data.name,
-            user_id: this.auth.userID as string,
-            comment: comment.comment,
-            type: this.type
+            this.ratingService.saveRatingInfo(rating).then(res => {
+                console.log(rating);
+            }).catch(err => {
+                console.log(err);
+            })
         }
-        this.commentService.saveCommentInfo(commentI).then(res => {
-            console.log(commentI);
-        }).catch(err => {
-            console.log(err);
-        })
-    }
+        saveComment(comment: any) {
+            const commentI: IComment = {
+                id: this.generateID(),
+                type_id: this.type_id,
+                user_id: this.auth.userID as string,
+                comment: comment.comment,
+                type: this.type,
+            
+            }
+            this.commentService.saveCommentInfo(commentI).then(res => {
+                console.log(commentI);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+        generateID() {
+            let m = 9;
+            let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            for (var i = 0; i < m; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
+            return s;
+        }
 
-}
+
+    }

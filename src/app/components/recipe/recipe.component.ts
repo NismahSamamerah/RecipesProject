@@ -5,7 +5,6 @@ import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 import { IRecipe } from 'src/app/interfaces/recipe';
 
 @Component({
@@ -57,7 +56,7 @@ export class RecipeComponent implements OnInit {
         });
     }
     getRecipeDetails(recipe: any) {
-        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
     goToUserRecipes() {
         this.route.navigate(['/user-recipe'])

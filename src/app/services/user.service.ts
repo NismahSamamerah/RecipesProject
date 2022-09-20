@@ -14,11 +14,14 @@ export class UserService {
     itemDoc: AngularFirestoreDocument<any> | undefined;
     cocktails: Observable <any[]> ;
     cocktaildoc:AngularFirestoreDocument<any> | undefined;
+    users: Observable<any[]>;
+
 
     constructor(private angularFirestore: AngularFirestore, 
         private auth: AuthService) {
         this.items = this.angularFirestore.collection(`recipe`).valueChanges();
         this.cocktails = this.angularFirestore.collection(`cocktail`).valueChanges();
+        this.users = this.angularFirestore.collection(`recipe`).valueChanges();
     }
     contactInfo(item: any){
         return this.angularFirestore.collection(`contact/`).doc().set(item);
@@ -26,6 +29,14 @@ export class UserService {
     saveUserInfo(user: IUser) {
         return this.angularFirestore.doc(`users/${this.auth.userID}`).set(user);
     }
+    
+    getUsers(userID:string)  {
+        
+        console.log(this.angularFirestore.doc(`users/${userID}`).get());
+        return this.angularFirestore.doc(`users/${userID}`).get();
+        //return this.users;
+    }
+    
     saveRecipeInfo(recipe: IRecipe) {
         return this.angularFirestore.collection("recipe").doc(recipe.id).set(recipe);
     }
