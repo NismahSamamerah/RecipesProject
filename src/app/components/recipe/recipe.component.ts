@@ -16,6 +16,8 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 export class RecipeComponent implements OnInit {
     recipes: any = [];
     public recipe: string = '';
+    totalPages: number[] = [];
+    currentPage: number = 1;
 
     constructor(
         public http: HttpClient,
@@ -50,6 +52,33 @@ export class RecipeComponent implements OnInit {
             }
         );
     }
+//     loadData(page: number = 1): void {
+//       const params = new HttpParams().set('page', page);
+//         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
+//             (data: any) => {
+//                 this.recipes = data;
+//             },
+//             (error) => {
+//                 console.log(error);
+//             }
+//         );
+//     }
+
+// next() {
+//         if (this.currentPage >= this.totalPages.length) {
+//             return;
+//         }
+//         this.currentPage++;
+//         this.loadData(this.currentPage);
+//     }
+
+//     prev() {
+//         if (this.currentPage <= 1) {
+//             return;
+//         }
+//         this.currentPage--;
+//         this.loadData(this.currentPage);
+//     }
 
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
