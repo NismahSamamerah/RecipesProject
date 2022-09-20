@@ -56,16 +56,15 @@ export class CocktailComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.router.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
     }
-    addFavorite(recipe: ICocktail) {
+    addFavorite(cocktail: ICocktail) {
         const favoriteItem: IFavorite = {
             id: this.generateID(),
-            type_id: recipe.id,
+            type_id: cocktail.name,
             user_id: this.auth.userID,
-            type: recipe,
+            type: cocktail,
         }
         console.log(favoriteItem);
         this.favorite.addFavorite(favoriteItem).then(res => {
-
         }).catch(err => {
             console.log(err);
         })

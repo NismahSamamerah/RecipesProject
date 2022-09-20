@@ -21,12 +21,12 @@ export class RecipeComponent implements OnInit {
         public http: HttpClient,
         public route: Router,
         public apiService: ApiService,
-        private auth : AuthService,
-        private favorite : FavoriteService) {
-            const sub = this.auth.user.subscribe(user => {
-                this.auth.userID = user?.uid;
-                sub.unsubscribe();
-            })
+        private auth: AuthService,
+        private favorite: FavoriteService) {
+        const sub = this.auth.user.subscribe(user => {
+            this.auth.userID = user?.uid;
+            sub.unsubscribe();
+        })
     }
     ngOnInit(): void {
         this.apiService.getRecipesByName("fish").subscribe(
@@ -63,19 +63,19 @@ export class RecipeComponent implements OnInit {
         this.route.navigate(['/user-recipe'])
     }
 
-    addFavorite(recipe: IRecipe){
-      const favoriteItem: IFavorite = {
-        id: this.generateID(),
-        type_id: recipe.title,
-        user_id: this.auth.userID,
-        type: recipe,
-      }
-      console.log(favoriteItem);
-      this.favorite.addFavorite(favoriteItem).then(res => {
+    addFavorite(recipe: IRecipe) {
+        const favoriteItem: IFavorite = {
+            id: this.generateID(),
+            type_id: recipe.title,
+            user_id: this.auth.userID,
+            type: recipe,
+        }
+        console.log(favoriteItem);
+        this.favorite.addFavorite(favoriteItem).then(res => {
 
-    }).catch(err => {
-        console.log(err);
-    })
+        }).catch(err => {
+            console.log(err);
+        })
     }
     generateID() {
         let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
