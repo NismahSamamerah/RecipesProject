@@ -11,32 +11,32 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserRecipeComponent implements OnInit {
 
-    recipes:IRecipe[] =[];
-    recipe :string ='';
-    searchValue :string =''
-    recipesSearch :IRecipe[] =[];
+    recipes: IRecipe[] = [];
+
+    searchValue: string = ''
+    recipesSearch: IRecipe[] = [];
 
 
     constructor(public route: Router,
         private userService: UserService) { }
 
     ngOnInit(): void {
-      this.recipesSearch;
+        this.recipesSearch;
         this.userService.getRecipes().subscribe(recipes => {
             this.recipes = recipes;
         });
     }
 
-    searchByName(){
-      //TODO:
-      this.recipesSearch=[];
-      for(let recipe of this.recipes){
-        if(recipe.title.includes(this.searchValue)){
-          this.recipesSearch.push(recipe);
+    searchByName() {
+        //TODO:
+        this.recipesSearch = [];
+        for (let recipe of this.recipes) {
+            if (recipe.title.includes(this.searchValue)) {
+                this.recipesSearch.push(recipe);
+            }
         }
-      }
-      this.recipes = [];
-  }
+        this.recipes = [];
+    }
 
     addNewRecipe(type: string) {
         if (type) {
