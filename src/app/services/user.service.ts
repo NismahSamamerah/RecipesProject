@@ -17,7 +17,7 @@ export class UserService {
     users: Observable<any[]>;
 
 
-    constructor(private angularFirestore: AngularFirestore, 
+    constructor(private angularFirestore: AngularFirestore,
         private auth: AuthService) {
         this.items = this.angularFirestore.collection(`recipe`).valueChanges();
         this.cocktails = this.angularFirestore.collection(`cocktail`).valueChanges();
@@ -52,6 +52,8 @@ export class UserService {
         return this.angularFirestore.collection("cocktail").doc(cocktail.id).set(cocktail);
     }
     getCocktails() {
+      console.log('c from service');
+
         return this.cocktails;
     }
     deleteCocktail(cocktail: any) {

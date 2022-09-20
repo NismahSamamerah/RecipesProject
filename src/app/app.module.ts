@@ -18,11 +18,10 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 import { environment } from 'src/environments/environment';
-import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { SlidesComponent } from './components/slides/slides.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CardComponent } from './components/card/card.component';
+import { CardComponent } from './components/cards/card/card.component';
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -40,13 +39,12 @@ import { HttpClientModule } from '@angular/common/http';
     DetailsComponent,
     ContactUsComponent,
     NavbarComponent,
-    UserCocktailComponent,
     RecipeFormComponent,
     SlidesComponent,
     FooterComponent,
     CardComponent,
     UserRecipeComponent,
-    
+
   ],
   imports: [
     BrowserModule,

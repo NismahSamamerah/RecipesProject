@@ -111,3 +111,24 @@ li{
 .details:hover{
     color: #d54215;
 }
+
+@media (max-width: 1024px){
+  #home{
+      flex-direction: column !important;
+  }
+
+  .home-card{
+      width: 70%;
+      margin: 10px auto;
+  }
+  .container{
+    margin-top: 50px;
+  }
+  ul{
+    flex-direction: column !important;
+  }
+  .card{
+    width: 90%;
+    margin: 40px auto;
+}
+}
