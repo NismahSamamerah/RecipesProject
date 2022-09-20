@@ -1,10 +1,18 @@
-<main>
-    <div class="main">
+
+    <div class="container">
         <div>
             <h2>{{data.name}}{{data.title}}</h2>
+            <div class="content">
             <img src="../../../assets/images/pexels-ash-376464.jpg">
-            <p class="customerreviews">Customer Reviews</p>
-            <form class="rating">
+            <div class="text">
+              <h3>Ingredients</h3>
+              <p>{{data.ingredients}}</p>
+              <h3> servings</h3>
+              <p>{{data. servings}}</p>
+          </div>
+          </div>
+            <form class="rating style">
+              <p class="customerreviews" style="font-size: 35px; margin-top:30px">Customer Reviews</p>
                 <div class="rate">
                     <div class="stars">
                         <input type="radio" id="five" name="rate" value="5" (click)="setRate(5)">
@@ -17,7 +25,6 @@
                         <label for="two"></label>
                         <input type="radio" id="one" name="rate" value="1" (click)="setRate(1)">
                         <label for="one"></label>
-                        <!-- <span class="result"></span> -->
                     </div>
                 </div>
                 <div class="reviews">
@@ -67,27 +74,6 @@
                 </div>
             </form>
         </div>
-        <div class="list">
-            <h2>Ingredients</h2>
-            <ul>
-                <li>1 cup all-purpose flour, (spooned and leveled)</li>
-                <li>2 tablespoons sugar</li>
-                <li>2 teaspoons baking powder</li>
-                <li>1/2 teaspoon salt</li>
-                <li>1 cup milk</li>
-                <li>2 tablespoons unsalted butter, melted, or vegetable oil</li>
-                <li>1 large egg</li>
-                <li>1 tablespoon vegetable oil</li>
-                <li>Assorted toppings, such as butter, maple syrup, confectioners' sugar, honey, jams, preserves,
-                    sweetened
-                    whipped cream, or chocolate syrup</li>
-            </ul>
-            <h3>Ingredients</h3>
-            <p>{{data.ingredients}}</p>
-            <h3> servings</h3>
-            <p>{{data. servings}}</p>
-        </div>
-    </div>
     <div class="Directions">
         <h3>Directions</h3>
         <p>
@@ -97,7 +83,7 @@
             <button type="button" class="edit">Edit Your Recipe</button>
         </div>
     </div>
-    <h5 class="tittle">Comments</h5>
+    <h5 class="tittle" style="font-size: 30px;">Comments</h5>
     <div class="container comment-container" *ngFor="let comment of comments">
         <div class="comment-card" id="first-comment">
             <h6 class="comment-tittle">Aya Oweinah</h6>
@@ -115,4 +101,4 @@
             <button class="commentbutton" type="submit">Add Comment</button>
         </form>
     </div>
-</main>
+  </div>

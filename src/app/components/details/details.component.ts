@@ -41,20 +41,23 @@ export class DetailsComponent implements OnInit {
         })
     }
     ngOnInit(): void {
+
+
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
         this.commentService.readCommentInfo()?.subscribe(comments => {
             this.comments = comments;
         });
+        console.log(this.data);
         if(this.data.hasOwnProperty('title')) {
-            this.type = 'recipe' 
+            this.type = 'recipe'
         }else{this.type = 'cocktail'
     }
 
     }
-  
+
     setRate(rate: number) {
         const rating: IRating = {
-            type_id: this.data.title | this.data.name,
+            type_id:  this.data.name,
             user_id: this.auth.userID as string,
             rating: rate,
             type: this.type

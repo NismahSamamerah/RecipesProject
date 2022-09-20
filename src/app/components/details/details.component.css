@@ -3,38 +3,32 @@
     list-style: none;
     font-family: 'SF Pro Display regular';
 }
-
-.list{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5vh;
-    margin-left: 10vw;
-    font-size: 20px;
-    background-color: rgba(225, 183, 151, 0.771);
-    border-radius: 10%;
-    padding: 5vw;  
-}
-h2{
-    font-size: 50px;
-    font-weight: bold;
-}
-ul{
-    margin-top: 5vh;
-}
-img{
-    margin-top: 10vh;
-    margin-left: 5vw;
-    border-radius: 10%;
-    
+.content{
+  display: flex;
+  justify-content: space-between;
 }
 h3{
-    margin-top: 50vh;
-    margin-left: 5vw;
-    font-size: 50px;
-    font-weight: bolder;
+  color: #d54215;
 }
+.content img{
+  width: 45%;
+  height: 80vh;
+  border-radius: 10px;
+}
+.content .text{
+  width: 50%;
+  background-color: rgb(246, 218, 193);
+  padding: 20px;
+  border: 5px solid rgb(246, 218, 193);
+  border-radius: 20px;
+}
+h2{
+    font-size: 30px;
+    border: none;
+    margin-bottom: 50px;
+}
+
 p{
-    margin-left: 5vw;
     font-size: 20px;
 }
 .comment{
@@ -44,24 +38,22 @@ p{
 }
 .button{
     display: flex;
-    justify-content: flex-end;   
+    justify-content: flex-end;
 }
-.rating{ 
-    position: absolute;
-    margin-top: 30vh;
-    margin-left: 25vw; 
-    justify-content: space-between;
-    transform: translate(-50%, -50%);
+.rating{
+  width: 70%;
+  margin: auto;
+
 }
 .rate{
-    margin-right: 8vw;
-    
+text-align: center;
+
 }
 .stars input{
     display: none;
 }
 .stars label{
-    float: right;
+
     font-size: 50px;
     color:  grey;
     text-shadow: 1px 1px #bbb;
@@ -110,20 +102,7 @@ p{
 .stars #one:checked ~ .result::before{
     content: "I don't like it 😒";
 }
-h5,h2{
-    font-size: 50px;
-    font-weight: bold;
-    margin-left: 13vw;
-    margin-top: 5vh;
-    border-bottom: 5px solid #d54215;
-}
-.container{
-    font-size: 16px;
-    min-height: 8vh;
-    width: min(90%, 1140px);
-    margin-top: 10vh;
-    
-}
+
 .editDiv{
     display: flex;
     justify-content: flex-end;
@@ -140,9 +119,6 @@ textarea{
 .comment-container::before{
     content: "";
     background-color: rgb(171, 171, 171);
-    position: absolute;
-    width: 1px;
-    left: -10px;
 }
 .comment-container:not(:first-child){
     margin-left: 3vw;
@@ -155,7 +131,7 @@ textarea{
     border-radius: 10px;
     min-width: 100%;
     box-shadow: 0 0 10px rgb(0, 0, 0.1);
-    
+
 }
 .comment-card h6, .comment-card p{
     margin-bottom: 1vh;
@@ -174,7 +150,6 @@ textarea{
 }
 
 textarea{
-    width:inherit;
     height: 10vh;
     margin-bottom: 10px;
     border-radius: 1px solid black;
@@ -210,8 +185,8 @@ button{
     max-width: 547px;
     width: 100%;
     border-radius: 10px;
-    
-    padding: 25px 25px 25px 25px; 
+
+    padding: 25px 25px 25px 25px;
     margin-top: 10vh;
   }
   .reviews__average-ratings{
@@ -246,7 +221,7 @@ button{
   }
   .progress-bar__data{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 2px;
     appearance: none;
     border: none;
@@ -260,6 +235,21 @@ button{
     filter: drop-shadow(0px 4px 5px rgba(255, 204, 72, 0.53));
     background: #ffcc48;
   }
-  
 
-
+.tittle{
+  margin-top: 20px;
+  font-size: 20px;
+}
+  @media (max-width: 1024px){
+    .content{
+        flex-direction: column !important;
+    }
+    .text{
+        width: 80%;
+        margin: 10px auto;
+    }
+    img{
+      width: 100%;
+      margin: 10px auto;
+  }
+  }

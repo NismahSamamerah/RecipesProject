@@ -53,41 +53,13 @@ export class RecipeComponent implements OnInit {
         );
     }
 
-    loadData(page: number = 1): void {
-      const params = new HttpParams().set('page', page);
-        this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
-            (data: any) => {
-                this.recipes = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    }
-
-next() {
-        if (this.currentPage >= this.totalPages.length) {
-            return;
-        }
-        this.currentPage++;
-        this.loadData(this.currentPage);
-    }
-
-    prev() {
-        if (this.currentPage <= 1) {
-            return;
-        }
-        this.currentPage--;
-        this.loadData(this.currentPage);
-    }
-
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
             console.log(data, "searchable");
         });
     }
     getRecipeDetails(recipe: any) {
-        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
     goToUserRecipes() {
         this.route.navigate(['/user-recipe' , { data: 'recipe' }])
