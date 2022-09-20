@@ -26,7 +26,7 @@ favoritesSearch :IFavorite[]=[];
       //TODO:
       this.favoritesSearch=[];
       for(let favorite of this.favorites){
-        if(favorite.type_id.includes(this.favValue)){
+        if(favorite.type_id.toLocaleLowerCase().includes(this.favValue.toLocaleLowerCase())){
           this.favoritesSearch.push(favorite);
         }
       }
@@ -37,4 +37,7 @@ favoritesSearch :IFavorite[]=[];
       this.favoriteService.deleteFromFavorite(favorite);
     }
 
+    getRecipeDetails(recipe: any) {
+      this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+    }
 }

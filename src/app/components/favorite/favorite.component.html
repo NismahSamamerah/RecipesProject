@@ -20,7 +20,7 @@
         <div class="card-text">
             <h5 class="card-title">{{fav.type_id}}</h5>
             <div class="details">
-                <a class="details" href="#">View Details </a>
+                <a class="details" (click)="getRecipeDetails(fav.type)"  >View Details </a>
                 <i class="fa fa-arrow-right"></i>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="card-text">
                 <h5 class="card-title">{{fav.type_id}}</h5>
                 <div class="details">
-                    <a class="details" href="#">View Details </a>
+                    <a class="details" (click)="getRecipeDetails(fav.type)">View Details </a>
                     <i class="fa fa-arrow-right"></i>
                 </div>
             </div>

@@ -41,9 +41,6 @@ export class UserRecipeComponent implements OnInit {
     }
     }
 
-    searchByName() {
-
-    }
 
     searchByName(){
       //TODO:

@@ -93,6 +93,7 @@ next() {
     }
 
     addFavorite(recipe: IRecipe) {
+    
         const favoriteItem: IFavorite = {
             id: this.generateID(),
             type_id: recipe.title,
@@ -111,4 +112,5 @@ next() {
         for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
         return s;
     }
+   
 }
