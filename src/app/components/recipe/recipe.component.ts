@@ -5,7 +5,6 @@ import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 import { IRecipe } from 'src/app/interfaces/recipe';
 
 @Component({
@@ -66,6 +65,7 @@ export class RecipeComponent implements OnInit {
     }
 
     addFavorite(recipe: IRecipe) {
+    
         const favoriteItem: IFavorite = {
             id: this.generateID(),
             type_id: recipe.title,
@@ -84,4 +84,5 @@ export class RecipeComponent implements OnInit {
         for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
         return s;
     }
+   
 }

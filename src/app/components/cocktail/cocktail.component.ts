@@ -54,7 +54,7 @@ export class CocktailComponent implements OnInit {
         }).unsubscribe();
     }
     getRecipeDetails(recipe: any) {
-        this.router.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+        this.router.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
     addFavorite(cocktail: ICocktail) {
         const favoriteItem: IFavorite = {

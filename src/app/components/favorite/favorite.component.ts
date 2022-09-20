@@ -12,22 +12,22 @@ export class FavoriteComponent implements OnInit {
 
 favorites:IFavorite[] =[];
 favValue :string ='';
-fovoritesSearch :IFavorite[]=[];
+favoritesSearch :IFavorite[]=[];
 
     constructor(public route: Router, private favoriteService: FavoriteService) { }
 
     ngOnInit(): void {
-      this.fovoritesSearch;
+      this.favoritesSearch;
         this.favoriteService.getFavorite().subscribe( favorites=> {
             this.favorites= favorites;
         });
     }
     search(){
       //TODO:
-      this.fovoritesSearch=[];
+      this.favoritesSearch=[];
       for(let favorite of this.favorites){
-        if(favorite.type_id.includes(this.favValue)){
-          this.fovoritesSearch.push(favorite);
+        if(favorite.type_id.toLocaleLowerCase().includes(this.favValue.toLocaleLowerCase())){
+          this.favoritesSearch.push(favorite);
         }
       }
       this.favorites = [];
@@ -37,4 +37,7 @@ fovoritesSearch :IFavorite[]=[];
       this.favoriteService.deleteFromFavorite(favorite);
     }
 
+    getRecipeDetails(recipe: any) {
+      this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+    }
 }

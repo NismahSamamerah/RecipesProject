@@ -24,17 +24,16 @@ const routes: Routes = [
   {path : "cocktail" , component : CocktailComponent , canActivate: [AuthGuard]},
   {path : "contact-us" , component : ContactUsComponent},
   {path : "user-recipe" , component : UserRecipeComponent},
-
-  // {path : "recipe-form/:id" , component : RecipeFormComponent},
   {path : "recipe-form" , component : RecipeFormComponent},
   {path : "contact-us" , component : ContactUsComponent},
   {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
   {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details" , component : DetailsComponent},
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

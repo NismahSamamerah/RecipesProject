@@ -18,7 +18,10 @@ export class CommentService {
     }
     readCommentInfo(){
         //TODO:
-            return this.comments;
+        // for(let comment of this.comments){
+        // }  
+        console.log(this.comments);  
+        return this.comments;
     }
 
 }

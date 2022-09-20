@@ -21,7 +21,7 @@ h1 {
     transition: 0.4s;
     width: 25%;
     height: 60vh;
-    background-color: #f4e0e0;
+    background-color: #f4e0e098;
 }
 .home-card:hover{
   transform: scale(1.1);
