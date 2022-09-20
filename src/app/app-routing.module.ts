@@ -10,7 +10,7 @@ import { RecipeFormComponent } from './components/recipe-form/recipe-form.compon
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SuggestComponent } from './components/suggest/suggest.component';
-import { UserCocktailComponent } from './components/user-cocktail/user-cocktail.component';
+
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
@@ -24,7 +24,7 @@ const routes: Routes = [
   {path : "cocktail" , component : CocktailComponent , canActivate: [AuthGuard]},
   {path : "contact-us" , component : ContactUsComponent},
   {path : "user-recipe" , component : UserRecipeComponent},
-  {path : "user-cocktail" , component : UserCocktailComponent},
+
   // {path : "recipe-form/:id" , component : RecipeFormComponent},
   {path : "recipe-form" , component : RecipeFormComponent},
   {path : "contact-us" , component : ContactUsComponent},
