@@ -2,11 +2,12 @@
     display: flex;
     justify-content: center;
     margin-top: 7vh;
-    height: 90vh;
+
 }
 h1 {
     font-family:  "SF Pro Display bold";
     font-weight: 500;
+    font-size: 45px;
     margin: auto;
     text-align: center;
 
@@ -122,13 +123,13 @@ li{
       margin: 10px auto;
   }
   .container{
-    margin-top: 50px;
+    margin-top: 70px;
   }
   ul{
     flex-direction: column !important;
   }
   .card{
-    width: 90%;
+    width: 80%;
     margin: 40px auto;
 }
 }

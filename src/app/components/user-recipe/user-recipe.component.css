@@ -14,7 +14,8 @@ h1 {
   width: 40%;
   border-bottom: 5px solid #d54215;
 }
-span{
+span a{
+  text-decoration: none;
   color: #d54215;
 }
 .card-text{
@@ -62,7 +63,7 @@ button:hover{
   color: #d54215;
 }
 .searchGroup{
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: space-between;
 }
@@ -98,5 +99,12 @@ li{
   cursor: pointer;
 }
 .fa-share-square-o:hover{
+  color: #d54215;
+}
+.fa-minus-circle{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.fa-minus-circle:hover{
   color: #d54215;
 }
