@@ -20,7 +20,7 @@ import { Utils } from 'src/app/common/utils';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-    
+
     rating: IRating[] = [];
     type_id: string = '';
     type: string = '';
@@ -79,16 +79,22 @@ export class DetailsComponent implements OnInit {
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
             console.log(this.rating);
-            
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
     }
 
-    getCocktailRating() { }
+    getCocktailRating() {
+        const sub = this.ratingService.getCocktailRating(this.type_id).subscribe(res => {
+            this.rating = res;
+            console.log(this.rating);
+            this.calculateRatingAverage();
+            sub.unsubscribe();
+        });
+    }
 
     getComments() {
-        this.type == 'recipe'? this.getRecipeComments(): this.getCocktailComments();
+        this.type == 'recipe' ? this.getRecipeComments() : this.getCocktailComments();
     }
 
     getRecipeComments(): void {
@@ -99,7 +105,10 @@ export class DetailsComponent implements OnInit {
     }
 
     getCocktailComments(): void {
-
+        const sub = this.commentService.getCocktailComments(this.type_id).subscribe(comments => {
+            this.comments = comments;
+            sub.unsubscribe();
+        });
     }
 
     setRate(rate: number) {
@@ -109,9 +118,10 @@ export class DetailsComponent implements OnInit {
             rating: rate,
             type: this.type,
         }
-        console.log(rating);
         this.ratingService.saveRatingInfo(rating);
+        this.mostRate()
     }
+    mostRate(){}
 
     saveComment(comment: any) {
         const commentI: IComment = {
@@ -125,7 +135,7 @@ export class DetailsComponent implements OnInit {
         this.comments.push(commentI);
         this.commentForm.reset();
         this.commentService.saveCommentInfo(commentI).then(res => {
-            
+
         }).catch(err => {
             console.log(err);
         })

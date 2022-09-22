@@ -53,10 +53,8 @@ export class UserRecipeComponent implements OnInit {
         })
     }
 
-    addNewRecipe(type: string) {
-        if (type) {
-            this.route.navigate(["/recipe-form", { id: type }])
-        }
+    addNewRecipe() {
+            this.route.navigate(["/recipe-form", { id: this.type }])
     }
 
     
