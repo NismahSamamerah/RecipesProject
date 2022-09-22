@@ -15,7 +15,7 @@
             </div>
         </div>
         <ul>
-            <li *ngFor="let recipe of recipeSearch">
+            <!-- <li *ngFor="let recipe of recipeSearch">
                 <div class="card mt-5" style="width: 15rem">
                     <div class="image">
                         <div class="icons">
@@ -32,62 +32,29 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <li *ngFor="let recipe of recipes">
-                <div class="card mt-5" style="width: 15rem">
-                    <div class="image">
-                        <div class="icons">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
-                        </div>
-                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <div class="details">
-                            <a class="details">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li *ngFor="let cocktail of cocktailSearch">
-                <div class="card mt-5" style="width: 15rem">
-                    <div class="image">
-                        <div class="icons">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
-                        </div>
-                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">{{cocktail.id}}</h5>
-                        <div class="details">
-                            <a class="details">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li *ngFor="let cocktail of cocktails">
-                <div class="card mt-5" style="width: 15rem">
-                    <div class="image">
-                        <div class="icons">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
-                        </div>
-                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">{{cocktail.id}}</h5>
-                        <div class="details">
-                            <a class="details">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
+            </li> -->
+            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
+            <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
            
+            <!-- <li *ngFor="let cocktail of cocktails">
+                <div class="card mt-5" style="width: 15rem">
+                    <div class="image">
+                        <div class="icons">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
+                        </div>
+                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+                    </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{cocktail.id}}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            -->
 
             <li>
                 <a>

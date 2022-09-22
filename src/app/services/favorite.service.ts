@@ -17,15 +17,14 @@ export class FavoriteService {
 	}
 
 	getFavoriteRecipe(user_id: string): Observable<any[]> {
-		return this.angularFirestore.collection(`favorite`, ref => ref.where('type', '==', 'recipe').where('user_id', '==', user_id)).valueChanges();
+		return this.angularFirestore.collection(`favorite`, ref => ref.where('typeS', '==', 'recipe').where('user_id', '==', user_id)).valueChanges();
 	}
 
 	getFavoriteCocktail(user_id: string): Observable<any[]> {
-		return this.angularFirestore.collection(`favorite`, ref => ref.where('type', '==', 'cocktail').where('user_id', '==', user_id)).valueChanges();
+		return this.angularFirestore.collection(`favorite`, ref => ref.where('typeS', '==', 'cocktail').where('user_id', '==', user_id)).valueChanges();
 	}
 
 	deleteFromFavorite(item: any) {
-		console.log("from serves");
 		this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.id}`);
 		this.favoriteDoc.delete();
 	}

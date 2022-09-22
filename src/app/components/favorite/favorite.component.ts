@@ -15,21 +15,22 @@ export class FavoriteComponent implements OnInit {
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
 
-    constructor(public route: Router, private favoriteService: FavoriteService, private auth: AuthService) {
+    constructor(public route: Router,
+        private favoriteService: FavoriteService,
+        private auth: AuthService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
-     }
+    }
 
     ngOnInit(): void {
-        this.favoritesSearch;
         const sub = this.favoriteService.getFavoriteRecipe(this.auth.userID as string).subscribe(favorites => {
             this.favorites = favorites;
-            this.favoritesSearch = favorites;
             sub.unsubscribe();
         });
     }
+    
     search() {
         this.favoritesSearch = this.favorites.filter(favorite => {
             return favorite.type_id.toLowerCase().includes(this.favValue.toLowerCase());
