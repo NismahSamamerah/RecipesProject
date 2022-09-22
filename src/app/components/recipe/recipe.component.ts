@@ -70,6 +70,7 @@ export class RecipeComponent implements OnInit {
             id: this.generateID(),
             type_id: recipe.title,
             user_id: this.auth.userID,
+            typeS: 'recipe',
             type: recipe,
         }
         console.log(favoriteItem);

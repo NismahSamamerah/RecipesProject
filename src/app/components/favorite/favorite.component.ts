@@ -1,43 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IFavorite } from 'src/app/interfaces/favorite';
+import { AuthService } from 'src/app/services/auth.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
-  selector: 'app-favorite',
-  templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.css']
+    selector: 'app-favorite',
+    templateUrl: './favorite.component.html',
+    styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
 
-favorites:IFavorite[] =[];
-favValue :string ='';
-favoritesSearch :IFavorite[]=[];
+    favorites: IFavorite[] = [];
+    favValue: string = '';
+    favoritesSearch: IFavorite[] = [];
 
-    constructor(public route: Router, private favoriteService: FavoriteService) { }
+    constructor(public route: Router, private favoriteService: FavoriteService, private auth: AuthService) {
+        const sub = this.auth.user.subscribe(user => {
+            this.auth.userID = user?.uid;
+            sub.unsubscribe();
+        })
+     }
 
     ngOnInit(): void {
-      this.favoritesSearch;
-        this.favoriteService.getFavorite().subscribe( favorites=> {
-            this.favorites= favorites;
+        this.favoritesSearch;
+        const sub = this.favoriteService.getFavoriteRecipe(this.auth.userID as string).subscribe(favorites => {
+            this.favorites = favorites;
+            this.favoritesSearch = favorites;
+            sub.unsubscribe();
         });
     }
-    search(){
-      //TODO:
-      this.favoritesSearch=[];
-      for(let favorite of this.favorites){
-        if(favorite.type_id.toLocaleLowerCase().includes(this.favValue.toLocaleLowerCase())){
-          this.favoritesSearch.push(favorite);
-        }
-      }
-      this.favorites = [];
-  }
+    search() {
+        this.favoritesSearch = this.favorites.filter(favorite => {
+            return favorite.type_id.toLowerCase().includes(this.favValue.toLowerCase());
+        })
+    }
 
-    deleteFromFavorite(favorite :IFavorite){
-      this.favoriteService.deleteFromFavorite(favorite);
+    deleteFromFavorite(favorite: IFavorite) {
+        this.favoriteService.deleteFromFavorite(favorite);
     }
 
     getRecipeDetails(recipe: any) {
-      this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
 }
