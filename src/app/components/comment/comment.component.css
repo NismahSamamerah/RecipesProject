@@ -1,0 +1,32 @@
+.comment-container{
+    position: relative;
+}
+.comment-container::before{
+    content: "";
+    background-color: rgb(171, 171, 171);
+}
+.comment-container:not(:first-child){
+    margin-left: 3vw;
+    margin-top: 1rem;
+}
+
+.comment-card{
+    padding: 20px;
+    background-color: white;
+    border: 1px solid rgb(0,0,0,3);
+    border-radius: 10px;
+    min-width: 100%;
+    box-shadow: 0 0 10px rgb(0, 0, 0.1);
+}
+.comment-card h6, .comment-card p{
+    margin-bottom: 1vh;
+    margin-left: 3vh;
+}
+.comment-footer{
+    display: flex;
+    font-size: 15px;
+    opacity: .6;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -10,112 +10,113 @@
                 <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
                     style="font-family: FontAwesome, Arial; font-style: normal" />
             </div>
-
-
+            <div class="col-md-4">
+                <button (click)="searchByName()" type="button">search</button>
+            </div>
         </div>
-
-        
-                <div class="col-md-4">
-                    <button (click)="searchByName()" type="button">search</button>
-
-                </div>
-                <div class="col-md-3"></div>
-            
-            <ul>
-                <li *ngFor="let recipe of recipesSearch">
-                    <div class="card mt-5" style="width: 15rem">
-                        <div class="image">
-                            <div class="icons">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                            </div>
-                            <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+        <ul>
+            <li *ngFor="let recipe of recipeSearch">
+                <div class="card mt-5" style="width: 15rem">
+                    <div class="image">
+                        <div class="icons">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
                         </div>
-                        <div class="card-text">
-                            <h5 class="card-title">{{ recipe.title }}</h5>
-                            <div class="details">
-                                <a class="details">View Details </a>
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </div>
+                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                     </div>
-                </li>
-                <li *ngFor="let cocktail of cocktails">
-                    <div class="card mt-5" style="width: 15rem">
-                        <div class="image">
-                            <div class="icons">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                <button type="button" (click)="deleteRecipe(recipe)" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                </button>
-
-                            </div>
-                            <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
-                        </div>
-                        <div class="card-text">
-                            <h5 class="card-title">{{cocktail.id}}</h5>
-                            <div class="details">
-                                <a class="details">View Details </a>
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li *ngFor="let recipe of recipes">
-                    <div class="card mt-5" style="width: 15rem">
-                        <div class="image">
-                            <div class="icons">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                <button type="button" (click)="deleteRecipe(recipe)" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                </button>
-
-
-                            </div>
-                            <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
-                        </div>
-                        <div class="card-text">
-                            <h5 class="card-title">{{ recipe.title }}</h5>
-                            <div class="details">
-                                <a class="details">View Details </a>
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <a>
-                        <div class="card mt-5 bg-light"
-                            style=" width: 15rem;height: 300px; display: flex; justify-content: center; align-items: center;">
-                            <div class="empty-card" (click)="addNewRecipe('Recipe')">
-                                <i class="fa fa-plus-square-o"></i>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
-                                <button type="button" class="btn-close" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Recipe deleted successfully
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                                    data-bs-toggle="modal">Close</button>
-                            </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
+            </li>
+            <li *ngFor="let recipe of recipes">
+                <div class="card mt-5" style="width: 15rem">
+                    <div class="image">
+                        <div class="icons">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
+                        </div>
+                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+                    </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngFor="let cocktail of cocktailSearch">
+                <div class="card mt-5" style="width: 15rem">
+                    <div class="image">
+                        <div class="icons">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
+                        </div>
+                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+                    </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{cocktail.id}}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngFor="let cocktail of cocktails">
+                <div class="card mt-5" style="width: 15rem">
+                    <div class="image">
+                        <div class="icons">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
+                        </div>
+                        <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+                    </div>
+                    <div class="card-text">
+                        <h5 class="card-title">{{cocktail.id}}</h5>
+                        <div class="details">
+                            <a class="details">View Details </a>
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           
 
-            </ul>
-        </div>
+            <li>
+                <a>
+                    <div class="card mt-5 bg-light"
+                        style=" width: 15rem;height: 300px; display: flex; justify-content: center; align-items: center;">
+                        <div class="empty-card" (click)="addNewRecipe('Recipe')">
+                            <i class="fa fa-plus-square-o"></i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
+                            <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Recipe deleted successfully
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                                data-bs-toggle="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
     </div>
+</div>

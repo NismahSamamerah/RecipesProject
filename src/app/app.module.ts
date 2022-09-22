@@ -24,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/cards/card/card.component';
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     CardComponent,
     UserRecipeComponent,
+    CommentComponent,
 
   ],
   imports: [
