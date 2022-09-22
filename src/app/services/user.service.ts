@@ -10,55 +10,28 @@ import { AuthService } from './auth.service';
     providedIn: 'root'
 })
 export class UserService {
-    items: Observable<any[]>;
-    itemDoc: AngularFirestoreDocument<any> | undefined;
-    cocktails: Observable <any[]> ;
-    cocktaildoc:AngularFirestoreDocument<any> | undefined;
-    users: Observable<any[]>;
 
+    cocktaildoc:AngularFirestoreDocument<any> | undefined;
 
     constructor(private angularFirestore: AngularFirestore,
-        private auth: AuthService) {
-        this.items = this.angularFirestore.collection(`recipe`).valueChanges();
-        this.cocktails = this.angularFirestore.collection(`cocktail`).valueChanges();
-        this.users = this.angularFirestore.collection(`recipe`).valueChanges();
+        private auth: AuthService) {}
+   
+    saveUserInfo(newUser: IUser) {
+        return new Promise(resolve => {
+            const sub = this.auth.user.subscribe(user => {
+                this.auth.userID = user?.uid;
+                newUser.id = user?.uid as string;
+                resolve(this.angularFirestore.doc(`users/${this.auth.userID}`).set(newUser));
+            })
+        })
     }
+    
+    getUserById(userId: string): Observable<any> {
+        return this.angularFirestore.collection('users', ref => ref.where('id', '==', userId)).valueChanges();
+    }
+    
     contactInfo(item: any){
         return this.angularFirestore.collection(`contact/`).doc().set(item);
-    }
-    saveUserInfo(user: IUser) {
-        return this.angularFirestore.doc(`users/${this.auth.userID}`).set(user);
-    }
-    
-    getUsers(userID:string)  {
-        
-        console.log(this.angularFirestore.doc(`users/${userID}`).get());
-        return this.angularFirestore.doc(`users/${userID}`).get();
-        //return this.users;
-    }
-    
-    saveRecipeInfo(recipe: IRecipe) {
-        return this.angularFirestore.collection("recipe").doc(recipe.id).set(recipe);
-    }
-    getRecipes() {
-        return this.items;
-    }
-
-    delete(recipe: any) {
-        this.itemDoc = this.angularFirestore.doc(`recipe/${recipe.id}`);
-        this.itemDoc.delete();
-    }
-    saveCocktailInfo(cocktail: any){
-        return this.angularFirestore.collection("cocktail").doc(cocktail.id).set(cocktail);
-    }
-    getCocktails() {
-      console.log('c from service');
-
-        return this.cocktails;
-    }
-    deleteCocktail(cocktail: any) {
-        this.cocktaildoc = this.angularFirestore.doc(`cocktail/${cocktail.id}`);
-        this.cocktaildoc.delete();
     }
 
 }

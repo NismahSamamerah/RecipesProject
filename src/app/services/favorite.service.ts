@@ -7,25 +7,26 @@ import { IFavorite } from '../interfaces/favorite';
 	providedIn: 'root'
 })
 export class FavoriteService {
-	favorites: Observable<any[]>;
+
 	favoriteDoc: AngularFirestoreDocument<any> | undefined;
-
-
-	constructor(private angularFirestore: AngularFirestore) {
-		this.favorites = this.angularFirestore.collection(`favorite`).valueChanges();
-	}
+	
+	constructor(private angularFirestore: AngularFirestore) {}
+	
 	addFavorite(item: IFavorite) {
 		return this.angularFirestore.collection('favorite').doc(item.id).set(item);
 	}
-	getFavorite() {
-		return this.favorites;
+
+	getFavoriteRecipe(user_id: string): Observable<any[]> {
+		return this.angularFirestore.collection(`favorite`, ref => ref.where('type', '==', 'recipe').where('user_id', '==', user_id)).valueChanges();
 	}
+
+	getFavoriteCocktail(user_id: string): Observable<any[]> {
+		return this.angularFirestore.collection(`favorite`, ref => ref.where('type', '==', 'cocktail').where('user_id', '==', user_id)).valueChanges();
+	}
+
 	deleteFromFavorite(item: any) {
 		console.log("from serves");
 		this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.id}`);
 		this.favoriteDoc.delete();
 	}
-  search(){
-    
-  }
 }

@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { Utils } from '../common/utils';
+import { AuthService } from './auth.service';
 @Injectable({
     providedIn: 'root'
 })
 export class RatingService {
-    rating: Observable<any[]>;
+    
+    constructor(private angularFirestore: AngularFirestore, 
+        private auth: AuthService) {}
 
-    constructor(private angularFirestore: AngularFirestore) { 
-        this.rating = this.angularFirestore.collection(`rating`).valueChanges();
+    saveRatingInfo(rating: any): void {
+        let rated: boolean = false;
+        this.angularFirestore.collection(`rating`, ref => ref.where('type_id', '==', rating.type_id)).ref.get().then((docs) => {
+            docs.forEach(doc => {
+                if (doc.get('user_id') == this.auth.userID && doc.get('type_id') == rating.type_id) {
+                    this.angularFirestore.collection("rating").doc(doc.id).update({
+                        rating: rating.rating
+                    });
+                    rated = true;
+                }
+            });
+        }).then(() => {
+            if (!rated) {
+                this.angularFirestore.doc(`rating/${Utils.generateID()}`).set(rating);
+            }
+        });
     }
 
-    saveRatingInfo(rating: any) {
-        return this.angularFirestore.collection("rating").doc(rating.id).set(rating);
-    }
-    getRating(){
-        return this.rating;
+    getRecipeRating(recipeId: string): Observable<any[]> {
+        return this.angularFirestore.collection(`rating`, ref => ref.where('type_id', '==', recipeId)).valueChanges();
     }
 
-   
+
 }

@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IRecipe } from 'src/app/interfaces/recipe';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { CocktailService } from 'src/app/services/cocktail.service';
+import { RecipeService } from 'src/app/services/recipe.service';
+
 import { ICocktail } from 'src/app/interfaces/cocktail';
+import { IRecipe } from 'src/app/interfaces/recipe';
+import { Utils } from 'src/app/common/utils';
+
 @Component({
     selector: 'app-recipe-form',
     templateUrl: './recipe-form.component.html',
@@ -28,46 +35,70 @@ export class RecipeFormComponent implements OnInit {
         item: new FormControl(''),
     });
 
+
     constructor(private userService: UserService, private router: ActivatedRoute,
         private auth: AuthService , private route :Router) {
+
+    constructor(private userService: UserService, 
+        private router: ActivatedRoute,
+        private cocktailService: CocktailService,
+        private recipeService: RecipeService,
+   
+        private auth: AuthService) {
+
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
         })
-        // this.isLoggedIn()
-        // this.auth.isLogin()
     }
+
     ngOnInit(): void {
         this.type = this.router.snapshot.paramMap.get('id');
     }
+
     isLoggedIn() {
         const loggedIn = Boolean(this.auth.userID);
         console.log(loggedIn);
         return loggedIn;
     }
 
-    saveRecipe() {
-        const recipe: IRecipe | ICocktail = {
-            id: this.generateID(),
+    saveRecipes() {
+        if (this.type == 'Cocktail') {
+            this.saveCocktail();
+        } else if (this.type == 'Recipe') {
+            this.saveRecipe();
+        }
+    }
+
+    saveRecipe(){
+        const recipe: IRecipe = {
+            id: Utils.generateID(),
             user_id: this.auth.userID as string,
             title: this.recipeForm.value.name,
             ingredients: this.getIngredientsArrayValues(),
             servings: this.recipeForm.value.servings,
             instructions: this.recipeForm.value.instructions
         }
-        if (this.type == 'Cocktail') {
-            this.userService.saveCocktailInfo(recipe).then(res => {
-                console.log(recipe);
-            }).catch(err => {
-                console.log(err);
-            })
-        } else if (this.type == 'Recipe') {
-            this.userService.saveRecipeInfo(recipe).then(res => {
-                console.log(recipe);
-            }).catch(err => {
-                console.log(err);
-            })
+        this.recipeService.saveRecipeInfo(recipe).then(res => {
+            console.log(recipe);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    saveCocktail(){
+        const cocktail: ICocktail = {
+            id: Utils.generateID(),
+            user_id: this.auth.userID as string,
+            name: this.recipeForm.value.name,
+            ingredients: this.getIngredientsArrayValues(),
+            instructions: this.recipeForm.value.instructions
         }
+            this.cocktailService.saveCocktailInfo(cocktail).then(res => {
+                console.log(cocktail);
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
     addNewIngredient() {
@@ -88,12 +119,4 @@ export class RecipeFormComponent implements OnInit {
         }
         return arr;
     }
-    generateID() {
-        let m = 9;
-        let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (var i = 0; i < m; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
-        return s;
-    }
-
-
 }

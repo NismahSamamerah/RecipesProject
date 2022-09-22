@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Utils } from 'src/app/common/utils';
 import { IFavorite } from 'src/app/interfaces/favorite';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ApiService } from 'src/app/services/api.service';
@@ -12,21 +13,25 @@ import { FavoriteService } from 'src/app/services/favorite.service';
     styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+
+    @Input() recipe: IRecipe | undefined;
     recipes: any = [];
-    recipe: string = '';
+    
+    constructor(private apiService: ApiService, 
+        public route: Router, 
+        public auth :AuthService,
+        public favorite :FavoriteService) {}
 
+    ngOnInit(): void {}
 
-    constructor(private apiService: ApiService, public route: Router , public auth :AuthService , public favorite :FavoriteService) { }
-
-    ngOnInit(): void {
-    }
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
             console.log(data, "searchable");
         });
     }
+
     getRecipeDetails(recipe: any) {
-        this.route.navigate(['/recipee', { data: JSON.stringify(recipe) }]);
+        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
 
     loadRecipe(): void {
@@ -39,25 +44,24 @@ export class CardComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
+            
         );
     }
-    addFavorite(recipe: IRecipe) {
-      const favoriteItem: IFavorite = {
-          id: this.generateID(),
-          type_id: recipe.title,
-          user_id: this.auth.userID,
-          type: recipe,
-      }
-      console.log(favoriteItem);
-      this.favorite.addFavorite(favoriteItem).then(res => {
 
-      }).catch(err => {
-          console.log(err);
-      })
-  }
-  generateID() {
-    let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
-    return s;
-}
+    addFavorite(recipe: any) {
+        const favoriteItem: IFavorite = {
+            id: Utils.generateID(),
+            type_id: recipe.title,
+            user_id: this.auth.userID,
+            typeS: 'recipe',
+            type: recipe,
+        }
+        console.log(favoriteItem);
+        this.favorite.addFavorite(favoriteItem).then(res => {
+
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
 }

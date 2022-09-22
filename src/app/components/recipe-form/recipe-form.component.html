@@ -4,7 +4,7 @@
         <h1>Submit Recipe</h1>
         <img src="/assets/images/transparent-removebg-preview.png" alt="">
     </div>
-    <form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()" class="row g-2 mt-2 mb-3">
+    <form [formGroup]="recipeForm" (ngSubmit)="saveRecipes()" class="row g-2 mt-2 mb-3">
         <div class="col-md-8">
             <label  class="form-label">Recipe Name</label>
             <input type="text" formControlName="name" class="form-control" >
