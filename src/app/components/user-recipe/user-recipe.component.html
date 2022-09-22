@@ -11,7 +11,7 @@
                     style="font-family: FontAwesome, Arial; font-style: normal" />
 
                     <button (click)="searchByName()" type="button">search</button>
-            
+
           </div>
 
         <ul>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-           
+
             <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
             <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
             <li>
@@ -64,7 +64,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </ul>
     </div>
