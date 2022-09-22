@@ -4,7 +4,7 @@ import { IRecipe } from 'src/app/interfaces/recipe';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICocktail } from 'src/app/interfaces/cocktail';
 @Component({
     selector: 'app-recipe-form',
@@ -29,7 +29,7 @@ export class RecipeFormComponent implements OnInit {
     });
 
     constructor(private userService: UserService, private router: ActivatedRoute,
-        private auth: AuthService) {
+        private auth: AuthService , private route :Router) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();

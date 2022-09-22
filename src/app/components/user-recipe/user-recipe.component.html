@@ -6,14 +6,12 @@
             </span>
         </p>
         <div class="searchGroup">
-            <div class="col-md-4">
+
                 <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
                     style="font-family: FontAwesome, Arial; font-style: normal" />
-            </div>
+                    <button (click)="searchByName()" type="button">search</button>
+            
           </div>
-            <div class="col-md-4">
-                <button (click)="searchByName()" type="button">search</button>
-            </div>
 
         <ul>
             <li *ngFor="let recipe of recipesSearch">
@@ -39,11 +37,8 @@
                     <div class="image">
                         <div class="icons">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                            <button type="button" (click)="deleteRecipe(recipe)" class="btn btn-primary"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-                                <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                            </button>
 
+                                <i (click)="deleteRecipe(recipe)" data-bs-target="#exampleModalToggle"  data-bs-toggle="modal" class="fa fa-minus-circle" aria-hidden="true"></i>
                             </div>
                             <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                         </div>
@@ -61,12 +56,7 @@
                         <div class="image">
                             <div class="icons">
                                 <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                <button type="button" (click)="deleteRecipe(recipe)" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                </button>
-
-
+                                    <i (click)="deleteRecipe(recipe)" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" class="fa fa-minus-circle" aria-hidden="true"></i>
                             </div>
                             <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                         </div>
