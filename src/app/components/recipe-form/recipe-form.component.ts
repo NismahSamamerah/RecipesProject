@@ -35,15 +35,10 @@ export class RecipeFormComponent implements OnInit {
         item: new FormControl(''),
     });
 
-
-    constructor(private userService: UserService, private router: ActivatedRoute,
-        private auth: AuthService , private route :Router) {
-
-    constructor(private userService: UserService, 
+    constructor(private userService: UserService,
         private router: ActivatedRoute,
         private cocktailService: CocktailService,
         private recipeService: RecipeService,
-   
         private auth: AuthService) {
 
         const sub = this.auth.user.subscribe(user => {
@@ -70,7 +65,7 @@ export class RecipeFormComponent implements OnInit {
         }
     }
 
-    saveRecipe(){
+    saveRecipe() {
         const recipe: IRecipe = {
             id: Utils.generateID(),
             user_id: this.auth.userID as string,
@@ -79,6 +74,7 @@ export class RecipeFormComponent implements OnInit {
             servings: this.recipeForm.value.servings,
             instructions: this.recipeForm.value.instructions
         }
+        this.recipeForm.reset();
         this.recipeService.saveRecipeInfo(recipe).then(res => {
             console.log(recipe);
         }).catch(err => {
@@ -86,7 +82,7 @@ export class RecipeFormComponent implements OnInit {
         })
     }
 
-    saveCocktail(){
+    saveCocktail() {
         const cocktail: ICocktail = {
             id: Utils.generateID(),
             user_id: this.auth.userID as string,
@@ -94,11 +90,12 @@ export class RecipeFormComponent implements OnInit {
             ingredients: this.getIngredientsArrayValues(),
             instructions: this.recipeForm.value.instructions
         }
-            this.cocktailService.saveCocktailInfo(cocktail).then(res => {
-                console.log(cocktail);
-            }).catch(err => {
-                console.log(err);
-            })
+        this.recipeForm.reset();
+        this.cocktailService.saveCocktailInfo(cocktail).then(res => {
+            console.log(cocktail);
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     addNewIngredient() {

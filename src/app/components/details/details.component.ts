@@ -20,6 +20,7 @@ import { Utils } from 'src/app/common/utils';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+    
     rating: IRating[] = [];
     type_id: string = '';
     type: string = '';
@@ -75,8 +76,6 @@ export class DetailsComponent implements OnInit {
     }
 
     getRecipeRating() {
-        console.log(this.data);
-        console.log(this.type_id);
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
             console.log(this.rating);
@@ -106,10 +105,9 @@ export class DetailsComponent implements OnInit {
     setRate(rate: number) {
         const rating: IRating = {
             type_id: this.type_id,
-
             user_id: this.auth.userID as string,
             rating: rate,
-            type: this.type
+            type: this.type,
         }
         console.log(rating);
         this.ratingService.saveRatingInfo(rating);

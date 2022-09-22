@@ -25,6 +25,8 @@ import { CardComponent } from './components/cards/card/card.component';
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentComponent } from './components/comment/comment.component';
+import { UserCardComponent } from './components/cards/user-card/user-card.component';
+
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { CommentComponent } from './components/comment/comment.component';
     CardComponent,
     UserRecipeComponent,
     CommentComponent,
+    UserCardComponent,
+
 
   ],
   imports: [
