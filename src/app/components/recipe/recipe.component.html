@@ -17,26 +17,8 @@
     </div>
     <div>
     <ul>
-        <li class="cards" *ngFor="let recipe of this.recipes"> 
-            <div class="card  mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="assets/images/food03.jpg" class="img-fluid rounded-start"  >
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">{{recipe.title}} <i class="fa fa-star" type="checkbox"aria-hidden="true" (click)="addFavorite(recipe)" ></i></h4>
-                            <p class="card-text">{{recipe.ingredients}}</p>
-
-                        </div>
-                        <div class="details">
-                            <a class="details" (click)="getRecipeDetails(recipe)">View Details<i
-                                    class="fa fa-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
+        <app-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-card>
+        
     </ul>
   </div>
 </div>

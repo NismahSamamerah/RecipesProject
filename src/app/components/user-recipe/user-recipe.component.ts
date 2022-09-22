@@ -1,9 +1,10 @@
-import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICocktail } from 'src/app/interfaces/cocktail';
 import { IRecipe } from 'src/app/interfaces/recipe';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { CocktailService } from 'src/app/services/cocktail.service';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
     selector: 'app-user-recipe',
@@ -11,60 +12,59 @@ import { UserService } from 'src/app/services/user.service';
     styleUrls: ['./user-recipe.component.css']
 })
 export class UserRecipeComponent implements OnInit {
-    public type :string | null=''
-    recipes:IRecipe[] =[];
-    cocktails :ICocktail[] =[];
-    recipe :string ='';
 
-    recipesSearch :IRecipe[] =[];
-    searchValue :string ='';
-
-
+    type: string | null = '';
+    recipes: IRecipe[] = [];
+    recipeSearch: IRecipe[] = [];
+    cocktails: ICocktail[] = [];
+    cocktailSearch: ICocktail[] = [];
+    searchValue: string = '';
+    
     constructor(public route: Router,
-        private userService: UserService ,
-        private router: ActivatedRoute) { }
+        private cocktailService: CocktailService,
+        private recipeService: RecipeService,
+        private auth: AuthService,
+        private router: ActivatedRoute) {
+            const sub = this.auth.user.subscribe(user => {
+                this.auth.userID = user?.uid;
+                sub.unsubscribe();
+            })
+        }
 
     ngOnInit(): void {
-      this.recipesSearch;
-      this.type = this.router.snapshot.paramMap.get('data');
-      console.log(this.type);
-
-      if (this.type == 'cocktail') {
-        this.userService.getCocktails().subscribe(cocktails => {
-          this.cocktails = cocktails;
-      });
-    } else if (this.type == 'recipe') {
-
-      this.userService.getRecipes().subscribe(recipes => {
-        this.recipes = recipes;
-    });
-    }
-    }
-
-
-    searchByName(){
-      //TODO:
-      this.recipesSearch=[];
-      for(let recipe of this.recipes){
-        if(recipe.title.includes(this.searchValue)){
-          this.recipesSearch.push(recipe);
+        this.type = this.router.snapshot.paramMap.get('data');
+        console.log(this.type);
+        if (this.type == 'cocktail') {
+            const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
+                this.cocktails = cocktails;
+                sub.unsubscribe(); 
+            });
+        } else if (this.type == 'recipe') {
+            const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
+                this.recipes = recipes;
+                sub.unsubscribe();
+            });
         }
-      }
-      this.recipes = [];
-  }
+    }
+
+    searchByName() {
+        this.recipeSearch = this.recipes.filter(recipe => {
+            return recipe.title.toLowerCase().includes(this.searchValue.toLowerCase());
+        })
+    }
 
     addNewRecipe(type: string) {
         if (type) {
             this.route.navigate(["/recipe-form", { id: type }])
         }
     }
+
     deleteRecipe(recipe: any) {
-        this.userService.delete(recipe);
+        this.recipeService.delete(recipe);
     }
 
-
     getRecipeDetails(recipe: any) {
-      this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
-  }
+        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+    }
 
 }

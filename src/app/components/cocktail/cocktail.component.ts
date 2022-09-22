@@ -46,7 +46,7 @@ export class CocktailComponent implements OnInit {
         ).unsubscribe();
     }
     goToUserRecipes() {
-        this.router.navigate(['/user-recipe' , { data: 'cocktail' }]);
+        this.router.navigate(['/user-recipe', { data: 'cocktail' }]);
     }
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
@@ -61,8 +61,10 @@ export class CocktailComponent implements OnInit {
             id: this.generateID(),
             type_id: cocktail.name,
             user_id: this.auth.userID,
+            typeS: 'cocktail',
             type: cocktail,
         }
+        
         console.log(favoriteItem);
         this.favorite.addFavorite(favoriteItem).then(res => {
         }).catch(err => {
