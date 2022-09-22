@@ -6,20 +6,22 @@
             </span>
         </p>
         <div class="searchGroup">
-            <div class="col-md-4">
+
                 <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
                     style="font-family: FontAwesome, Arial; font-style: normal" />
-            </div>
-            <div class="col-md-4">
-                <button (click)="searchByName()" type="button">search</button>
-            </div>
-        </div>
+
+                    <button (click)="searchByName()" type="button">search</button>
+            
+          </div>
+
         <ul>
-            <li *ngFor="let recipe of recipeSearch">
+            <li *ngFor="let recipe of recipesSearch">
+
                 <div class="card mt-5" style="width: 15rem">
                     <div class="image">
                         <div class="icons">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
+
                             <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
                         </div>
                         <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
@@ -39,6 +41,7 @@
                         <div class="icons">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
+
                         </div>
                         <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                     </div>
@@ -51,12 +54,16 @@
                     </div>
                 </div>
             </li>
+
             <li *ngFor="let cocktail of cocktailSearch">
+
                 <div class="card mt-5" style="width: 15rem">
                     <div class="image">
                         <div class="icons">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
+
                             <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
+
                         </div>
                         <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                     </div>
@@ -67,6 +74,7 @@
                             <i class="fa fa-arrow-right"></i>
                         </div>
                     </div>
+
                 </div>
             </li>
             <li *ngFor="let cocktail of cocktails">
@@ -75,6 +83,7 @@
                         <div class="icons">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(cocktail)"></i>
+
                         </div>
                         <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                     </div>
@@ -116,7 +125,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </ul>
     </div>
 </div>
+

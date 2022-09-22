@@ -3,8 +3,12 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { CocktailService } from 'src/app/services/cocktail.service';
 import { RecipeService } from 'src/app/services/recipe.service';
+
 import { ICocktail } from 'src/app/interfaces/cocktail';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { Utils } from 'src/app/common/utils';
@@ -31,11 +35,17 @@ export class RecipeFormComponent implements OnInit {
         item: new FormControl(''),
     });
 
+
+    constructor(private userService: UserService, private router: ActivatedRoute,
+        private auth: AuthService , private route :Router) {
+
     constructor(private userService: UserService, 
         private router: ActivatedRoute,
         private cocktailService: CocktailService,
         private recipeService: RecipeService,
+   
         private auth: AuthService) {
+
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
