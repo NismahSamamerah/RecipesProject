@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { IRecipe } from 'src/app/interfaces/recipe';
+import { Utils } from 'src/app/common/utils';
 
 @Component({
     selector: 'app-recipe',
@@ -38,9 +39,8 @@ export class RecipeComponent implements OnInit {
                 console.log(error);
             }
         );
-        // this.apiService.getImages('fish').subscribe()
-        console.log(this.apiService.getImages('fish'));
     }
+
     loadRecipe(): void {
         this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
             (data: any) => {
@@ -52,11 +52,6 @@ export class RecipeComponent implements OnInit {
         );
     }
 
-    searchRecipe(value: string) {
-        this.apiService.getRecipesByName(value).subscribe((data) => {
-            console.log(data, "searchable");
-        });
-    }
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
@@ -67,7 +62,7 @@ export class RecipeComponent implements OnInit {
     addFavorite(recipe: IRecipe) {
     
         const favoriteItem: IFavorite = {
-            id: this.generateID(),
+            id: Utils.generateID(),
             type_id: recipe.title,
             user_id: this.auth.userID,
             typeS: 'recipe',
@@ -80,10 +75,4 @@ export class RecipeComponent implements OnInit {
             console.log(err);
         })
     }
-    generateID() {
-        let s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (var i = 0; i < 9; i++) { s += r.charAt(Math.floor(Math.random() * r.length)); }
-        return s;
-    }
-   
 }

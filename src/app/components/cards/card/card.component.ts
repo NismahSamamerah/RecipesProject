@@ -34,20 +34,6 @@ export class CardComponent implements OnInit {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
 
-    loadRecipe(): void {
-        this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
-            (data: any) => {
-                console.log(data);
-
-                this.recipes = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-            
-        );
-    }
-
     addFavorite(recipe: any) {
         const favoriteItem: IFavorite = {
             id: Utils.generateID(),
