@@ -29,33 +29,25 @@
             </div>
         </form>
     </div>
-
-
-    <div class="list">
-
-        <h3>Ingredients</h3>
-        <p>{{data.ingredients}}</p>
-        <h3> servings</h3>
-        <p>{{data. servings}}</p>
-    </div>
+    <div class="Directions">
+      <h3>Directions</h3>
+      <p>
+          {{data.instructions}}
+      </p>
+      <div class="editDiv">
+          <button type="button" class="edit">Edit Your Recipe</button>
+      </div>
+  </div>
+  <h5 class="tittle" style="font-size: 30px; width:20pc;border-bottom: 2px solid black;">{{comments.length}} Comments</h5>
+  <app-comment [comment]="comment" *ngFor="let comment of comments"></app-comment>
+  <div class="container comment-box">
+      <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment(commentForm.value)">
+          <textarea class="comment-text" formControlName="comment" name="comment" class="textarea" placeholder="Add Your Comment.." cols="30"
+              rows="10"></textarea>
+          <button class="commentbutton" type="submit">Add Comment</button>
+      </form>
+  </div>
 </div>
 
-<div class="Directions">
-    <h3>Directions</h3>
-    <p>
-        {{data.instructions}}
-    </p>
-    <div class="editDiv">
-        <button type="button" class="edit">Edit Your Recipe</button>
-    </div>
-</div>
-<h5 class="tittle" style="font-size: 30px;">{{comments.length}} Comments</h5>
-<app-comment [comment]="comment" *ngFor="let comment of comments"></app-comment>
-<h5 class="tittle">Leave a Comment</h5>
-<div class="container comment-box">
-    <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment(commentForm.value)">
-        <textarea formControlName="comment" name="comment" class="textarea" placeholder="Add Your Comment.." cols="30"
-            rows="10"></textarea>
-        <button class="commentbutton" type="submit">Add Comment</button>
-    </form>
-</div>
+
+
