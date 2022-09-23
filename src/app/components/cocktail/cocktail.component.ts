@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CocktailComponent implements OnInit {
     cocktails: any = [];
-    cocktail: string = '';
+    public cocktail: string = '';
 
     constructor(public router: Router,
         public apiService: ApiService,
@@ -64,7 +64,7 @@ export class CocktailComponent implements OnInit {
             typeS: 'cocktail',
             type: cocktail,
         }
-        
+
         console.log(favoriteItem);
         this.favorite.addFavorite(favoriteItem).then(res => {
         }).catch(err => {

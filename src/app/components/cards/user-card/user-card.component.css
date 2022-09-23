@@ -1,0 +1,59 @@
+
+.card-text{
+  padding: 10px;
+}
+
+.fa-plus-square-o{
+  font-size: 80px;
+  color: #d54215;
+}
+.image{
+  position: relative;
+}
+.details{
+  font-weight: 700;
+}
+.details:hover{
+  color: #d54215;
+}
+.card{
+  box-shadow:  5px 5px 10px #c1c1c1;
+}
+.card-body{
+  border: 1px solid lightgray;
+
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+li{
+  margin-left: 10px;
+
+}
+.details{
+  text-decoration: none;
+  color: black;
+}
+.icons{
+  position: absolute;
+    z-index: 1;
+    font-size: 25px;
+    right: 10px;
+    color: black;
+}
+.fa-share-square-o{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.fa-share-square-o:hover{
+  color: #d54215;
+}
+.fa-minus-circle{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.fa-minus-circle:hover{
+  color: #d54215;
+}
