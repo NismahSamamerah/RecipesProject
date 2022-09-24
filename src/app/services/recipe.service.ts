@@ -17,7 +17,7 @@ export class RecipeService {
     saveRecipeInfo(recipe: IRecipe) {
         return this.angularFirestore.collection(`recipe`).doc(recipe.id).set(recipe);
     }
-    getUserRecipes(user_id: string):   Observable<any[]>{
+    getUserRecipes(user_id: string): Observable<any[]>{
         return this.angularFirestore.collection(`recipe`, ref => ref.where('user_id', '==', user_id)).valueChanges();
     }
 

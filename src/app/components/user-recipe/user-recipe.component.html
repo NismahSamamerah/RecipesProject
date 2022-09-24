@@ -5,23 +5,22 @@
             You Can Add Your Special Cocktail<span><a routerLink="/recipe-form"> Click Here</a>
             </span>
         </p>
+        
+        </div>
         <div class="searchGroup">
-
-                <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
-                    style="font-family: FontAwesome, Arial; font-style: normal" />
-
-                    <button (click)="searchByName()" type="button">search</button>
-          </div>
-
+            <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
+                style="font-family: FontAwesome, Arial; font-style: normal" />
+            <button (click)="searchByName()" type="button">search</button>
         <ul>
-
-            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
-            
             <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
+            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipeSearch"></app-user-card>
+            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
+            <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
             <li>
                 <a>
-                    <div class="card mt-5 bg-light">
-                        <div class="empty-card" (click)="addNewRecipe('Recipe')">
+                    <div class="card mt-5 bg-light"
+                        style=" width: 15rem;height: 300px; display: flex; justify-content: center; align-items: center;">
+                        <div class="empty-card" (click)="addNewRecipe()">
                             <i class="fa fa-plus-square-o"></i>
                         </div>
                     </div>
@@ -48,4 +47,3 @@
         </ul>
     </div>
 </div>
-

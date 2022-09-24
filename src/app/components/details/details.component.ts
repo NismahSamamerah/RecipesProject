@@ -4,14 +4,15 @@ import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { RatingService } from 'src/app/services/rating.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router, TitleStrategy } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ICocktail } from 'src/app/interfaces/cocktail';
-import { UserService } from 'src/app/services/user.service';
 import { Utils } from 'src/app/common/utils';
+import { IMostRating } from 'src/app/interfaces/mostRating';
+import { MostRateService } from 'src/app/services/most-rate.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { Utils } from 'src/app/common/utils';
     styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-    
+
     rating: IRating[] = [];
     type_id: string = '';
     type: string = '';
@@ -40,7 +41,7 @@ export class DetailsComponent implements OnInit {
         private commentService: CommentService,
         private ratingService: RatingService,
         private auth: AuthService,
-        private user: UserService) {
+        private mostRateService: MostRateService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -79,16 +80,22 @@ export class DetailsComponent implements OnInit {
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
             console.log(this.rating);
-            
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
     }
 
-    getCocktailRating() { }
+    getCocktailRating() {
+        const sub = this.ratingService.getCocktailRating(this.type_id).subscribe(res => {
+            this.rating = res;
+            console.log(this.rating);
+            this.calculateRatingAverage();
+            sub.unsubscribe();
+        });
+    }
 
     getComments() {
-        this.type == 'recipe'? this.getRecipeComments(): this.getCocktailComments();
+        this.type == 'recipe' ? this.getRecipeComments() : this.getCocktailComments();
     }
 
     getRecipeComments(): void {
@@ -99,7 +106,10 @@ export class DetailsComponent implements OnInit {
     }
 
     getCocktailComments(): void {
-
+        const sub = this.commentService.getCocktailComments(this.type_id).subscribe(comments => {
+            this.comments = comments;
+            sub.unsubscribe();
+        });
     }
 
     setRate(rate: number) {
@@ -109,8 +119,8 @@ export class DetailsComponent implements OnInit {
             rating: rate,
             type: this.type,
         }
-        console.log(rating);
         this.ratingService.saveRatingInfo(rating);
+        
     }
 
     saveComment(comment: any) {
@@ -125,7 +135,7 @@ export class DetailsComponent implements OnInit {
         this.comments.push(commentI);
         this.commentForm.reset();
         this.commentService.saveCommentInfo(commentI).then(res => {
-            
+
         }).catch(err => {
             console.log(err);
         })

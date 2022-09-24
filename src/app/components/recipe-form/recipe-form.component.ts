@@ -47,7 +47,9 @@ export class RecipeFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        
         this.type = this.router.snapshot.paramMap.get('id');
+        console.log( this.type)
     }
 
     isLoggedIn() {
@@ -65,6 +67,7 @@ export class RecipeFormComponent implements OnInit {
     }
 
     saveRecipe() {
+        
         const recipe: IRecipe = {
             id: Utils.generateID(),
             user_id: this.auth.userID as string,

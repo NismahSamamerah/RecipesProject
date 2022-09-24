@@ -34,12 +34,12 @@ export class UserRecipeComponent implements OnInit {
     ngOnInit(): void {
         this.type = this.router.snapshot.paramMap.get('data');
         console.log(this.type);
-        if (this.type == 'cocktail') {
+        if (this.type == 'Cocktail') {
             const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
                 this.cocktails = cocktails;
                 sub.unsubscribe(); 
             });
-        } else if (this.type == 'recipe') {
+        } else if (this.type == 'Recipe') {
             const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
                 this.recipes = recipes;
                 sub.unsubscribe();
@@ -48,21 +48,32 @@ export class UserRecipeComponent implements OnInit {
     }
 
     searchByName() {
-        this.recipeSearch = this.recipes.filter(recipe => {
-            return recipe.title.toLowerCase().includes(this.searchValue.toLowerCase());
-        })
-    }
-
-    addNewRecipe(type: string) {
-        if (type) {
-            this.route.navigate(["/recipe-form", { id: type }])
+        if (this.type == 'Cocktail') {
+            this.searchCocktailByName(); 
+        }else{
+            this.searchRecipeByName();
         }
     }
 
-    
+    searchCocktailByName() {
+        this.cocktailSearch = this.cocktails.filter(recipe => {
+            return recipe.name.toLowerCase().includes(this.searchValue.toLowerCase());
+        })
+        this.cocktails=[];
+    }
+
+    searchRecipeByName() {
+        this.recipeSearch = this.recipes.filter(recipe => {
+            return recipe.title.toLowerCase().includes(this.searchValue.toLowerCase());
+        })
+        this.recipes=[];
+    }
+
+    addNewRecipe() {
+            this.route.navigate(["/recipe-form", { id: this.type }])
+    }
 
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
-
 }

@@ -33,5 +33,9 @@ export class RatingService {
         return this.angularFirestore.collection(`rating`, ref => ref.where('type_id', '==', recipeId)).valueChanges();
     }
 
+    getCocktailRating(cocktailId: string): Observable<any[]> {
+        return this.angularFirestore.collection(`rating`, ref => ref.where('type_id', '==', cocktailId)).valueChanges();
+    }
+
 
 }
