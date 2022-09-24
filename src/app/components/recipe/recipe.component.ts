@@ -49,7 +49,7 @@ export class RecipeComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
-        );
+        ); 
     }
 
     getRecipeDetails(recipe: any) {
@@ -58,7 +58,6 @@ export class RecipeComponent implements OnInit {
     goToUserRecipes() {
         this.route.navigate(['/user-recipe' , { data: 'recipe' }])
     }
-
     addFavorite(recipe: IRecipe) {
 
         const favoriteItem: IFavorite = {

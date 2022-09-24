@@ -14,14 +14,17 @@
     justify-content: space-around;
     flex-wrap: nowrap;
     align-items: center
-
 }
 
 img{
     max-height: 40vh;
-
 }
 .footer div div{
     display: inline-block;
-
+}
+i{
+  transition: 0.4s;
+}
+i:hover{
+  color: white;
 }

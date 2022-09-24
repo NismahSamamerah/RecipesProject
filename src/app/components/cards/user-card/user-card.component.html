@@ -11,7 +11,7 @@
         <div class="card-text">
             <h5 class="card-title">{{ recipe?.title }}</h5>
             <div class="details">
-                <a class="details">View Details </a>
+                <a class="details"(click)="getUserRecipeDetails(recipe)">View Details </a>
                 <i class="fa fa-arrow-right"></i>
             </div>
         </div>

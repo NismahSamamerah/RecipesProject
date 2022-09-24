@@ -6,8 +6,8 @@
     </div>
     <form [formGroup]="recipeForm" (ngSubmit)="saveRecipes()" class="row g-2 mt-2 mb-3">
         <div class="col-md-8">
-            <label  class="form-label">Recipe Name</label>
-            <input type="text" formControlName="name" class="form-control" >
+            <label  class="form-label" for="name" >Recipe Name</label>
+            <input type="text" id="name" #name formControlName="name" class="form-control" >
             <p class="error-messege" *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched">
                 *{{
                 recipeForm.get('name')?.errors?.['required'] ? 'this felid is required !' : ''
@@ -16,10 +16,10 @@
         </div>
         <div class="ingredients" >
             <div class="mb-3 col-md-6">
-                <label class="form-label">ingredients</label>
+                <label class="form-label" for="ingredients">ingredients</label>
                 <div *ngFor="let itemGroup of getIngredientsArray()">
                     <div [formGroup]="itemGroup">
-                        <input formControlName="item" type="text" class="form-control" style="margin-bottom:5px" >
+                        <input id="ingredients" #ingredients formControlName="item" type="text" class="form-control" style="margin-bottom:5px" >
                     </div>
                 </div>
             </div>
@@ -33,8 +33,8 @@
             </p>
         </div>
         <div class="col-md-8">
-            <label  class="form-label">Servings</label>
-            <input type="text" class="form-control" formControlName="servings">
+            <label  class="form-label" for="servings">Servings</label>
+            <input type="text" id="servings" #servings class="form-control" formControlName="servings">
             <p class="error-messege" *ngIf="recipeForm.get('servings')?.invalid && recipeForm.get('servings')?.touched" role="alert">
                 *{{
                 recipeForm.get('servings')?.errors?.['required'] ? 'this felid is required !' : ''
@@ -42,11 +42,14 @@
             </p>
         </div>
         <div class="col-md-8">
-            <label for="floatingTextarea2">Instructions</label>
-            <textarea formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
+            <label for="instructions">Instructions</label>
+            <textarea id="instructions" #instructions formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
         </div>
-        <button class="col-md-8" type="submit"  style="max-height:50px ;">Submit Your Recipe</button>
+        <button  class="col-md-8" type="submit"  style="max-height:50px ;">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
+
+
     </form>
+
 </div>
 
 

@@ -34,8 +34,8 @@
       <p>
           {{data.instructions}}
       </p>
-      <div class="editDiv">
-          <button type="button" class="edit">Edit Your Recipe</button>
+      <div *ngIf="isUsertype" class="editDiv">
+          <button type="button" class="edit" (click)="getUserRecipeForm(data)">Edit Your Recipe</button>
       </div>
   </div>
   <h5 class="tittle" style="font-size: 30px; width:20pc;border-bottom: 2px solid black;">{{comments.length}} Comments</h5>

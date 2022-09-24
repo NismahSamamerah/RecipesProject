@@ -6,6 +6,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path : "register" , component : RegisterComponent ,canActivate :[GuestGuard]},
   {path : "login" , component : LoginComponent, canActivate: [GuestGuard]},
   {path : "home" , component : HomeComponent,  },
+  {path : "" , component : HomeComponent},
   {path : "recipe" , component : RecipeComponent ,canActivate: [AuthGuard]},
   {path : "cocktail" , component : CocktailComponent , canActivate: [AuthGuard]},
   {path : "contact-us" , component : ContactUsComponent},
@@ -29,6 +31,7 @@ const routes: Routes = [
   {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
   {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details" , component : DetailsComponent},
+  {path : "**" , component : NotFoundComponent},
 
 ];
 
