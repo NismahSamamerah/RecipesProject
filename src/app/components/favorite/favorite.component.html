@@ -6,38 +6,43 @@
         </div>
     </div>
     <div class="search">
-      <div class="btn-group " role="group" >
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline" for="btnradio1">All</label>
+        <form class="btn-group " role="group">
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn " for="btnradio2">Recipes</label>
+            <input type="radio" class="btn-check" name="filter" (click)="filter('all')" id="btnradio1"
+                autocomplete="off">
+            <label class="btn btn-outline" for="btnradio1">All</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-        <label class="btn" for="btnradio3">Cocktails</label>
-      </div>
+            <input type="radio" class="btn-check" name="filter" (click)="filter('recipe')" id="btnradio2"
+                autocomplete="off">
+            <label class="btn " for="btnradio2">Recipes</label>
 
-      <input [(ngModel)]="favoritesSearch" type="text" class="form-control" placeholder="&#xf002; Search "
-          style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
-
-  </div>
+            <input type="radio" class="btn-check" name="filter" (click)="filter('cocktail')" id="btnradio3"
+                autocomplete="off">
+            <label class="btn" for="btnradio3">Cocktails</label>
+        </form>
+        <div class="searchGroup">
+            <input [(ngModel)]="favValue" type="text" class="form-control" placeholder="&#xf002; Search "
+                style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
+            <button (click)="search()" type="button">Search</button>
+        </div>
+    </div>
     <ul>
-      <li class="card mt-3" *ngFor="let fav of favoritesSearch">
-        <div class="image">
-          <i class="fa fa-star" aria-hidden="true" (click)="deleteFromFavorite(fav)"  ></i>
-            <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
-        </div>
-        <div class="card-text">
-            <h5 class="card-title">{{fav.type_id}}</h5>
-            <div class="details">
-                <a class="details" (click)="getRecipeDetails(fav.type)"  >View Details </a>
-                <i class="fa fa-arrow-right"></i>
+        <li class="card mt-3" *ngFor="let fav of favoritesSearch">
+            <div class="image">
+                <i class="fa fa-star" aria-hidden="true" (click)="deleteFromFavorite(fav)"></i>
+                <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
             </div>
-        </div>
-    </li>
+            <div class="card-text">
+                <h5 class="card-title">{{fav.type_id}}</h5>
+                <div class="details">
+                    <a class="details" (click)="getRecipeDetails(fav.type)">View Details </a>
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </li>
         <li class="card mt-3" *ngFor="let fav of favorites">
             <div class="image">
-              <i class="fa fa-star" aria-hidden="true" (click)="deleteFromFavorite(fav)"  ></i>
+                <i class="fa fa-star" aria-hidden="true" (click)="deleteFromFavorite(fav)"></i>
                 <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
             </div>
             <div class="card-text">

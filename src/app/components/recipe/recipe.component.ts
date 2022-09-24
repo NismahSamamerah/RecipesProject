@@ -56,7 +56,7 @@ export class RecipeComponent implements OnInit {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
     goToUserRecipes() {
-        this.route.navigate(['/user-recipe' , { data: 'recipe' }])
+        this.route.navigate(['/user-recipe' , { data: 'Recipe' }])
     }
     addFavorite(recipe: IRecipe) {
 

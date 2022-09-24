@@ -18,7 +18,7 @@ export class CardComponent implements OnInit {
     @Input() recipe: IRecipe | undefined;
     @Input() cocktail: ICocktail | undefined;
     recipes: any = [];
-    cocltails: any = [];
+    cocktails: any = [];
 
     constructor(private apiService: ApiService,
         public route: Router,
@@ -36,10 +36,19 @@ export class CardComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
-    addFavorite(recipe: any) {
+
+    addFavorite(recipe:any){
+        if (recipe.hasOwnProperty('title')) {
+            this.addFavoriteRecipe(recipe)
+        } else {
+            this.addFavoriteCocktail(recipe)
+        }
+    }
+
+    addFavoriteRecipe(recipe: any) {
         const favoriteItem: IFavorite = {
             id: Utils.generateID(),
-            type_id: recipe.title,
+            type_id: recipe.title ,
             user_id: this.auth.userID,
             typeS: 'recipe',
             type: recipe,
@@ -52,4 +61,19 @@ export class CardComponent implements OnInit {
         })
     }
 
+    addFavoriteCocktail(cocktail: any) {
+        const favoriteItem: IFavorite = {
+            id: Utils.generateID(),
+            type_id: cocktail.name ,
+            user_id: this.auth.userID,
+            typeS: 'cocktail',
+            type: cocktail,
+        }
+        console.log(favoriteItem);
+        this.favorite.addFavorite(favoriteItem).then(res => {
+
+        }).catch(err => {
+            console.log(err);
+        })
+    }
 }

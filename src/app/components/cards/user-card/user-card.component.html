@@ -4,12 +4,13 @@
         <div class="image">
             <div class="icons">
                 <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"></i>
+                <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"(click)="deleteCocktail(cocktail)"></i>
             </div>
             <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
         </div>
         <div class="card-text">
             <h5 class="card-title">{{ recipe?.title }}</h5>
+            <h5 class="card-title">{{ cocktail?.name }}</h5>
             <div class="details">
                 <a class="details"(click)="getUserRecipeDetails(recipe)">View Details </a>
                 <i class="fa fa-arrow-right"></i>

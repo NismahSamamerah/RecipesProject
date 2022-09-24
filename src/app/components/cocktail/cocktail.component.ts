@@ -46,7 +46,7 @@ export class CocktailComponent implements OnInit {
         ).unsubscribe();
     }
     goToUserRecipes() {
-        this.router.navigate(['/user-recipe', { data: 'cocktail' }]);
+        this.router.navigate(['/user-recipe', { data: 'Cocktail' }]);
     }
     searchRecipe(value: string) {
         this.apiService.getRecipesByName(value).subscribe((data) => {
