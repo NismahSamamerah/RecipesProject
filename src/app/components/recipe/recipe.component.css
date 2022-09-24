@@ -77,9 +77,12 @@ ul{
   margin-top: 30px;
 }
 li{
-  width: 45%;
+
   margin-left: 20px;
 
+}
+.com{
+  width: 45%;
 }
 .details{
   text-decoration: none;

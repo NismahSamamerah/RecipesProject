@@ -6,7 +6,6 @@
 .container{
   font-family: 'SF Pro Display reguler';
 
-
 }
 h1 {
   margin-right:  auto;
@@ -16,20 +15,6 @@ h1 {
 }
 span a{
   text-decoration: none;
-  color: #d54215;
-}
-.card-text{
-  padding: 10px;
-}
-.fa-heart{
-  font-size: 35px;
-  color: rgb(245, 226, 226);
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
-}
-.fa-heart:hover{
   color: #d54215;
 }
 
@@ -53,35 +38,27 @@ button:hover{
   color: black;
 
 }
-.image{
-  position: relative;
-}
-.details{
-  font-weight: 700;
-}
-.details:hover{
-  color: #d54215;
-}
+
 .searchGroup{
   width: 50%;
   display: flex;
   justify-content: space-between;
 }
-.card{
-  box-shadow:  5px 5px 10px #c1c1c1;
-}
-.card-body{
-  border: 1px solid lightgray;
 
-}
 ul{
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 }
-li{
-  margin-left: 10px;
 
+.card{
+  margin-left: 10px;
+  width: 15rem;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:  5px 5px 10px #c1c1c1;
 }
 .details{
   text-decoration: none;
@@ -94,17 +71,4 @@ li{
     right: 10px;
     color: black;
 }
-.fa-share-square-o{
-  margin-right: 10px;
-  cursor: pointer;
-}
-.fa-share-square-o:hover{
-  color: #d54215;
-}
-.fa-minus-circle{
-  margin-right: 10px;
-  cursor: pointer;
-}
-.fa-minus-circle:hover{
-  color: #d54215;
-}
+

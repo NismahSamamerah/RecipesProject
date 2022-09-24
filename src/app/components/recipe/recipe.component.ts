@@ -60,7 +60,7 @@ export class RecipeComponent implements OnInit {
     }
 
     addFavorite(recipe: IRecipe) {
-    
+
         const favoriteItem: IFavorite = {
             id: Utils.generateID(),
             type_id: recipe.title,
