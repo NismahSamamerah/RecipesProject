@@ -56,19 +56,20 @@ export class DetailsComponent implements OnInit {
     ngOnInit(): void {
 
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
-        console.log(this.data);
 
         if (this.data.hasOwnProperty('title')) {
-            this.type = 'recipe';
+            this.type = 'Recipe';
             this.type_id = this.data.title;
+            console.log(this.type + this.type_id);
+
             if(this.data.hasOwnProperty('user_id')){
               this.isUsertype = 'user-recipe';
             }
         } else {
-            this.type = 'cocktail';
+            this.type = 'Cocktail';
             this.type_id = this.data.name;
             if(this.data.hasOwnProperty('user_id')){
-              this.isUsertype = 'user-recipe';
+              this.isUsertype = 'user-cocktail';
             }
         }
 
@@ -97,7 +98,6 @@ export class DetailsComponent implements OnInit {
     getRecipeRating() {
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
-            console.log(this.rating);
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
@@ -106,7 +106,6 @@ export class DetailsComponent implements OnInit {
     getCocktailRating() {
         const sub = this.ratingService.getCocktailRating(this.type_id).subscribe(res => {
             this.rating = res;
-            console.log(this.rating);
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
@@ -160,19 +159,8 @@ export class DetailsComponent implements OnInit {
     }
 
 
-    // editRecipe(){
-    //   this.editVal = 'edit'
-    //   this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
-    //   console.log('from edit finstion');
-    //   console.log(this.data.id);
-    //   this.getUserRecipeDetails(JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data')))));
-
-    // }
     getUserRecipeForm(recipe: any) {
       this.route.navigate(['/recipe-form', { data: JSON.stringify(recipe) }]);
-      console.log('from details');
-
-      console.log(recipe);
 
     }
 }

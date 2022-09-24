@@ -27,15 +27,8 @@ export class RecipeService {
         this.itemDoc.delete();
     }
     update(recipe :any){
-      console.log('1 ');
-console.log(recipe);
-
       this.angularFirestore.collection(`recipe`, ref => ref.where('id' , '==', recipe.id as string)).ref.get().then((docs) => {
-        console.log('2 ');
         docs.forEach(doc => {
-          console.log(' 3');
-          console.log(doc.get('title'));
-
             if (doc.get('user_id') == this.auth.userID && doc.get('id') == recipe.id) {
                 this.angularFirestore.collection("recipe").doc(doc.id).update({
                   title: recipe.title,
@@ -43,19 +36,6 @@ console.log(recipe);
                     servings : recipe.servings,
                     ingredients : recipe.ingredients,
                 });
-// id
-// "LH7k8wpI3"
-// ingredients
-// 0
-// "cheese"
-// instructions
-// "nnnnnnnnnnnnnnnnnnnnnn"
-// servings
-// "1"
-// title
-// "pizza"
-// user_id
-// "UIWYc7Q1YT
             }
         });
     })

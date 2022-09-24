@@ -32,7 +32,7 @@
                 }}
             </p>
         </div>
-        <div class="col-md-8">
+        <div  class="col-md-8">
             <label  class="form-label" for="servings">Servings</label>
             <input type="text" id="servings" #servings class="form-control" formControlName="servings">
             <p class="error-messege" *ngIf="recipeForm.get('servings')?.invalid && recipeForm.get('servings')?.touched" role="alert">
@@ -45,11 +45,8 @@
             <label for="instructions">Instructions</label>
             <textarea id="instructions" #instructions formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
         </div>
-        <button  class="col-md-8" type="submit"  style="max-height:50px ;">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
-
-
+        <button  class="col-md-8" type="submit" style="max-height:50px ">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
     </form>
-
 </div>
 
 
