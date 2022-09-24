@@ -5,12 +5,13 @@
             You Can Add Your Special Cocktail<span><a routerLink="/recipe-form"> Click Here</a>
             </span>
         </p>
-        
-        </div>
+
+
         <div class="searchGroup">
             <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
                 style="font-family: FontAwesome, Arial; font-style: normal" />
             <button (click)="searchByName()" type="button">search</button>
+            </div>
         <ul>
             <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
             <app-user-card [recipe]="recipe" *ngFor="let recipe of recipeSearch"></app-user-card>
@@ -46,4 +47,5 @@
             </div>
         </ul>
     </div>
-</div>
+
+  </div>

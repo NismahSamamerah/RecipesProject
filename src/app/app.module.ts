@@ -26,6 +26,7 @@ import { UserRecipeComponent } from './components/user-recipe/user-recipe.compon
 import { HttpClientModule } from '@angular/common/http';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserCardComponent } from './components/cards/user-card/user-card.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -49,6 +50,7 @@ import { UserCardComponent } from './components/cards/user-card/user-card.compon
     UserRecipeComponent,
     CommentComponent,
     UserCardComponent,
+    NotFoundComponent,
 
 
   ],

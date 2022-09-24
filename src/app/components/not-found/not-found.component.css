@@ -1,0 +1,19 @@
+.container{
+  text-align: center;
+  margin: auto;
+  width: 75%;
+  height: 80vh;
+}
+h1 {
+  color: var(--primary-color);
+  font-size: 55px;
+  margin: auto;
+  font-weight: bold;
+}
+p{
+  font-size: 38px;
+  color: gray;
+  margin: auto;
+  font-style: italic;
+}
+

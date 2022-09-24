@@ -19,7 +19,8 @@ export class UserRecipeComponent implements OnInit {
     cocktails: ICocktail[] = [];
     cocktailSearch: ICocktail[] = [];
     searchValue: string = '';
-    
+    public data: IRecipe | ICocktail | any;
+
     constructor(public route: Router,
         private cocktailService: CocktailService,
         private recipeService: RecipeService,
@@ -37,7 +38,7 @@ export class UserRecipeComponent implements OnInit {
         if (this.type == 'Cocktail') {
             const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
                 this.cocktails = cocktails;
-                sub.unsubscribe(); 
+                sub.unsubscribe();
             });
         } else if (this.type == 'Recipe') {
             const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
@@ -49,7 +50,7 @@ export class UserRecipeComponent implements OnInit {
 
     searchByName() {
         if (this.type == 'Cocktail') {
-            this.searchCocktailByName(); 
+            this.searchCocktailByName();
         }else{
             this.searchRecipeByName();
         }
