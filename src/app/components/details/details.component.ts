@@ -56,6 +56,8 @@ export class DetailsComponent implements OnInit {
             this.type = 'cocktail';
             this.type_id = this.data.name;
         }
+        console.log(this.type + this.type_id);
+        
         this.getRating();
         this.getComments();
     }

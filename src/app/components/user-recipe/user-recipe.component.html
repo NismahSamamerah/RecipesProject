@@ -5,45 +5,45 @@
             You Can Add Your Special Cocktail<span><a routerLink="/recipe-form"> Click Here</a>
             </span>
         </p>
-        
-        </div>
-        <div class="searchGroup">
-            <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
-                style="font-family: FontAwesome, Arial; font-style: normal" />
-            <button (click)="searchByName()" type="button">search</button>
-        <ul>
-            <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
-            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipeSearch"></app-user-card>
-            <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
-            <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
-            <li>
-                <a>
-                    <div class="card mt-5 bg-light"
-                        style=" width: 15rem;height: 300px; display: flex; justify-content: center; align-items: center;">
-                        <div class="empty-card" (click)="addNewRecipe()">
-                            <i class="fa fa-plus-square-o"></i>
-                        </div>
+
+    </div>
+    <div class="searchGroup">
+        <input [(ngModel)]="searchValue" type="text" class="form-control" placeholder="&#xf002; Search by Name"
+            style="font-family: FontAwesome, Arial; font-style: normal" />
+        <button (click)="searchByName()" type="button">search</button>
+    </div>
+    <ul>
+        <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearch"></app-user-card>
+        <app-user-card [recipe]="recipe" *ngFor="let recipe of recipeSearch"></app-user-card>
+        <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
+        <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
+        <li>
+            <a>
+                <div class="card mt-5 bg-light"
+                    style=" width: 15rem;height: 300px; display: flex; justify-content: center; align-items: center;">
+                    <div class="empty-card" (click)="addNewRecipe()">
+                        <i class="fa fa-plus-square-o"></i>
                     </div>
-                </a>
-            </li>
-            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Recipe deleted successfully
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                                data-bs-toggle="modal">Close</button>
-                        </div>
+                </div>
+            </a>
+        </li>
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Recipe deleted successfully
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal">Close</button>
                     </div>
                 </div>
             </div>
-        </ul>
-    </div>
+        </div>
+    </ul>
 </div>
