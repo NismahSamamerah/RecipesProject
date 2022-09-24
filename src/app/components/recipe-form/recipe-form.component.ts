@@ -59,9 +59,9 @@ export class RecipeFormComponent implements OnInit {
     }
 
     saveRecipes() {
-        if (this.type == 'cocktail') {
+        if (this.type == 'Cocktail') {
             this.saveCocktail();
-        } else if (this.type == 'recipe') {
+        } else if (this.type == 'Recipe') {
             this.saveRecipe();
         }
     }

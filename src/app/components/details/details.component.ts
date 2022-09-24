@@ -123,8 +123,6 @@ export class DetailsComponent implements OnInit {
         
     }
 
-    
-
     saveComment(comment: any) {
         const commentI: IComment = {
             id: Utils.generateID(),
