@@ -57,10 +57,7 @@ export class UserRecipeComponent implements OnInit {
             this.route.navigate(["/recipe-form", { id: this.type }])
     }
 
-    
-
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
-
 }

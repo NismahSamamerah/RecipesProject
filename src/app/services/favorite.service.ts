@@ -24,6 +24,10 @@ export class FavoriteService {
 		return this.angularFirestore.collection(`favorite`, ref => ref.where('typeS', '==', 'cocktail').where('user_id', '==', user_id)).valueChanges();
 	}
 
+	getFavorites(user_id: string): Observable<any[]> {
+		return this.angularFirestore.collection(`favorite`, ref => ref.where('user_id', '==', user_id)).valueChanges();
+	}
+
 	deleteFromFavorite(item: any) {
 		this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.id}`);
 		this.favoriteDoc.delete();

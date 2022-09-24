@@ -4,14 +4,15 @@ import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { RatingService } from 'src/app/services/rating.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router, TitleStrategy } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 import { IRating } from 'src/app/interfaces/rating';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ICocktail } from 'src/app/interfaces/cocktail';
-import { UserService } from 'src/app/services/user.service';
 import { Utils } from 'src/app/common/utils';
+import { IMostRating } from 'src/app/interfaces/mostRating';
+import { MostRateService } from 'src/app/services/most-rate.service';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class DetailsComponent implements OnInit {
         private commentService: CommentService,
         private ratingService: RatingService,
         private auth: AuthService,
-        private user: UserService) {
+        private mostRateService: MostRateService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -119,9 +120,10 @@ export class DetailsComponent implements OnInit {
             type: this.type,
         }
         this.ratingService.saveRatingInfo(rating);
-        this.mostRate()
+        
     }
-    mostRate(){}
+
+    
 
     saveComment(comment: any) {
         const commentI: IComment = {
