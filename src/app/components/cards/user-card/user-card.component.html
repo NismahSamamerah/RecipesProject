@@ -1,21 +1,60 @@
-
 <li>
     <div class="card mt-5" style="width: 15rem">
         <div class="image">
             <div class="icons">
-                <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"(click)="deleteCocktail(cocktail)"></i>
+                <i class="fa fa-share-square-o" aria-hidden="true" (click)="share()" data-bs-toggle="modal"
+                    data-bs-target="#ModalToggle"></i>
+                <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"
+                    (click)="deleteCocktail(cocktail)" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"></i>
             </div>
             <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
         </div>
         <div class="card-text">
             <h5 class="card-title">{{recipe?.title}}</h5>
             <h5 class="card-title">{{cocktail?.name}}</h5>
-            <div  class="details">
+            <div class="details">
                 <a class="details" *ngIf="recipe" (click)="getUserRecipeDetails(recipe)">View Details </a>
                 <a class="details" *ngIf="cocktail" (click)="getUserRecipeDetails(cocktail)">View Details </a>
                 <i class="fa fa-arrow-right"></i>
             </div>
         </div>
+
     </div>
 </li>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Recipe deleted successfully
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                    data-bs-toggle="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal  fade" id="ModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+            <div *ngFor="let user of users" class="modal-body">
+                <input type="text"  name="user" value=user.id [(ngModel)]="user_id">
+                <label > {{user.first_name}} {{user.last_name}}</label><br>
+                
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                    data-bs-toggle="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
