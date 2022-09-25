@@ -3,10 +3,10 @@
     <div class="card mt-5" style="width: 15rem">
         <div class="image">
             <div class="icons">
-                <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                <i class="fa fa-share-square-o" (click)="getUsers()" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#ModalToggle"></i>
                 <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteRecipe(recipe)"(click)="deleteCocktail(cocktail)"></i>
             </div>
-            <img src="assets/images/food03.jpg" class="card-img-top" alt="..." />
+            <img  src="assets/images/food03.jpg" class="card-img-top" alt="..." />
         </div>
         <div class="card-text">
             <h5 class="card-title">{{recipe?.title}}</h5>
@@ -19,3 +19,23 @@
         </div>
     </div>
 </li>
+<div class="modal" id="ModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalToggleLabel"></h5>
+              <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+          <div *ngFor="let user of users ; index as i " class="modal-body">
+            <form>
+              <input (click)="share($event)" type="checkbox" [value]="user.id">
+              <label> {{user.first_name}} {{user.last_name}}</label><br>
+            </form>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>

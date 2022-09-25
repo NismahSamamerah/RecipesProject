@@ -52,7 +52,12 @@ h1 {
     height: 60%;
     border-radius: 30px;
 }
-
+.card img{
+  transition: 0.7s;
+}
+.card img:hover{
+  transform: scale(0.9);
+}
 p{
     font-size: 14px;
     line-height: 1.7;

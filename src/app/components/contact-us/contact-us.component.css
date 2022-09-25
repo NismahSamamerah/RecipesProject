@@ -1,10 +1,9 @@
 .container{
   width: 70%;
   padding: 30px;
-  background-image: url("src/assets/images/food3.webp");
+  background-color: white;
   background-repeat: no-repeat;
   background-size: 100%;
-  border-radius: 20px;
   font-family: sans-serif;
   box-shadow: 5px 10px 18px #888888;
   border: 1px solid rgb(215, 223, 232);

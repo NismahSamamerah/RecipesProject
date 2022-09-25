@@ -1,12 +1,13 @@
 <div class="container">
     <div>
-        <h2>{{data?.name}}{{data?.title}}</h2>
         <div class="content">
-            <img src="../../../assets/images/pexels-ash-376464.jpg">
+            <img src="../../../assets/images/detail-photo.png">
             <div class="text">
+              <h2>{{data?.name}}{{data?.title}}</h2>
+              <hr>
                 <h3>Ingredients</h3>
                 <p>{{data.ingredients}}</p>
-                <h3> servings</h3>
+                <h3> Servings</h3>
                 <p>{{data. servings}}</p>
             </div>
         </div>
@@ -29,8 +30,9 @@
             </div>
         </form>
     </div>
-    <div class="Directions">
-      <h3>Directions</h3>
+    <div class="instruction">
+      <h3>Instructions</h3>
+      <hr>
       <p>
           {{data.instructions}}
       </p>
