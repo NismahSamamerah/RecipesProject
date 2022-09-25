@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IComment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
@@ -13,6 +13,8 @@ import { ICocktail } from 'src/app/interfaces/cocktail';
 import { Utils } from 'src/app/common/utils';
 import { IMostRating } from 'src/app/interfaces/mostRating';
 import { MostRateService } from 'src/app/services/most-rate.service';
+import { RecipeService } from 'src/app/services/recipe.service';
+
 
 
 @Component({
@@ -26,8 +28,11 @@ export class DetailsComponent implements OnInit {
     type_id: string = '';
     type: string = '';
     public data: IRecipe | ICocktail | any;
+    isUsertype :string =''
     comments: any[] = [];
+    recipes :IRecipe[] = [];
     public rateAverage: number = 0;
+    editVal : string=''
     commentForm: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required,
         ]),
@@ -41,7 +46,7 @@ export class DetailsComponent implements OnInit {
         private commentService: CommentService,
         private ratingService: RatingService,
         private auth: AuthService,
-        private mostRateService: MostRateService) {
+        private recipeService: RecipeService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -49,17 +54,27 @@ export class DetailsComponent implements OnInit {
     }
     ngOnInit(): void {
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
+
         if (this.data.hasOwnProperty('title')) {
-            this.type = 'recipe';
+            this.type = 'Recipe';
             this.type_id = this.data.title;
+            console.log(this.type + this.type_id);
+
+            if(this.data.hasOwnProperty('user_id')){
+              this.isUsertype = 'user-recipe';
+            }
         } else {
-            this.type = 'cocktail';
+            this.type = 'Cocktail';
             this.type_id = this.data.name;
+            if(this.data.hasOwnProperty('user_id')){
+              this.isUsertype = 'user-cocktail';
+            }
         }
-        console.log(this.type + this.type_id);
-        
+
         this.getRating();
         this.getComments();
+        // this.editRecipe();
+
     }
 
     calculateRatingAverage() {
@@ -81,7 +96,6 @@ export class DetailsComponent implements OnInit {
     getRecipeRating() {
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
-            console.log(this.rating);
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
@@ -90,7 +104,6 @@ export class DetailsComponent implements OnInit {
     getCocktailRating() {
         const sub = this.ratingService.getCocktailRating(this.type_id).subscribe(res => {
             this.rating = res;
-            console.log(this.rating);
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
@@ -122,7 +135,7 @@ export class DetailsComponent implements OnInit {
             type: this.type,
         }
         this.ratingService.saveRatingInfo(rating);
-        
+
     }
 
     saveComment(comment: any) {
@@ -141,5 +154,11 @@ export class DetailsComponent implements OnInit {
         }).catch(err => {
             console.log(err);
         })
+    }
+
+
+    getUserRecipeForm(recipe: any) {
+      this.route.navigate(['/recipe-form', { data: JSON.stringify(recipe) }]);
+
     }
 }
