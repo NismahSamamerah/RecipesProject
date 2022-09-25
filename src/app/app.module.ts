@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserCardComponent } from './components/cards/user-card/user-card.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -60,7 +61,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [RecipeComponent],
   bootstrap: [AppComponent]

@@ -37,11 +37,9 @@ export class RegisterComponent implements OnInit {
     });
 
     constructor(public auth: AuthService, private userService: UserService, public route: Router) {
-
     }
 
     ngOnInit() {
-
     }
     register() {
         const newUser: IUser = {
@@ -63,5 +61,9 @@ export class RegisterComponent implements OnInit {
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    goToLogin(){
+      this.route.navigate(['/login'])
     }
 }
