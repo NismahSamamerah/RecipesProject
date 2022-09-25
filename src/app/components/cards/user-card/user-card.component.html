@@ -1,4 +1,3 @@
-
 <li>
     <div class="card mt-5" style="width: 15rem">
         <div class="image">
@@ -11,12 +10,13 @@
         <div class="card-text">
             <h5 class="card-title">{{recipe?.title}}</h5>
             <h5 class="card-title">{{cocktail?.name}}</h5>
-            <div  class="details">
+            <div class="details">
                 <a class="details" *ngIf="recipe" (click)="getUserRecipeDetails(recipe)">View Details </a>
                 <a class="details" *ngIf="cocktail" (click)="getUserRecipeDetails(cocktail)">View Details </a>
                 <i class="fa fa-arrow-right"></i>
             </div>
         </div>
+
     </div>
 </li>
 <div class="modal" id="ModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -28,13 +28,17 @@
           </div>
           <div *ngFor="let user of users ; index as i " class="modal-body">
             <form>
-              <input (click)="share($event)" type="checkbox" [value]="user.id">
+              <input (click)="  sharedArr($event)" type="checkbox" [value]="user.id">
               <label> {{user.first_name}} {{user.last_name}}</label><br>
             </form>
           </div>
           <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal" *ngIf="cocktail" (click)="share(cocktail)" >Share</button>
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal" *ngIf="recipe" (click)="share(recipe)" >Share</button>
               <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal">Close</button>
+                  data-bs-toggle="modal" >Close</button>
           </div>
       </div>
   </div>
