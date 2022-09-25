@@ -28,13 +28,17 @@
           </div>
           <div *ngFor="let user of users ; index as i " class="modal-body">
             <form>
-              <input (click)="share($event)" type="checkbox" [value]="user.id">
+              <input (click)="  sharedArr($event)" type="checkbox" [value]="user.id">
               <label> {{user.first_name}} {{user.last_name}}</label><br>
             </form>
           </div>
           <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal" *ngIf="cocktail" (click)="share(cocktail)" >Share</button>
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal" *ngIf="recipe" (click)="share(recipe)" >Share</button>
               <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal">Close</button>
+                  data-bs-toggle="modal" >Close</button>
           </div>
       </div>
   </div>

@@ -20,7 +20,9 @@ export class CocktailService {
     getUserCocktails(user_id: string): Observable<any[]> {
         return this.angularFirestore.collection(`cocktail`, ref => ref.where('user_id', '==', user_id)).valueChanges();
     }
-
+    getCocktailById(cocktailId: string): Observable<any> {
+        return this.angularFirestore.collection('cocktail', ref => ref.where('id', '==', cocktailId)).valueChanges();
+    }
     deleteCocktail(cocktail: ICocktail) {
         this.cocktailDoc = this.angularFirestore.doc(`cocktail/${cocktail.id}`);
         this.cocktailDoc.delete();

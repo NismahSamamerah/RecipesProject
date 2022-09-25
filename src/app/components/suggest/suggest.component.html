@@ -20,53 +20,9 @@
   </div>
     <div>
         <ul>
-            <li>
-                <div class="card mt-5">
-                    <div class="image">
-                        <i class="fa fa-heart"></i>
-                        <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">Pancake</h5>
-                        <i class="fa-regular fa-trash-can"></i>
-                        <div class="details">
-                            <a class="details" href="#">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
+            
+                <app-user-card [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
+                <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
 
-            <li>
-                <div class="card mt-5">
-                    <div class="image">
-                        <i class="fa fa-heart"></i>
-                        <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">Pancake</h5>
-                        <div class="details">
-                            <a class="details" href="#">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <div class="card mt-5">
-                    <div class="image">
-                        <i class="fa fa-heart"></i>
-                        <img src="assets/images/pexels-ash-376464.jpg" class="card-img-top" alt="..." />
-                    </div>
-                    <div class="card-text">
-                        <h5 class="card-title">Pancake</h5>
-                        <div class="details">
-                            <a class="details" href="#">View Details </a>
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
         </ul>
     </div>
