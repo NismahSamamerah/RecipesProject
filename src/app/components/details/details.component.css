@@ -1,11 +1,8 @@
-.main{
-    display: flex;
-    list-style: none;
-    font-family: 'SF Pro Display regular';
-}
+
 .content{
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 h3{
   color: #d54215;
@@ -14,13 +11,15 @@ h3{
   width: 40%;
   height: 70vh;
   border-radius: 10px;
+  margin-top: 20px;
 }
 .content .text{
   width: 50%;
-  background-color: rgb(252, 235, 221);
+  background-color: white;
   padding: 20px;
-  border: 5px solid rgb(246, 218, 193);
-  border-radius: 20px;
+  border-left: 3px solid #d54215;
+  border-right: 3px solid #d54215;
+  border-radius: none;
 }
 h2{
     font-size: 35px;
@@ -36,6 +35,11 @@ h5 {
   font-style: italic;
   font-weight: bold;
   border: none;
+}
+.instruction{
+  padding: 10px;
+  border-bottom: 3px solid #d54215;
+  background-color: white;
 }
 p{
     font-size: 20px;
@@ -251,16 +255,17 @@ button{
   margin-top: 20px;
   font-size: 20px;
 }
-  @media (max-width: 1024px){
+  @media (max-width: 745px){
     .content{
         flex-direction: column !important;
     }
-    .text{
-        width: 80%;
-        margin: 10px auto;
-    }
-    img{
+    .content img{
       width: 100%;
       margin: 10px auto;
   }
+  .content .text{
+        width: 100%;
+        margin: 10px auto;
+    }
+
   }

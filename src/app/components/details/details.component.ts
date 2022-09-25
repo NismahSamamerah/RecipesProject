@@ -17,6 +17,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 
 
 
+
 @Component({
     selector: 'app-details',
     templateUrl: './details.component.html',

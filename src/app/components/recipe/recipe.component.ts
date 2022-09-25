@@ -49,7 +49,7 @@ export class RecipeComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
-        ); 
+        );
     }
 
     getRecipeDetails(recipe: any) {

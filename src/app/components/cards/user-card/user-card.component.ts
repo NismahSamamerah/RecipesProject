@@ -20,8 +20,8 @@ export class UserCardComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private cocktailService: CocktailService,
-    private userService: UserService,
-    private route: Router
+    private route: Router,
+    private userService :UserService
   ) {}
 
   ngOnInit(): void {
@@ -33,22 +33,19 @@ export class UserCardComponent implements OnInit {
   }
   getUserRecipeDetails(recipe: any) {
     this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
-  }
-  getUsers(){
-     const sub = this.userService.getUsers().subscribe(users =>{
-        this.users = users;
-        sub.unsubscribe()
-    })
+    console.log('data from card');
+    console.log(recipe);
   }
   deleteCocktail(cocktail: any) {
     this.cocktailService.deleteCocktail(cocktail);
   }
-  share(){
-    this.getUsers()
-    console.log(this.user_id);
-    
-
-    //TODO:pop up to chose users
-    
+  getUsers(){
+    this.userService.getUsers().subscribe(users =>{
+      this.users = users;
+      console.log(this.users);
+    })
+  }
+  share(e :any){
+    console.log(e.target.value);
   }
 }

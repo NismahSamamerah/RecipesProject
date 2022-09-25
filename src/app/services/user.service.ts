@@ -15,7 +15,7 @@ export class UserService {
 
     constructor(private angularFirestore: AngularFirestore,
         private auth: AuthService) {}
-   
+
     saveUserInfo(newUser: IUser) {
         return new Promise(resolve => {
             const sub = this.auth.user.subscribe(user => {
@@ -25,17 +25,15 @@ export class UserService {
             })
         })
     }
-    
+
     getUserById(userId: string): Observable<any> {
         return this.angularFirestore.collection('users', ref => ref.where('id', '==', userId)).valueChanges();
     }
 
-    getUsers(): Observable<any> {
-        return this.angularFirestore.collection('users').valueChanges();
-    }
-    
     contactInfo(item: any){
         return this.angularFirestore.collection(`contact/`).doc().set(item);
     }
-
+    getUsers(): Observable<any> {
+      return this.angularFirestore.collection('users').valueChanges();
+  }
 }

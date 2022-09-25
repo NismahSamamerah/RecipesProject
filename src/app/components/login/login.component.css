@@ -2,7 +2,6 @@
 .container{
   width: 50%;
   border: 1px solid rgb(215, 223, 232);
-  border-radius: 20px;
   padding: 40px;
   background-image: url("src/assets/images/food3.webp");
   background-repeat: no-repeat;
@@ -23,4 +22,16 @@ h1{
 p {
   font-size: 14px;
   color: red;
+}
+.route{
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: none;
+  color: green;
+  margin-left: 10px;
+}
+.route:hover{
+  color: var(--primary-color);
 }
