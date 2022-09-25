@@ -53,9 +53,7 @@ export class DetailsComponent implements OnInit {
             sub.unsubscribe();
         })
     }
-
     ngOnInit(): void {
-
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
 
         if (this.data.hasOwnProperty('title')) {

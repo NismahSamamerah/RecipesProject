@@ -21,7 +21,9 @@ export class RecipeService {
     getUserRecipes(user_id: string): Observable<any[]>{
         return this.angularFirestore.collection(`recipe`, ref => ref.where('user_id', '==', user_id)).valueChanges();
     }
-
+    getRecipeById(recipeId: string): Observable<any> {
+        return this.angularFirestore.collection('recipe', ref => ref.where('id', '==', recipeId)).valueChanges();
+    }
     delete(recipe: IRecipe) {
         this.itemDoc = this.angularFirestore.doc(`recipe/${recipe.id}`);
         this.itemDoc.delete();
