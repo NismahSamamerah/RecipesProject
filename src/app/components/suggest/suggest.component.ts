@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CocktailService } from 'src/app/services/cocktail.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-suggest',
@@ -14,11 +15,19 @@ import { SharedService } from 'src/app/services/shared.service';
 export class SuggestComponent implements OnInit {
     cocktails: ICocktail[] = [];
     recipes: IRecipe[] = [];
+    recipeSearchArr :IRecipe[]  =[];
+    cocktailSearchArr :ICocktail[]  =[];
+    searchVal :string = '';
+    fitlerVal :string ='all';
+    public name :string =''
+    loader: boolean = true;
+
 
     constructor(private sharedService: SharedService,
         private recipeService: RecipeService,
         private cocktailService: CocktailService,
-        private auth: AuthService) {
+        private auth: AuthService,
+        private userService :UserService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -26,6 +35,12 @@ export class SuggestComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      const subUser = this.userService.getUserById(this.auth.userID as string).subscribe(res => {
+        for(const item of res){
+          this.name = item.first_name;
+
+        }
+      })
         const sub = this.sharedService.getByUserId(this.auth.userID as string).subscribe(res => {
             for (const item of res) {
                 if(item.type == 'cocktail'){
@@ -44,9 +59,26 @@ export class SuggestComponent implements OnInit {
             }
             sub.unsubscribe();
         });
+        setTimeout(()=>{
+          this.loader = false;
+        },3000)
     }
     addToFavorite() {
 
     }
-
+    onClick(filterVal :string){
+      this.fitlerVal = filterVal
+    }
+    searchRecipe() {
+      this.recipeSearchArr = this.recipes.filter(res  => {
+        return res.title.toLowerCase().includes(this.searchVal.toLowerCase());
+      })
+      this.recipes =[];
+  }
+  searchCocktail() {
+    this.cocktailSearchArr = this.cocktails.filter(res  => {
+      return res.name.toLowerCase().includes(this.searchVal.toLowerCase());
+    })
+    this.cocktails =[];
+}
 }

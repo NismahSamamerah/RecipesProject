@@ -19,8 +19,9 @@ export class FavoriteComponent implements OnInit {
     filter:new FormControl ('', Validators.required)
     });
     filterValue: string = '';
+  loader: boolean = true;
 
-  
+
 
     constructor(public route: Router,
         private favoriteService: FavoriteService,
@@ -29,11 +30,15 @@ export class FavoriteComponent implements OnInit {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
-        }) 
-    
+        })
+
     }
 
     ngOnInit(): void {
+        setTimeout(()=>{
+            this.loader = false;
+          },6000)
+
         if (this.filterValue == ''){  
             const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
             this.favorites = favorites;
@@ -64,10 +69,13 @@ export class FavoriteComponent implements OnInit {
                 });
                 break;
         }
+        setTimeout(()=>{
+          this.loader = false;
+        },3000)
     }
 
 
-    
+
     search() {
         this.favoritesSearch = this.favorites.filter(favorite => {
             return favorite.type_id.toLowerCase().includes(this.favValue.toLowerCase());
@@ -77,7 +85,7 @@ export class FavoriteComponent implements OnInit {
 
     deleteFromFavorite(favorite: IFavorite) {
         this.favoriteService.deleteFromFavorite(favorite);
-        
+        location.reload();
     }
 
     getRecipeDetails(recipe: any) {

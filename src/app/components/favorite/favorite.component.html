@@ -1,4 +1,7 @@
-<div class="container">
+<div id="spanner" *ngIf="loader"  role="status">
+  <img  src="assets/images/Spinner-1s-341px (1).svg">
+</div>
+<div class="container" *ngIf="!loader">
     <div class="title">
         <div class="text">
             <h1 class="h1  pt-5">My Favorite</h1>

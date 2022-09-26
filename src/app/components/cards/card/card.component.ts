@@ -19,7 +19,7 @@ export class CardComponent implements OnInit {
     @Input() cocktail: ICocktail | undefined;
     recipes: any = [];
     cocktails: any = [];
-    
+    isClicked :boolean =false;
 
     constructor(private apiService: ApiService,
         public route: Router,
@@ -39,11 +39,13 @@ export class CardComponent implements OnInit {
     }
 
     addFavorite(recipe:any){
+
         if (recipe.hasOwnProperty('title')) {
             this.addFavoriteRecipe(recipe)
         } else {
             this.addFavoriteCocktail(recipe)
-        } 
+        }
+        this.isClicked = true;
     }
 
     addFavoriteRecipe(recipe: any) {

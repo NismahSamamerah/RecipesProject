@@ -18,6 +18,7 @@
 }
 .card{
   box-shadow:  5px 5px 10px #c1c1c1;
+  width: 100vw;
 }
 .card-body{
   border: 1px solid lightgray;
@@ -56,4 +57,19 @@ li{
 }
 .fa-minus-circle:hover{
   color: #d54215;
+}
+.modal-footer button{
+  background-color: var(--primary-color);
+}
+.modal-body {
+  font-size: 20px;
+}
+.modal-title{
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+}
+input{
+  accent-color: #d54215;
+  margin: 10px;
 }

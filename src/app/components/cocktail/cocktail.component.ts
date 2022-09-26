@@ -43,7 +43,7 @@ export class CocktailComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
-        ).unsubscribe();
+        )
     }
     goToUserRecipes() {
         this.router.navigate(['/user-recipe', { data: 'Cocktail' }]);
