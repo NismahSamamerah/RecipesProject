@@ -11,8 +11,6 @@ import { IRating } from 'src/app/interfaces/rating';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { ICocktail } from 'src/app/interfaces/cocktail';
 import { Utils } from 'src/app/common/utils';
-import { IMostRating } from 'src/app/interfaces/mostRating';
-import { MostRateService } from 'src/app/services/most-rate.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 
 
