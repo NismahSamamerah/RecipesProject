@@ -53,12 +53,9 @@ export class DetailsComponent implements OnInit {
     }
     ngOnInit(): void {
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
-
         if (this.data.hasOwnProperty('title')) {
             this.type = 'Recipe';
             this.type_id = this.data.title;
-            console.log(this.type + this.type_id);
-
             if(this.data.hasOwnProperty('user_id')){
               this.isUsertype = 'user-recipe';
             }
@@ -69,10 +66,9 @@ export class DetailsComponent implements OnInit {
               this.isUsertype = 'user-cocktail';
             }
         }
-
         this.getRating();
         this.getComments();
-        // this.editRecipe();
+       
 
     }
 
@@ -89,7 +85,7 @@ export class DetailsComponent implements OnInit {
     }
 
     getRating() {
-        this.type == 'recipe' ? this.getRecipeRating() : this.getCocktailRating();
+        this.type == 'Recipe' ? this.getRecipeRating() : this.getCocktailRating();
     }
 
     getRecipeRating() {
@@ -109,7 +105,7 @@ export class DetailsComponent implements OnInit {
     }
 
     getComments() {
-        this.type == 'recipe' ? this.getRecipeComments() : this.getCocktailComments();
+        this.type == 'Recipe' ? this.getRecipeComments() : this.getCocktailComments();
     }
 
     getRecipeComments(): void {

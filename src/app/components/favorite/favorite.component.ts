@@ -18,8 +18,9 @@ export class FavoriteComponent implements OnInit {
     filterForm: FormGroup = new FormGroup({
     filter:new FormControl ('', Validators.required)
     });
+    photo: string = '';
     filterValue: string = '';
-  loader: boolean = true;
+    loader: boolean = true;
 
 
 
@@ -46,6 +47,9 @@ export class FavoriteComponent implements OnInit {
             })
         }
     }
+    onClick(photo :string){
+        this.photo = photo
+    }
 
     filter(filterValue: string) {
         this.filterValue = filterValue;
@@ -69,9 +73,7 @@ export class FavoriteComponent implements OnInit {
                 });
                 break;
         }
-        setTimeout(()=>{
-          this.loader = false;
-        },3000)
+        
     }
 
 

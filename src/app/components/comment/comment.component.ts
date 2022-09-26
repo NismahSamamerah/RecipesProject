@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
 import { IUser } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
     selector: 'app-comment',
@@ -17,6 +18,8 @@ export class CommentComponent implements OnInit {
 
     ngOnInit(): void {
         this.getCommentUser();
+        console.log(JSON.stringify(this.comment));
+        
     }
 
     getCommentUser(): void {
