@@ -34,12 +34,16 @@ export class FavoriteComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+        if (this.filterValue == ''){  
+            const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
+            this.favorites = favorites;
+            sub.unsubscribe();
+            })
+        }
     }
 
     filter(filterValue: string) {
-        console.log(filterValue);
-        
+        this.filterValue = filterValue;
         switch (filterValue) {
             case 'recipe':
                 const rsub = this.favoriteService.getFavoriteRecipe(this.auth.userID as string).subscribe(favorites => {
@@ -56,7 +60,6 @@ export class FavoriteComponent implements OnInit {
             default:
                 const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
                     this.favorites = favorites;
-
                     sub.unsubscribe();
                 });
                 break;
@@ -74,6 +77,7 @@ export class FavoriteComponent implements OnInit {
 
     deleteFromFavorite(favorite: IFavorite) {
         this.favoriteService.deleteFromFavorite(favorite);
+        
     }
 
     getRecipeDetails(recipe: any) {

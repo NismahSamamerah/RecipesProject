@@ -19,6 +19,7 @@ export class CardComponent implements OnInit {
     @Input() cocktail: ICocktail | undefined;
     recipes: any = [];
     cocktails: any = [];
+    
 
     constructor(private apiService: ApiService,
         public route: Router,
@@ -42,7 +43,7 @@ export class CardComponent implements OnInit {
             this.addFavoriteRecipe(recipe)
         } else {
             this.addFavoriteCocktail(recipe)
-        }
+        } 
     }
 
     addFavoriteRecipe(recipe: any) {
