@@ -52,6 +52,7 @@ export class RecipeComponent implements OnInit {
         );
     }
 
+
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }

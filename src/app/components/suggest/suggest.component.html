@@ -1,8 +1,11 @@
+<div id="spanner" *ngIf="loader"  role="status">
+  <img  src="assets/images/Spinner-1s-341px (1).svg">
+</div>
+<div *ngIf="!loader">
+<div class="header" >
+  <h2> Welcom <span>{{name}} !</span> <br>You can see recipes that have been shared with you by your friends</h2>
+</div>
 <div class="container">
-<img src="assets/images/suggest.webp" alt="">
-    <!-- <h1>Simple and Tasty Recipes</h1>
-    <br>
-    <p>Learn with us the Best and Easiest Recipes</p> -->
         <div class="search">
         <div class="btn-group " role="group" >
           <input type="radio"  (click)="onClick('all')" value="all" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -14,26 +17,28 @@
           <input type="radio" (click)="onClick('cocktails')" value="cocktails" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
           <label class="btn"  for="btnradio3">Cocktails</label>
         </div>
+        <div class="searchGroup">
         <input type="text" [(ngModel)]="searchVal" class="form-control" placeholder="&#xf002; Search "
             style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
             <button *ngIf="fitlerVal == 'recipes'" (click)="searchRecipe()"  type="button">Search</button>
             <button *ngIf="fitlerVal == 'cocktails'" (click)="searchCocktail()"  type="button">Search</button>
+          </div>
     </div>
   </div>
     <div>
         <ul>
-          <div *ngIf="fitlerVal == 'recipes'">
+          <div class="list" *ngIf="fitlerVal == 'recipes'">
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipeSearchArr"></app-user-card>
-
               </div>
-              <div *ngIf="fitlerVal == 'cocktails'">
+              <div  class="list"*ngIf="fitlerVal == 'cocktails'">
                 <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
                 <app-user-card   [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearchArr"></app-user-card>
               </div>
-              <div *ngIf="fitlerVal == 'all'">
+              <div  class="list" *ngIf="fitlerVal == 'all'">
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
                 <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
               </div>
         </ul>
     </div>
+  </div>

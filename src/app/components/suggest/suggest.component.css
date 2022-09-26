@@ -1,3 +1,24 @@
+.header{
+  height: 400px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 100%;
+  background-image: linear-gradient(rgba(0,0,0,.5),rgba(121, 118, 118, 0.5)),url('src/assets/images/suggest.webp');
+}
+h2 {
+  color: white;
+  margin: auto;
+text-align: center;
+margin-top: auto;
+margin-bottom: 40px;
+text-shadow: 5px 5px 4px #000000;
+}
+
 .container{
   align-items: center;
   margin: 5vh 5vw;
@@ -20,8 +41,9 @@ p{margin-top: 3vh;
 .search{
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
-  margin-left: 50px;
+}
+.searchGroup{
+  width: 50%;
 }
 .card-text{
   padding: 5px;
@@ -69,18 +91,24 @@ ul{
   list-style: none;
   justify-content: space-around;
 }
+.list{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
 .details{
   text-decoration: none;
   color: black;
 }
 input{
-  border-radius: 10px;
   margin-left: auto;
-  width: 30%;
+  width: 50%;
 }
-.button{
-  margin-left: 5vw;
+button{
+
   cursor: pointer;
+  padding: 1px;
+  border-radius: 5px ;
 }
 .btn-group{
   width: 50%;
@@ -97,3 +125,4 @@ button{
   padding: 10px;
   text-align: center;
 }
+

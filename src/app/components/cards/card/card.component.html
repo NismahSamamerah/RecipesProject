@@ -3,11 +3,12 @@
     <div class="card  mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="assets/images/food03.jpg" class="img-fluid rounded-start"  >
+                <img *ngIf="recipe" src="assets/images/food03.jpg" class="img-fluid rounded-start"  >
+                <img *ngIf="cocktail" src="assets/images/smothi.jpg" class="card-img-top" alt="..." />
             </div>
             <div *ngIf="recipe" class="col-md-8">
                 <div class="card-body" >
-                    <h4 class="card-title">{{recipe.title}} <i class="fa fa-star" type="checkbox"aria-hidden="true" (click)="addFavorite(recipe)" ></i></h4>
+                    <h4 class="card-title">{{recipe.title}} <i class="fa fa-star"  [style.color]="isClicked == true? '#d54215' :'gray'" type="checkbox"aria-hidden="true" (click)="addFavorite(recipe)" ></i></h4>
                     <p class="card-text">{{recipe.ingredients}}</p>
                 </div>
                 <div class="details">

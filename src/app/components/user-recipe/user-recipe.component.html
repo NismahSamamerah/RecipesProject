@@ -1,4 +1,7 @@
-<div class="bac">
+<div id="spanner" *ngIf="loader"  role="status">
+  <img  src="assets/images/Spinner-1s-341px (1).svg">
+</div>
+<div class="bac" *ngIf="!loader">
     <div class="container">
         <h1 class="h1 mt-3 mb-5"><span>{{type}}</span> List You Added</h1>
         <p>
@@ -27,7 +30,7 @@
                     </div>
                 </a>
             </li>
-            
+
         </ul>
     </div>
 

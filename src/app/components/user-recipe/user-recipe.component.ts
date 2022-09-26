@@ -20,6 +20,7 @@ export class UserRecipeComponent implements OnInit {
     cocktailSearch: ICocktail[] = [];
     searchValue: string = '';
     public data: IRecipe | ICocktail | any;
+    loader :boolean =true;
 
     constructor(public route: Router,
         private cocktailService: CocktailService,
@@ -46,8 +47,11 @@ export class UserRecipeComponent implements OnInit {
                 sub.unsubscribe();
             });
         }
-    }
-
+        setTimeout(()=>{
+          this.loader = false;
+        },3000)
+      }
+    
     searchByName() {
         if (this.type == 'Cocktail') {
             this.searchCocktailByName();
