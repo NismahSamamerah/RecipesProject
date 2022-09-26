@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.apiService.getRecipesByName("Fried Apple Pie").subscribe(
+        this.apiService.getRecipesByName("Fried Apple").subscribe(
             (data: any) => {
                 this.recipes = data;
             },
@@ -38,14 +38,12 @@ export class HomeComponent implements OnInit {
                 console.log(error);
             }
         );
-
-
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {
             this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
         } else {
-            this.route.navigate(['/login']); 
+            this.route.navigate(['/login']);
         }
     }
 }

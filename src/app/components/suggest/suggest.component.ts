@@ -67,7 +67,7 @@ export class SuggestComponent implements OnInit {
 
     }
     onClick(filterVal :string){
-      this.fitlerVal = filterVal
+      this.fitlerVal = filterVal;
     }
     searchRecipe() {
       this.recipeSearchArr = this.recipes.filter(res  => {
