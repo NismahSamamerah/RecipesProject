@@ -4,6 +4,9 @@
 span{
   color :var(--primary-color)
 }
+.orangeStar{
+  color: #d54215;
+}
 button{
   max-height:50px;
   background-color: #d54215;
@@ -18,7 +21,7 @@ button{
   padding: 6px;
 }
 button:hover{
-  background-color: #fd6537;
+
   border:  1px solid #d54215;
   color: black;
 }
