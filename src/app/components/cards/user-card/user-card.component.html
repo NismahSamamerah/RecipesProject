@@ -28,7 +28,7 @@
           </div>
           <div *ngFor="let user of users ; index as i " class="modal-body">
             <form>
-              <input (click)="  sharedArr($event)" type="checkbox" [value]="user.id">
+              <input (click)=" sharedArr($event)" type="checkbox" [value]="user.id">
               <label> {{user.first_name}} {{user.last_name}}</label><br>
             </form>
           </div>

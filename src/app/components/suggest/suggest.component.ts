@@ -14,11 +14,16 @@ import { SharedService } from 'src/app/services/shared.service';
 export class SuggestComponent implements OnInit {
     cocktails: ICocktail[] = [];
     recipes: IRecipe[] = [];
+    recipeSearchArr :IRecipe[]  =[];
+    cocktailSearchArr :ICocktail[]  =[];
+    searchVal :string = '';
+    fitlerVal :string ='all'
+
 
     constructor(private sharedService: SharedService,
         private recipeService: RecipeService,
         private cocktailService: CocktailService,
-        private auth: AuthService) {
+        private auth: AuthService,) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -48,5 +53,19 @@ export class SuggestComponent implements OnInit {
     addToFavorite() {
 
     }
-
+    onClick(filterVal :string){
+      this.fitlerVal = filterVal
+    }
+    searchRecipe() {
+      this.recipeSearchArr = this.recipes.filter(res  => {
+        return res.title.toLowerCase().includes(this.searchVal.toLowerCase());
+      })
+      this.recipes =[];
+  }
+  searchCocktail() {
+    this.cocktailSearchArr = this.cocktails.filter(res  => {
+      return res.name.toLowerCase().includes(this.searchVal.toLowerCase());
+    })
+    this.cocktails =[];
+}
 }
