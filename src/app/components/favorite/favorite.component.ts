@@ -38,9 +38,9 @@ export class FavoriteComponent implements OnInit {
     ngOnInit(): void {
         setTimeout(()=>{
             this.loader = false;
-          },6000)
+          },3000)
 
-        if (this.filterValue == ''){  
+        if (this.filterValue == ''){
             const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
             this.favorites = favorites;
             sub.unsubscribe();
@@ -73,7 +73,6 @@ export class FavoriteComponent implements OnInit {
                 });
                 break;
         }
-        
     }
 
 
@@ -87,9 +86,7 @@ export class FavoriteComponent implements OnInit {
 
     deleteFromFavorite(favorite: IFavorite) {
         this.favoriteService.deleteFromFavorite(favorite);
-        location.reload();
     }
-
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
