@@ -32,10 +32,10 @@
                     <a class="nav-link" routerLink="favorite"> Favorite</a>
                 </li>
             </ul>
-            <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register">Sign Up ?</button>
-            <button *ngIf="isLoggedIn == false" class="btn btn-outline me-2" type="button"
+            <button class="btn" *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register">Sign Up ?</button>
+            <button class="btn" *ngIf="isLoggedIn == false" class="btn btn-outline me-2" type="button"
                 routerLink="/login">Login</button>
-            <button *ngIf="isLoggedIn == true" (click)="logout()" class="btn btn-outline me-2"
+            <button class="btn" *ngIf="isLoggedIn == true" (click)="logout()" class="btn btn-outline me-2"
                 type="button">Logout</button>
             <div class="social">
                 <i class="fa fa-facebook" aria-hidden="true" style="margin-left:10px"></i>

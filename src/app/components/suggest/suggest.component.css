@@ -11,8 +11,8 @@
   background-image: linear-gradient(rgba(0,0,0,.5),rgba(121, 118, 118, 0.5)),url('src/assets/images/suggest.webp');
 }
 h2 {
-  color: white;
-  margin: auto;
+color: white;
+margin: auto;
 text-align: center;
 margin-top: auto;
 margin-bottom: 40px;

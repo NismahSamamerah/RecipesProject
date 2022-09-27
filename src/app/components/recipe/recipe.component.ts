@@ -31,7 +31,7 @@ export class RecipeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.apiService.getRecipesByName("fish").subscribe(
+        this.apiService.getRecipesByName('fish').subscribe(
             (data: any) => {
                 this.recipes = data;
             },

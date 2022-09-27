@@ -37,7 +37,7 @@ export class FavoriteComponent implements OnInit {
     ngOnInit(): void {
         setTimeout(()=>{
             this.loader = false;
-          },3000)
+          },2000)
 
         if (this.filterValue == ''){
             const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
@@ -70,9 +70,6 @@ export class FavoriteComponent implements OnInit {
                 break;
         }
     }
-
-
-
     search() {
         this.favoritesSearch = this.favorites.filter(favorite => {
             return favorite.type_id.toLowerCase().includes(this.favValue.toLowerCase());

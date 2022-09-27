@@ -38,22 +38,21 @@ export class SuggestComponent implements OnInit {
       const subUser = this.userService.getUserById(this.auth.userID as string).subscribe(res => {
         for(const item of res){
           this.name = item.first_name;
-
-        }
+        }subUser.unsubscribe();
       })
         const sub = this.sharedService.getByUserId(this.auth.userID as string).subscribe(res => {
             for (const item of res) {
                 if(item.type == 'cocktail'){
-                    this.cocktailService.getCocktailById(item.recipe_id).subscribe(cocktails =>{
+                    const csub = this.cocktailService.getCocktailById(item.recipe_id).subscribe(cocktails =>{
                         for (const cocktail of cocktails) {
                             this.cocktails.push(cocktail)
-                        }
+                        }csub.unsubscribe();
                     })
                 }else if(item.type == 'recipe'){
-                    this.recipeService.getRecipeById(item.recipe_id).subscribe(recipes =>{
+                    const rsub = this.recipeService.getRecipeById(item.recipe_id).subscribe(recipes =>{
                         for (const recipe of recipes) {
                             this.recipes.push(recipe)
-                        }
+                        } rsub.unsubscribe();
                     })
                 }
             }
@@ -61,7 +60,7 @@ export class SuggestComponent implements OnInit {
         });
         setTimeout(()=>{
           this.loader = false;
-        },3000)
+        },2000)
     }
     addToFavorite() {
 
