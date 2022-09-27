@@ -3,8 +3,6 @@
   margin-right: 3vw;
   ;
 }
-
-/* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -19,18 +17,13 @@
   text-decoration: none;
   user-select: none;
 }
-
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
-
   .swiper-slide {
     text-align: center;
     display: -webkit-box;
@@ -76,11 +69,4 @@
   span{
     color: var(--primary-color);
   }
-  /* div div div div p{
-    color: black ;
-    font-size: 20px;
-    background-color: rgb(246, 235, 235) ;
-    width: 50%;
-    margin: auto;
-  } */
 

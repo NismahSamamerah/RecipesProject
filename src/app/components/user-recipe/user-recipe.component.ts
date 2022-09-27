@@ -49,15 +49,16 @@ export class UserRecipeComponent implements OnInit {
         }
         setTimeout(()=>{
           this.loader = false;
-        },3000)
+        },1000)
       }
-    
+
     searchByName() {
         if (this.type == 'Cocktail') {
             this.searchCocktailByName();
         }else{
             this.searchRecipeByName();
         }
+        this.recipes =[]
     }
 
     searchCocktailByName() {

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomeComponent implements OnInit {
     recipes: any[] = [];
     cocktails: any[] = [];
+    loader :boolean =true;
 
     constructor(private route: Router,
         private apiService: ApiService,
@@ -20,9 +21,8 @@ export class HomeComponent implements OnInit {
             sub.unsubscribe();
         })
     }
-
     ngOnInit(): void {
-        this.apiService.getRecipesByName("Fried Apple").subscribe(
+        this.apiService.getRecipesByName("Fresh Mushrooms").subscribe(
             (data: any) => {
                 this.recipes = data;
             },
@@ -38,6 +38,9 @@ export class HomeComponent implements OnInit {
                 console.log(error);
             }
         );
+        setTimeout(()=>{
+          this.loader = false;
+        },2000)
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {
