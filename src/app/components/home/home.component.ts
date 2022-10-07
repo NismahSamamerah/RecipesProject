@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { CocktailService } from 'src/app/services/cocktail.service';
+import { RecipeService } from 'src/app/services/recipe.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,9 +13,12 @@ export class HomeComponent implements OnInit {
     recipes: any[] = [];
     cocktails: any[] = [];
     loader :boolean =true;
+    cocktailsShow: any[]= [];
+    recipesShow: any[] = [];
 
     constructor(private route: Router,
-        private apiService: ApiService,
+        private cocktail: CocktailService,
+        private recipe: RecipeService,
         private auth: AuthService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
@@ -22,25 +26,21 @@ export class HomeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.apiService.getRecipesByName("Fresh Mushrooms").subscribe(
-            (data: any) => {
-                this.recipes = data;
-            },
-            (error) => {
-                console.log(error);
+        const subC = this.cocktail.getCocktails().subscribe(cocktails => {
+            this.cocktails = cocktails;
+            subC.unsubscribe();
+        });
+        const subR = this.recipe.getRecipes().subscribe(recipes => {
+            this.recipes = recipes;
+            subR.unsubscribe();            
+        });
+        setTimeout(() =>{  
+            for (let i = 0; i < 3; i++) {
+                this.cocktailsShow.push(this.cocktails[Math.floor(Math.random() * this.cocktails.length)])
+                this.recipesShow.push(this.recipes[Math.floor(Math.random() * this.recipes.length)])    
             }
-        );
-        this.apiService.getCocktailsByName("banana").subscribe(
-            (data: any) => {
-                this.cocktails = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-        setTimeout(()=>{
           this.loader = false;
-        },2000)
+        },8000)
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {

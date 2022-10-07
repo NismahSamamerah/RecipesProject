@@ -2,11 +2,13 @@
     <div class="card mt-5" style="width: 15rem">
         <div class="image">
             <div class="icons">
-                <i class="fa fa-share-square-o" (click)="getUsers()" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#shareModalToggle"></i>
-                <i class="fa fa-minus-circle" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#deleteModelToggel"></i>
+                <i class="fa fa-share-square-o"*ngIf="recipe" (click)="changeFlag(recipe)" ></i>
+                <i class="fa fa-share-square-o"*ngIf="cocktail" (click)="changeFlag(cocktail)" ></i>
+                <i class="fa fa-minus-circle" aria-hidden="true" data-bs-toggle="modal"
+                    data-bs-target="#deleteModelToggle"></i>
             </div>
-            <img *ngIf="recipe" src="assets/images/food03.jpg" class="img-fluid rounded-start"  >
-                <img *ngIf="cocktail" src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
+            <img *ngIf="recipe" src="assets/images/food03.jpg" class="img-fluid rounded-start">
+            <img *ngIf="cocktail" src="assets/images/smothi3.jpg" class="card-img-top" alt="..." />
         </div>
         <div class="card-text">
             <h5 class="card-title">{{recipe?.title}}</h5>
@@ -17,51 +19,27 @@
                 <i class="fa fa-arrow-right"></i>
             </div>
         </div>
-
     </div>
 </li>
-<div class="modal" id="shareModalToggle" aria-hidden="true" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title" id="exampleModalToggleLabel">Share With ?</h4>
-          </div>
-          <div *ngFor="let user of users ; index as i " class="modal-body">
-            <form>
-              <input (click)=" sharedArr($event)" type="checkbox" class="checkbox" [value]="user.id">
-              <label> {{user.first_name}} {{user.last_name}}</label><br>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" *ngIf="cocktail" (click)="share(cocktail)" >Share</button>
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" *ngIf="recipe" (click)="share(recipe)" >Share</button>
-              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" >Close</button>
-          </div>
-      </div>
-  </div>
-</div>
 
 
-<div class="modal" id="deleteModelToggel" aria-hidden="true" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title" id="exampleModalToggleLabel">Delete ?</h4>
-          </div>
-          <div class="modal-body">
-            <p>Are You Sure you want to delete your recipe?</p>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" *ngIf="cocktail" (click)="deleteCocktail(cocktail)" >Delete</button>
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" *ngIf="recipe" (click)="deleteRecipe(recipe)" >Delete</button>
-              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" >Close</button>
-          </div>
-      </div>
-  </div>
+<div class="modal" id="deleteModelToggle" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalToggleLabel">Delete ?</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are You Sure you want to delete your recipe?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                    *ngIf="cocktail" (click)="deleteCocktail(cocktail)">Delete</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                    *ngIf="recipe" (click)="deleteRecipe(recipe)">Delete</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                    data-bs-toggle="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

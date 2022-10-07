@@ -17,6 +17,10 @@ export class CocktailService {
         return this.angularFirestore.collection(`cocktail`).doc(cocktail.id).set(cocktail);
     }
 
+    getCocktails(): Observable<any[]> {
+        return this.angularFirestore.collection(`cocktail`).valueChanges();
+    }
+
     getUserCocktails(user_id: string): Observable<any[]> {
         return this.angularFirestore.collection(`cocktail`, ref => ref.where('user_id', '==', user_id)).valueChanges();
     }

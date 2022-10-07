@@ -18,16 +18,24 @@ export class RecipeService {
     saveRecipeInfo(recipe: IRecipe) {
         return this.angularFirestore.collection(`recipe`).doc(recipe.id).set(recipe);
     }
+
+    getRecipes(): Observable<any[]>{
+        return this.angularFirestore.collection(`recipe`).valueChanges();
+    }
+
     getUserRecipes(user_id: string): Observable<any[]>{
         return this.angularFirestore.collection(`recipe`, ref => ref.where('user_id', '==', user_id)).valueChanges();
-    }
+    } 
+
     getRecipeById(recipeId: string): Observable<any> {
         return this.angularFirestore.collection('recipe', ref => ref.where('id', '==', recipeId)).valueChanges();
     }
+
     delete(recipe: IRecipe) {
         this.itemDoc = this.angularFirestore.doc(`recipe/${recipe.id}`);
         this.itemDoc.delete();
     }
+    
     update(recipe :any){
       this.angularFirestore.collection(`recipe`, ref => ref.where('id' , '==', recipe.id as string)).ref.get().then((docs) => {
         docs.forEach(doc => {

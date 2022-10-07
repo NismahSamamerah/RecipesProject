@@ -1,0 +1,20 @@
+.modal-content{
+   margin: auto;
+    width: 50%;
+}
+.modal-footer button{
+    background-color: var(--primary-color);
+  }
+  .modal-body {
+    font-size: 20px;
+  }
+  .modal-title{
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+  }
+  input{
+    accent-color: #d54215;
+    margin: 10px;
+  }
+  

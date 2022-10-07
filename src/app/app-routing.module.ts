@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SharePopComponent } from './components/share-pop/share-pop.component';
 import { SuggestComponent } from './components/suggest/suggest.component';
 
 import { UserRecipeComponent } from './components/user-recipe/user-recipe.component';
@@ -31,7 +32,9 @@ const routes: Routes = [
   {path : "suggest" , component : SuggestComponent , canActivate: [AuthGuard]},
   {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details" , component : DetailsComponent},
+  {path : "share" , component : SharePopComponent},
   {path : "**" , component : NotFoundComponent},
+ 
 
 ];
 

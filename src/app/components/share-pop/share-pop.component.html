@@ -1,0 +1,20 @@
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalToggleLabel">Share With ?</h4>
+            </div>
+            <div *ngFor="let user of users ;" class="modal-body">
+                <form>
+                    <input (click)=" sharedArr($event)" type="checkbox" class="checkbox" [value]="user.id">
+                    <label> {{user.first_name}} {{user.last_name}}</label><br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                     (click)="share()">Share</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                    data-bs-toggle="modal">Close</button>
+            </div>
+        </div>
+

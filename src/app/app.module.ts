@@ -28,6 +28,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { UserCardComponent } from './components/cards/user-card/user-card.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharePopComponent } from './components/share-pop/share-pop.component';
 
 
 
@@ -52,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommentComponent,
     UserCardComponent,
     NotFoundComponent,
+    SharePopComponent,
 
 
   ],
