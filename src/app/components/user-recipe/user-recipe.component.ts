@@ -48,7 +48,7 @@ export class UserRecipeComponent implements OnInit {
             });
         }
         setTimeout(()=>{
-          this.loader = false;
+        this.loader = false;
         },1000)
       }
 

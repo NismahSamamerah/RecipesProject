@@ -80,10 +80,9 @@ li{
     right: 10px;
     top: 10px;
     cursor: pointer;
+    font-size: 25px;
 }
-.fa-star:hover{
-    color: rgb(245, 226, 226);;
-}
+
 .image{
     position: relative;
 }

@@ -45,6 +45,10 @@
             <label for="instructions">Instructions</label>
             <textarea id="instructions" #instructions formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
         </div>
+        <form class="imgForm">
+          <label for="img">choose image:</label>
+          <input  type="file" formControlName="image" name="img" #img (change)="onFileSelect($event)">
+        </form>
         <button  class="col-md-8" type="submit" style="max-height:50px ">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
     </form>
 </div>

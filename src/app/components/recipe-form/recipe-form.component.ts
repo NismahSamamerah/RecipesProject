@@ -35,6 +35,7 @@ export class RecipeFormComponent implements OnInit {
     ingredients: new FormArray([]),
     servings: new FormControl('', [Validators.required]),
     instructions: new FormControl('', [Validators.required]),
+    image: new FormControl(null, [Validators.required])
   });
 
   ingredientItem: FormGroup = new FormGroup({
@@ -105,9 +106,13 @@ export class RecipeFormComponent implements OnInit {
       this.saveRecipe();
     }
   }
-
+  onFileSelect(event :any){
+    const file = event.target.files[0];
+    console.log(file.value);
+    console.log(this.recipeForm.value.image);
+  }
   editRecipe(){
-      const data: IRecipe = {
+      const data: any = {
         title: this.recipeForm.value.name,
         servings: this.recipeForm.value.servings,
         ingredients: this.getIngredientsArrayValues(),
@@ -137,6 +142,8 @@ export class RecipeFormComponent implements OnInit {
         ingredients: this.getIngredientsArrayValues(),
         servings: this.recipeForm.value.servings,
         instructions: this.recipeForm.value.instructions,
+        image : this.recipeForm.value.image,
+
       };
       this.recipeForm.reset();
       this.recipeService
@@ -189,3 +196,5 @@ export class RecipeFormComponent implements OnInit {
     return arr;
   }
 }
+
+

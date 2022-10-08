@@ -69,3 +69,8 @@ a{
 button:hover{
   background-color: #fd6537;
   border:  1px solid #d54215;}
+  
+  .imgForm button{
+    color: #d54215;
+    background-color: #d54215;
+  }

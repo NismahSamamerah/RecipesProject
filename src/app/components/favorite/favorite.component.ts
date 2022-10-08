@@ -15,6 +15,7 @@ export class FavoriteComponent implements OnInit {
     favorites: IFavorite[] = [];
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
+    isClicked :boolean = false;
     filterForm: FormGroup = new FormGroup({
     filter:new FormControl ('', Validators.required)
     });
@@ -79,6 +80,7 @@ export class FavoriteComponent implements OnInit {
 
     deleteFromFavorite(favorite: IFavorite) {
         this.favoriteService.deleteFromFavorite(favorite);
+        this.isClicked = true;
     }
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
