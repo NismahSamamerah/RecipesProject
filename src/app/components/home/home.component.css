@@ -58,6 +58,9 @@ ul .card{
 .card img:hover{
   transform: scale(0.9);
 }
+.card-img-top{
+    height: 40vh;
+}
 p{
     font-size: 14px;
     line-height: 1.7;

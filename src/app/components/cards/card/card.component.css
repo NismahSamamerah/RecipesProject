@@ -110,3 +110,7 @@ img:hover {
 .fa-star:hover{
   color:var(--primary-color) ;
 }
+.img-side{
+  height: 24vh;
+  width: 11.5vw;
+}
