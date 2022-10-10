@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
@@ -18,6 +18,8 @@ export class RecipeComponent implements OnInit {
     public recipe: string = '';
     totalPages: number[] = [];
     currentPage: number = 1;
+    recipeImg: any;
+    recipeImgs: any[] = [];
 
     constructor(
         public http: HttpClient,
@@ -31,33 +33,48 @@ export class RecipeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.apiService.getRecipesByName('fish').subscribe(
-            (data: any) => {
-                this.recipes = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+        setTimeout(() => {
+            const fsub = this.apiService.getRecipesByName('pizza').subscribe(
+                (data: any) => {
+                    this.recipes = data;
+                    fsub.unsubscribe()
+            });
+            const rSub = this.apiService.getImage('pizza').subscribe(res => {
+                this.recipeImg = res;
+                rSub.unsubscribe();
+                for (let i = 0; i < 10; i++) {
+                    this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
+                }
+            });
+        }, 6000)
     }
 
     loadRecipe(): void {
-        this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
-            (data: any) => {
-                this.recipes = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    }
+      console.log(this.recipe);
+        setTimeout(() => {
+            const fsub = this.apiService.getCocktailsByName(`${this.recipe}`).subscribe(
+                (data: any) => {
+                    this.recipes = data;
+                    fsub.unsubscribe()
+                })
+            const cSub = this.apiService.getImage(`${this.recipe}`).subscribe(res => {
+                this.recipeImg = res;
+                cSub.unsubscribe();
+                this.recipeImgs = []
+                for (let i = 0; i < 10; i++) {
+                    this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
+                }
+            })
+        }, 4000)
 
+
+    }
 
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
     goToUserRecipes() {
-        this.route.navigate(['/user-recipe' , { data: 'Recipe' }])
+        this.route.navigate(['/user-recipe', { data: 'Recipe' }])
     }
     addFavorite(recipe: IRecipe) {
 

@@ -11,7 +11,6 @@ import { FavoriteService } from 'src/app/services/favorite.service';
     styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-
     favorites: IFavorite[] = [];
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
@@ -28,10 +27,7 @@ export class FavoriteComponent implements OnInit {
         private favoriteService: FavoriteService,
         public fb: FormBuilder,
         private auth: AuthService) {
-        const sub = this.auth.user.subscribe(user => {
-            this.auth.userID = user?.uid;
-            sub.unsubscribe();
-        })
+
 
     }
 
@@ -40,12 +36,20 @@ export class FavoriteComponent implements OnInit {
             this.loader = false;
           },2000)
 
-        if (this.filterValue == ''){
-            const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
-            this.favorites = favorites;
+        const sub = this.auth.user.subscribe(user => {
+            this.auth.userID = user?.uid;
+            if (this.filterValue == ''){
+              const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
+              this.favorites = favorites;
+              console.log(this.favorites);
+
+              sub.unsubscribe();
+              })
+          }
             sub.unsubscribe();
-            })
-        }
+        });
+
+
     }
 
     filter(filterValue: string) {
@@ -79,10 +83,12 @@ export class FavoriteComponent implements OnInit {
     }
 
     deleteFromFavorite(favorite: IFavorite) {
-        this.favoriteService.deleteFromFavorite(favorite);
+        this.favoriteService.deleteFromFavorite(favorite );
         this.isClicked = true;
     }
-    getRecipeDetails(recipe: any) {
+    getRecipeDetails(recipe: any ) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+      console.log(recipe);
+
     }
 }

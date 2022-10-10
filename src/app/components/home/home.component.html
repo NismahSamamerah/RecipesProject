@@ -20,9 +20,9 @@
 <div class="container mt-5" id="most-Pupular">
     <h1 class="h1 mt-5 mb-3">Most Popular Recipes</h1>
     <ul>
-        <li class="card mt-5" *ngFor=" let recipe of recipesShow">
+        <li class="card mt-5" *ngFor=" let recipe of recipesShow, index as i">
             <div class="image">
-                <img src="assets/images/pizza.jpg" class="card-img-top" alt="..." />
+                <img class="card-img-top" src="{{recipeImgs[i]}}"  onerror="this.src='assets/images/pizza.jpg'" />
             </div>
             <div class="card-text">
                 <h5 class="card-title">{{recipe.title}}</h5>
@@ -37,20 +37,20 @@
 </div>
 
 <div class="container mt-5" id="most-Pupular">
-  <h1 class="h1 mt-5 mb-3">Most Popular Cocktails</h1>
-  <ul>
+    <h1 class="h1 mt-5 mb-3">Most Popular Cocktails</h1>
+    <ul>
 
-      <li class="card mt-5" *ngFor="let cocktail of cocktailsShow">
-          <div class="image">
-              <img src="assets/images/ice cofee.jpg" class="card-img-top" alt="..." />
-          </div>
-          <div class="card-text">
-              <h5 class="card-title">{{cocktail.name}}</h5>
-              <div class="details">
-                  <a class="details" (click)="getRecipeDetails(cocktail)">View Details </a>
-                  <i class="fa fa-arrow-right"></i>
-              </div>
-          </div>
-      </li>
-  </ul>
+        <li class="card mt-5" *ngFor="let cocktail of cocktailsShow, index as i" >
+            <div class="image">
+                <img class="card-img-top" src="{{cocktailImgs[i]}}"  onerror="this.src='assets/images/ice cofee.jpg'" />
+            </div>
+            <div class="card-text">
+                <h5 class="card-title">{{cocktail.name}}</h5>
+                <div class="details">
+                    <a class="details" (click)="getRecipeDetails(cocktail)">View Details </a>
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>

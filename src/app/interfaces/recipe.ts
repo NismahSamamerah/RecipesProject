@@ -5,5 +5,4 @@ export interface IRecipe {
     ingredients: string[],
     instructions: string
     servings: string,
-    image : string
 }

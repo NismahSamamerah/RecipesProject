@@ -17,6 +17,8 @@ export class CardComponent implements OnInit {
 
     @Input() recipe: IRecipe | undefined;
     @Input() cocktail: ICocktail | undefined;
+    @Input() cocktailImgs: any;
+    @Input() recipeImgs: any;
     recipes: any = [];
     cocktails: any = [];
     isClicked :boolean =false;

@@ -18,6 +18,6 @@
     </div>
 
     <ul>
-       <app-card style="width: 45%;" [recipe]="recipe" *ngFor="let recipe of recipes"></app-card>
+       <app-card style="width: 45%;" [recipe]="recipe" [recipeImgs]="recipeImgs[i]" *ngFor="let recipe of recipes, index as i "></app-card>
     </ul>
 </div>

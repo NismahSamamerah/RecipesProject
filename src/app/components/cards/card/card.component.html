@@ -1,31 +1,35 @@
-
-<li class="cards" >
+<li class="cards">
     <div class="card  mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img *ngIf="recipe" src="assets/images/food03.jpg" class="img-fluid rounded-start"  >
-                <img *ngIf="cocktail" src="assets/images/smothi.jpg" class="card-img-top" alt="..." />
+                <img *ngIf="recipe" class="img-side" src="{{recipeImgs}}"  onerror="this.src='assets/images/food03.jpg'"  >
+                <img *ngIf="cocktail" class="img-side"src="{{cocktailImgs}}" onerror="this.src='assets/images/smothi.jpg'"/>
             </div>
             <div *ngIf="recipe" class="col-md-8">
-                <div class="card-body" >
-                    <h4 class="card-title">{{recipe.title}} <i class="fa fa-star"  [style.color]="isClicked == true? '#d54215' :'gray'" type="checkbox" (click)="addFavorite(recipe)" ></i></h4>
+                <div class="card-body">
+                    <h4 class="card-title">{{recipe.title}} <i class="fa fa-star"
+                            [style.color]="isClicked == true? '#d54215' :'gray'" type="checkbox"
+                            (click)="addFavorite(recipe)"></i></h4>
                     <p class="card-text">{{recipe.ingredients}}</p>
                 </div>
                 <div class="details">
                     <a class="details" (click)="getRecipeDetails(recipe)">View Details
-                      <i class="fa fa-arrow-right"></i> </a>
+                        <i class="fa fa-arrow-right"></i> </a>
                 </div>
             </div>
             <div *ngIf="cocktail" class="col-md-8">
-              <div class="card-body" >
-                  <h4 class="card-title">{{cocktail.name}} <i class="fa fa-star" type="checkbox" [style.color]="isClicked == true? '#d54215' :'gray'" type="checkbox" (click)="addFavorite(cocktail)" ></i></h4>
-                  <p class="card-text">{{cocktail.ingredients}}</p>
-              </div>
-              <div class="details">
-                <a class="details" (click)="getRecipeDetails(cocktail)">View Details
-                  <i class="fa fa-arrow-right"></i> </a>
+                <div class="card-body">
+                    <h4 class="card-title">{{cocktail.name}} <i class="fa fa-star" type="checkbox"
+                            [style.color]="isClicked == true? '#d54215' :'gray'" type="checkbox"
+                            (click)="addFavorite(cocktail)"></i></h4>
+                    <p class="card-text">{{cocktail.ingredients}}</p>
+                </div>
+                <div class="details">
+                    <a class="details" (click)="getRecipeDetails(cocktail)">View Details
+                        <i class="fa fa-arrow-right"></i> </a>
+                </div>
             </div>
-          </div>
+
         </div>
     </div>
 </li>

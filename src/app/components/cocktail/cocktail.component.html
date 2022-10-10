@@ -19,6 +19,6 @@
 
 </div>
   <ul>
-    <app-card style="width: 45%;" [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-card>
+    <app-card style="width: 45%;" [cocktail]="cocktail" [cocktailImgs]="cocktailImgs[i]" *ngFor="let cocktail of cocktails, index as i"></app-card>
     </ul>
 </div>

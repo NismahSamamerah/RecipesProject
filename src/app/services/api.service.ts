@@ -32,9 +32,11 @@ export class ApiService {
         );
         return data;
     }
-    getImages(name: string) {
-        return this.http.get(`https://api.unsplash.com/photos?query=${name}&client_id=JEyCXkuqJSigTZ95jQDe_SECbBf1B5AKsTmtxOkC5-Q`)
-    }
+
+    getImage(name:string){
+        return  this.http.get(`https://api.unsplash.com/search/photos?query=${name}&client_id=8K0tHboOVHmbsPgtyZeNyf4KUFtTk8sanX1sV_zC_mE`)
+          }
+
     get(
         subUrl: string,
         options?: {
