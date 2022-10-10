@@ -44,11 +44,11 @@ export class HomeComponent implements OnInit {
         const cSub = this.api.getImage('cocktail').subscribe(res => {
             this.cocktailImg = res;
             cSub.unsubscribe();
-        })
+        });
         const rSub = this.api.getImage('recipe').subscribe(res => {
             this.recipeImg = res;
             rSub.unsubscribe();
-        })
+        });
         
         setTimeout(() =>{  
             for (let i = 0; i < 3; i++) {
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
                 this.recipesShow.push(this.recipes[Math.floor(Math.random() * this.recipes.length)])    
             }
           this.loader = false;
-        },8000)
+        },7000)
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {

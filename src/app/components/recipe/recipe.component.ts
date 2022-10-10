@@ -29,30 +29,29 @@ export class RecipeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        setTimeout(() => {
-            const fsub = this.apiService.getRecipesByName('fish').subscribe(
+            const fsub = this.apiService.getRecipesByName('pizza').subscribe(
                 (data: any) => {
                     this.recipes = data;
                     fsub.unsubscribe()
             });
-            const rSub = this.apiService.getImage('fish').subscribe(res => {
+            const rSub = this.apiService.getImage('pizza recipe').subscribe(res => {
                 this.recipeImg = res;
                 rSub.unsubscribe();
                 for (let i = 0; i < 10; i++) {
                     this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             });
-        }, 6000)
     }
 
     loadRecipe(): void {
-        setTimeout(() => {
-            const fsub = this.apiService.getCocktailsByName(`${this.recipe}`).subscribe(
+            const fsub = this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
                 (data: any) => {
                     this.recipes = data;
+                    console.log(this.recipes);
+                    
                     fsub.unsubscribe()
                 })
-            const cSub = this.apiService.getImage(`${this.recipe}`).subscribe(res => {
+            const cSub = this.apiService.getImage(`${this.recipe} recipe`).subscribe(res => {
                 this.recipeImg = res;
                 cSub.unsubscribe();
                 this.recipeImgs = []
@@ -60,7 +59,6 @@ export class RecipeComponent implements OnInit {
                     this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             })
-        }, 4000)
     }
 
     getRecipeDetails(recipe: any) {

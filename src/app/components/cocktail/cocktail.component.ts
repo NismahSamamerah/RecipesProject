@@ -35,7 +35,7 @@ export class CocktailComponent implements OnInit {
                     this.cocktails = data;
                     fsub.unsubscribe()
             });
-            const cSub = this.apiService.getImage('orange').subscribe(res => {
+            const cSub = this.apiService.getImage('orange cocktail').subscribe(res => {
                 this.cocktailImg = res;
                 cSub.unsubscribe();
                 for (let i = 0; i < 10; i++) {
@@ -46,13 +46,14 @@ export class CocktailComponent implements OnInit {
     }
 
     loadCocktail(): void {
-        setTimeout(() => {
-            const fsub = this.apiService.getCocktailsByName(`${this.cocktail}`).subscribe(
+            const fsub = this.apiService.getCocktailsByName(`${this.cocktail} `).subscribe(
                 (data: any) => {
                     this.cocktails = data;
+                    console.log(this.cocktails);
+                    
                     fsub.unsubscribe()
                 })
-            const cSub = this.apiService.getImage(`${this.cocktail}`).subscribe(res => {
+            const cSub = this.apiService.getImage(`${this.cocktail} cocktail`).subscribe(res => {
                 this.cocktailImg = res;
                 cSub.unsubscribe();
                 this.cocktailImgs = []
@@ -60,7 +61,6 @@ export class CocktailComponent implements OnInit {
                     this.cocktailImgs.push(this.cocktailImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             })
-        }, 4000)
     }
 
     goToUserRecipes() {
