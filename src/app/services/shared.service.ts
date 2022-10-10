@@ -13,9 +13,8 @@ export class SharedService {
   saveSharedInfo(shared: IShared) {
     return this.angularFirestore.collection(`shared`).doc(shared.id).set(shared);
   }
-  
+
   getByUserId( id:string): Observable<any> {
     return this.angularFirestore.collection('shared', ref => ref.where('shared_users', 'array-contains', id)).valueChanges();
 }
-
 }

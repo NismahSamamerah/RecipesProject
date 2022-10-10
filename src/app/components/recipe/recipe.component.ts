@@ -29,11 +29,13 @@ export class RecipeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
+
             const fsub = this.apiService.getRecipesByName('pizza').subscribe(
                 (data: any) => {
                     this.recipes = data;
                     fsub.unsubscribe()
             });
+
             const rSub = this.apiService.getImage('pizza recipe').subscribe(res => {
                 this.recipeImg = res;
                 rSub.unsubscribe();
@@ -44,6 +46,7 @@ export class RecipeComponent implements OnInit {
     }
 
     loadRecipe(): void {
+
             const fsub = this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
                 (data: any) => {
                     this.recipes = data;

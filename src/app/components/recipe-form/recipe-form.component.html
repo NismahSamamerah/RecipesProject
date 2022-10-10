@@ -2,6 +2,7 @@
 <div class="container">
     <div class="title">
         <h1>Submit Recipe</h1>
+        <a (click)="backToAllRecipes()" style="color: white;"><i class="fa fa-long-arrow-left"  aria-hidden="true"></i>back to All Recipes</a>
         <img src="/assets/images/transparent-removebg-preview.png" alt="">
     </div>
     <form [formGroup]="recipeForm" (ngSubmit)="saveRecipes()" class="row g-2 mt-2 mb-3">
@@ -32,7 +33,7 @@
                 }}
             </p>
         </div>
-        <div *ngIf="type == 'Recipe'" class="col-md-8">
+        <div  class="col-md-8">
             <label  class="form-label" for="servings">Servings</label>
             <input type="text" id="servings" #servings class="form-control" formControlName="servings">
             <p class="error-messege" *ngIf="recipeForm.get('servings')?.invalid && recipeForm.get('servings')?.touched" role="alert">
@@ -45,8 +46,41 @@
             <label for="instructions">Instructions</label>
             <textarea id="instructions" #instructions formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
         </div>
-        <button  class="col-md-8" type="submit" style="max-height:50px ">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
+        <!-- <form class="imgForm">
+          <label for="img">choose image:</label>
+          <input  type="file" formControlName="image" name="img" #img (change)="onFileSelect($event)">
+        </form> -->
+        <button class="col-md-8"  aria-hidden="true" data-bs-toggle="modal"
+        data-bs-target="#submitModalToggle" type="submit" style="max-height:50px ">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
     </form>
+
 </div>
 
+ <!-- <div *ngIf="recipeForm.valid == true && editMode == false"class="modal fade" id="submitModalToggle" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        You added new recipe succusfuly
+      </div>
+      <div class="modal-footer">
+        <button class="btn " data-bs-toggle="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div *ngIf="editMode == true">
+  <div class="modal fade" id="submitModalToggle" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          the edits saved succusfuly
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn ">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 

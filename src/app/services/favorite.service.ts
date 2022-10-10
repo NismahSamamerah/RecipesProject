@@ -9,9 +9,9 @@ import { IFavorite } from '../interfaces/favorite';
 export class FavoriteService {
 
 	favoriteDoc: AngularFirestoreDocument<any> | undefined;
-	
+
 	constructor(private angularFirestore: AngularFirestore) {}
-	
+
 	addFavorite(item: IFavorite) {
 		return this.angularFirestore.collection('favorite').doc(item.id).set(item);
 	}
@@ -25,10 +25,11 @@ export class FavoriteService {
 	}
 
 	getFavorites(user_id: string): Observable<any[]> {
+    console.log(user_id);
 		return this.angularFirestore.collection(`favorite`, ref => ref.where('user_id', '==', user_id)).valueChanges();
 	}
 
-	deleteFromFavorite(item: any) {
+	deleteFromFavorite(item: any ) {
 		this.favoriteDoc = this.angularFirestore.doc(`favorite/${item.id}`);
 		this.favoriteDoc.delete();
 	}
