@@ -50,15 +50,14 @@ export class HomeComponent implements OnInit {
             rSub.unsubscribe();
         });
         
-        setTimeout(() =>{  
+        setTimeout(() =>{ 
             for (let i = 0; i < 3; i++) {
                 this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random()*10)].urls.regular)
                 this.cocktailImgs.push(this.cocktailImg.results[Math.floor(Math.random()*10)].urls.regular)
                 this.cocktailsShow.push(this.cocktails[Math.floor(Math.random() * this.cocktails.length)])
                 this.recipesShow.push(this.recipes[Math.floor(Math.random() * this.recipes.length)])    
             }
-          this.loader = false;
-        },7000)
+        },2000)
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {
