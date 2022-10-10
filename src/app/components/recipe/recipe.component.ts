@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
@@ -15,14 +14,11 @@ import { Utils } from 'src/app/common/utils';
 })
 export class RecipeComponent implements OnInit {
     recipes: any = [];
-    public recipe: string = '';
-    totalPages: number[] = [];
-    currentPage: number = 1;
+    recipe: string = '';
     recipeImg: any;
     recipeImgs: any[] = [];
 
     constructor(
-        public http: HttpClient,
         public route: Router,
         public apiService: ApiService,
         private auth: AuthService,
@@ -70,11 +66,12 @@ export class RecipeComponent implements OnInit {
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
+
     goToUserRecipes() {
         this.route.navigate(['/user-recipe', { data: 'Recipe' }])
     }
-    addFavorite(recipe: IRecipe) {
 
+    addFavorite(recipe: IRecipe) {
         const favoriteItem: IFavorite = {
             id: Utils.generateID(),
             type_id: recipe.title,
@@ -82,9 +79,7 @@ export class RecipeComponent implements OnInit {
             typeS: 'recipe',
             type: recipe,
         }
-        console.log(favoriteItem);
         this.favorite.addFavorite(favoriteItem).then(res => {
-
         }).catch(err => {
             console.log(err);
         })

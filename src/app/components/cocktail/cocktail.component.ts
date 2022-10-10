@@ -6,7 +6,6 @@ import { IFavorite } from 'src/app/interfaces/favorite';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-cocktail',
@@ -15,15 +14,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CocktailComponent implements OnInit {
     cocktails: any = [];
-    public cocktail: string = '';
+    cocktail: string = '';
     cocktailImg: any;
-    public cocktailImgs: any[] = [];
+    cocktailImgs: any[] = [];
     
-
-    constructor(public router: Router,
+    constructor(
+        public router: Router,
         public apiService: ApiService,
         public auth: AuthService,
-        public user: UserService,
         private favorite: FavoriteService) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
@@ -46,6 +44,7 @@ export class CocktailComponent implements OnInit {
             });
         }, 6000)
     }
+
     loadCocktail(): void {
         setTimeout(() => {
             const fsub = this.apiService.getCocktailsByName(`${this.cocktail}`).subscribe(
@@ -63,12 +62,15 @@ export class CocktailComponent implements OnInit {
             })
         }, 4000)
     }
+
     goToUserRecipes() {
         this.router.navigate(['/user-recipe', { data: 'Cocktail' }]);
     }
+
     getRecipeDetails(recipe: any) {
         this.router.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
+
     addFavorite(cocktail: ICocktail) {
         const favoriteItem: IFavorite = {
             id: Utils.generateID(),
@@ -77,12 +79,9 @@ export class CocktailComponent implements OnInit {
             typeS: 'cocktail',
             type: cocktail,
         }
-
-        console.log(favoriteItem);
         this.favorite.addFavorite(favoriteItem).then(res => {
         }).catch(err => {
             console.log(err);
         })
     }
-
 }
