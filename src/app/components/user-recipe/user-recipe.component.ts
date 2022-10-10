@@ -35,7 +35,6 @@ export class UserRecipeComponent implements OnInit {
 
     ngOnInit(): void {
         this.type = this.router.snapshot.paramMap.get('data');
-        console.log(this.type);
         if (this.type == 'Cocktail') {
             const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
                 this.cocktails = cocktails;
@@ -48,8 +47,8 @@ export class UserRecipeComponent implements OnInit {
             });
         }
         setTimeout(()=>{
-        this.loader = false;
-        },1000)
+          this.loader = false;
+        },5000)
       }
 
     searchByName() {

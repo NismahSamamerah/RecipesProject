@@ -134,6 +134,7 @@ export class RecipeFormComponent implements OnInit {
     Swal.fire('Your recipe was succesfully edited')
     this.editMode = false;
   }
+
   editCocktail() {
     const data: ICocktail = {
       name: this.recipeForm.value.name,
@@ -141,10 +142,12 @@ export class RecipeFormComponent implements OnInit {
       instructions: this.recipeForm.value.instructions,
       id: this.data.id,
       user_id: this.auth.userID as string,
+      image: ''
     };
     this.cocktailService.update(data);
     Swal.fire('Your recipe was succesfully edited')
     this.editMode = false;
+
   }
   saveRecipe() {
     const recipe: IRecipe = {
@@ -177,6 +180,7 @@ export class RecipeFormComponent implements OnInit {
       name: this.recipeForm.value.name,
       ingredients: this.getIngredientsArrayValues(),
       instructions: this.recipeForm.value.instructions,
+      image: ''
     };
     this.recipeForm.reset();
     this.cocktailService
@@ -189,6 +193,7 @@ export class RecipeFormComponent implements OnInit {
           icon: 'error',
           title: 'Oops...',
           text: 'Something went wrong! please try again',
+
         })
       });
   }
