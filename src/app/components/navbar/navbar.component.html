@@ -31,6 +31,15 @@
                 <li class="nav-item" *ngIf="isLoggedIn == true">
                     <a class="nav-link" routerLink="favorite"> Favorite</a>
                 </li>
+                <!-- <li ngbDropDown class="nav-item dropdown">
+                  <a ngbDropDownToggle class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div ngbDropDownMenu class="dropdown-menu">
+                    <a ngbDropDownItem class="dropdown-item" href="#">Action</a>
+                    <a ngbDropDownItem class="dropdown-item" href="#">Another action</a>
+                  </div>
+                </li> -->
 
             </ul>
             <button class="btn" *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register">Sign Up ?</button>
@@ -38,10 +47,13 @@
                 routerLink="/login">Login</button>
             <button class="btn" *ngIf="isLoggedIn == true" (click)="logout()" class="btn btn-outline me-2"
                 type="button">Logout</button>
-            <div class="social">
-                <i class="fa fa-facebook" aria-hidden="true" style="margin-left:10px"></i>
+            <div *ngIf="isLoggedIn == true" class="profile">
+                <!-- <i class="fa fa-facebook" aria-hidden="true" style="margin-left:10px"></i>
                 <i class="fa fa-twitter" aria-hidden="true" style="margin-left:5px"></i>
-                <i class="fa fa-google-plus" aria-hidden="true" style="margin-left:5px"></i>
+                <i class="fa fa-google-plus" aria-hidden="true" style="margin-left:5px"></i> -->
+                <a class="nav-link" routerLink="suggest">
+                <div class="circle"><span><i class="fa fa-user" aria-hidden="true"></i></span></div></a>
+                <p>{{name}}</p>
             </div>
         </div>
     </div>

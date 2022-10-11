@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +22,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   login() {
     this.auth.login(this.loginForm.value.email, this.loginForm.value.password).then(res => {
-      console.log(res);
       this.isSubmitted = true;
       this.route.navigate(['recipe'])
     }).catch(err => {
+      Swal.fire({
+        icon: 'error',
+        text: ' Email or password is wrong ! please try again',
+        confirmButtonColor: '#d54215',
+      })
       console.log(err);
     })
   }

@@ -71,3 +71,6 @@ button:hover{
   display: flex;
   justify-content: space-between;
 }
+ a{
+  cursor: pointer;
+}

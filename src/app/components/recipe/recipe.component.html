@@ -10,7 +10,7 @@
     </div>
     <div class="searchbox">
         <form>
-            <input [(ngModel)]="recipe" type="text" name="search" class="form-control" placeholder="&#xf002; Search"
+            <input (keyup.enter)="loadRecipe()" [(ngModel)]="recipe" type="text" name="search" class="form-control" placeholder="&#xf002; Search"
                 style="font-family: FontAwesome, Arial; font-style: normal;">
             <button (click)="loadRecipe()" class="btn " type="submit"><i class="fa fa-search"
                     aria-hidden="true"></i></button>

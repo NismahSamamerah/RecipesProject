@@ -38,6 +38,7 @@ export class UserCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
     deleteAlert(recipe: any) {
         Swal.fire({

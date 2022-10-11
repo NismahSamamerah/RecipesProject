@@ -43,6 +43,7 @@ export class RecipeComponent implements OnInit {
                     this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             });
+
     }
 
     loadRecipe(): void {
@@ -51,7 +52,7 @@ export class RecipeComponent implements OnInit {
                 (data: any) => {
                     this.recipes = data;
                     console.log(this.recipes);
-                    
+
                     fsub.unsubscribe()
                 })
             const cSub = this.apiService.getImage(`${this.recipe} recipe`).subscribe(res => {

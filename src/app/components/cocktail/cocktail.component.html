@@ -11,7 +11,7 @@
 
     <div class="searchbox">
         <form>
-            <input [(ngModel)]="cocktail" type="text" name="search" class="form-control" placeholder="&#xf002; Search"
+            <input (keyup.enter)="loadCocktail()" [(ngModel)]="cocktail" type="text" name="search" class="form-control" placeholder="&#xf002; Search"
                 style="font-family: FontAwesome, Arial; font-style: normal;">
             <button (click)="loadCocktail()" class="btn " type="submit"><i class="fa fa-search"
                     aria-hidden="true"></i></button>

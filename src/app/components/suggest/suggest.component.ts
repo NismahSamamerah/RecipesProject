@@ -18,7 +18,7 @@ export class SuggestComponent implements OnInit {
     recipeSearchArr :IRecipe[]  =[];
     cocktailSearchArr :ICocktail[]  =[];
     searchVal :string = '';
-    fitlerVal :string ='all';
+    filterVal :string ='all';
     public name :string =''
     loader: boolean = true;
 
@@ -66,7 +66,7 @@ export class SuggestComponent implements OnInit {
 
     }
     onClick(filterVal :string){
-      this.fitlerVal = filterVal;
+      this.filterVal = filterVal;
     }
     searchRecipe() {
       this.recipeSearchArr = this.recipes.filter(res  => {

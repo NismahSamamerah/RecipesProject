@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="!loader">
 <div class="header" >
-  <h2> Welcom <span>{{name}} !</span> <br>You can see recipes that have been shared with you by your friends</h2>
+  <h2> Welcome <span>{{name}} !</span> <br>You can see recipes that have been shared with you by your friends</h2>
 </div>
 <div class="container">
         <div class="search">
@@ -20,22 +20,22 @@
         <div class="searchGroup">
         <input type="text" [(ngModel)]="searchVal" class="form-control" placeholder="&#xf002; Search "
             style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
-            <button *ngIf="fitlerVal == 'recipes'" (click)="searchRecipe()"  type="button">Search</button>
-            <button *ngIf="fitlerVal == 'cocktails'" (click)="searchCocktail()"  type="button">Search</button>
+            <button *ngIf="filterVal == 'recipes'" (click)="searchRecipe()"  type="button">Search</button>
+            <button *ngIf="filterVal == 'cocktails'" (click)="searchCocktail()"  type="button">Search</button>
           </div>
     </div>
   </div>
     <div>
         <ul>
-          <div class="list" *ngIf="fitlerVal == 'recipes'">
+          <div class="list" *ngIf="filterVal == 'recipes'">
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipeSearchArr"></app-user-card>
               </div>
-              <div  class="list"*ngIf="fitlerVal == 'cocktails'">
+              <div  class="list"*ngIf="filterVal == 'cocktails'">
                 <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
                 <app-user-card   [cocktail]="cocktail" *ngFor="let cocktail of cocktailSearchArr"></app-user-card>
               </div>
-              <div  class="list" *ngIf="fitlerVal == 'all'">
+              <div  class="list" *ngIf="filterVal == 'all'">
                 <app-user-card   [recipe]="recipe" *ngFor="let recipe of recipes"></app-user-card>
                 <app-user-card [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></app-user-card>
               </div>

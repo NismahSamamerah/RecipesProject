@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-register',
@@ -11,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
     styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  loader: boolean = true;
     registerForm: FormGroup = new FormGroup({
         firstName: new FormControl('', [
             Validators.required,
@@ -54,14 +56,16 @@ export class RegisterComponent implements OnInit {
         this.auth.register(newUser.email, this.registerForm.value.password).then(res => {
             this.userService.saveUserInfo(newUser).then(res => {
                 console.log(res);
-                this.route.navigate(['/home'])
+                this.route.navigate(['/recipe'])
             }).catch(err => {
                 console.log(err);
+                
             })
         }).catch(err => {
             console.log(err);
         })
     }
+
 
     goToLogin(){
       this.route.navigate(['/login'])
