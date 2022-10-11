@@ -3,6 +3,6 @@ export interface ICocktail {
     user_id: string,
     name: string,
     ingredients: string[],
-    instructions: string
-
+    instructions: string,
+    image: string
 }

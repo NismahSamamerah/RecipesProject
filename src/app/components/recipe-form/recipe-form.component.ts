@@ -15,6 +15,7 @@ import { ICocktail } from 'src/app/interfaces/cocktail';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { Utils } from 'src/app/common/utils';
 import Swal from 'sweetalert2'
+import { reduce } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-form',
@@ -33,7 +34,7 @@ export class RecipeFormComponent implements OnInit {
     ingredients: new FormArray([]),
     servings: new FormControl('', [Validators.required]),
     instructions: new FormControl('', [Validators.required ,Validators.maxLength(100)]),
-    // image: new FormControl(null, [Validators.required]),
+    image: new FormControl(null, [Validators.required]),
   });
 
   ingredientItem: FormGroup = new FormGroup({
@@ -92,7 +93,9 @@ export class RecipeFormComponent implements OnInit {
     console.log(loggedIn);
     return loggedIn;
   }
-
+  onFileSelect(e :any){
+    console.log(e.target.files);
+  }
   saveRecipes() {
     if (this.editMode && this.type == 'Cocktail') {
       this.editCocktail();
@@ -104,8 +107,7 @@ export class RecipeFormComponent implements OnInit {
       }else{
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: ' please fill the form',
+          text: ' You cannot save this recipe ,please fill the form!',
         })
       }
     } else if (this.type == 'Recipe' ) {
@@ -114,8 +116,12 @@ export class RecipeFormComponent implements OnInit {
       }else{
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: ' please fill the form',
+          text: 'You cannot save this recipe ,please fill the form!',
+          confirmButtonColor: '#d54215',
+          width: 500,
+          confirmButtonText: 'back To Form!',
+          padding: '1em',
+
         })
       }
 
@@ -131,7 +137,9 @@ export class RecipeFormComponent implements OnInit {
       user_id: this.auth.userID as string,
     };
     this.recipeService.update(data);
-    Swal.fire('Your recipe was succesfully edited')
+    Swal.fire({
+      title:'Your edits have been saved successfully',
+      confirmButtonColor: '#d54215',})
     this.editMode = false;
   }
   editCocktail() {
@@ -141,9 +149,11 @@ export class RecipeFormComponent implements OnInit {
       instructions: this.recipeForm.value.instructions,
       id: this.data.id,
       user_id: this.auth.userID as string,
+      image: ''
     };
     this.cocktailService.update(data);
-    Swal.fire('Your recipe was succesfully edited')
+    Swal.fire({title:'Your edits have been saved successfully',
+    confirmButtonColor: '#d54215',})
     this.editMode = false;
   }
   saveRecipe() {
@@ -154,12 +164,15 @@ export class RecipeFormComponent implements OnInit {
       ingredients: this.getIngredientsArrayValues(),
       servings: this.recipeForm.value.servings,
       instructions: this.recipeForm.value.instructions,
+      image : this.recipeForm.value.image,
     };
     this.recipeForm.reset();
     this.recipeService
       .saveRecipeInfo(recipe)
       .then((res) => {
-        Swal.fire('You added new recipe succesfully')
+        Swal.fire({
+          title : 'You added new recipe succesfully',
+          confirmButtonColor: '#d54215'})
       })
       .catch((err) => {
         Swal.fire({
@@ -177,12 +190,15 @@ export class RecipeFormComponent implements OnInit {
       name: this.recipeForm.value.name,
       ingredients: this.getIngredientsArrayValues(),
       instructions: this.recipeForm.value.instructions,
+      image : this.recipeForm.value.image,
     };
     this.recipeForm.reset();
     this.cocktailService
       .saveCocktailInfo(cocktail)
       .then((res) => {
-        Swal.fire('You added new recipe succesfully')
+        Swal.fire({
+          text : 'You added new recipe succesfully',
+          confirmButtonColor: '#d54215'})
       })
       .catch((err) => {
         Swal.fire({

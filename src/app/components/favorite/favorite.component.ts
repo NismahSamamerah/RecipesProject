@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IFavorite } from 'src/app/interfaces/favorite';
 import { AuthService } from 'src/app/services/auth.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-favorite',
@@ -14,7 +15,6 @@ export class FavoriteComponent implements OnInit {
     favorites: IFavorite[] = [];
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
-    isClicked :boolean = false;
     filterForm: FormGroup = new FormGroup({
     filter:new FormControl ('', Validators.required)
     });
@@ -36,20 +36,13 @@ export class FavoriteComponent implements OnInit {
             this.loader = false;
           },2000)
 
-        const sub = this.auth.user.subscribe(user => {
-            this.auth.userID = user?.uid;
-            if (this.filterValue == ''){
-              const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
-              this.favorites = favorites;
-              console.log(this.favorites);
 
-              sub.unsubscribe();
-              })
-          }
+        if (this.filterValue == ''){
+            const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
+            this.favorites = favorites;
             sub.unsubscribe();
-        });
-
-
+            })
+        }
     }
 
     filter(filterValue: string) {
@@ -83,8 +76,8 @@ export class FavoriteComponent implements OnInit {
     }
 
     deleteFromFavorite(favorite: IFavorite) {
-        this.favoriteService.deleteFromFavorite(favorite );
-        this.isClicked = true;
+      this.favoriteService.deleteFromFavorite(favorite );
+
     }
     getRecipeDetails(recipe: any ) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -10,23 +11,32 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
 
     public isLoggedIn: boolean | null = null;
+    public name :string ='';
 
-    constructor(public authService: AuthService, public route: Router) { }
-    // LoginRoute = this.route.navigate(['login']);
-    // RegisterRoute = this.route.navigate(['register']);
+
+    constructor(public auth: AuthService, public route: Router , public userService :UserService) {
+    }
 
     ngOnInit(): void {
-        this.authService.user.subscribe(user => {
-            // this.isLoggedIn = user? true: false;
-            if (user) {
-                this.isLoggedIn = true;
-            } else {
-                this.isLoggedIn = false;
-            }
-        });
-    }
+        const sub = this.auth.user.subscribe((user) => {
+          if (user) {
+              this.isLoggedIn = true;
+              this.auth.userID = user?.uid;
+              const subUser = this.userService.getUserById(this.auth.userID as string).subscribe(res => {
+                for(const item of res){
+                  this.name = item.first_name +' '+item.last_name;
+                }subUser.unsubscribe();
+              })
+          } else {
+              this.isLoggedIn = false;
+          }
+          sub.unsubscribe();
+    });
+  }
+
+
     logout() {
-        this.authService.logout();
+        this.auth.logout();
         this.route.navigate(['/login'])
         console.log('logout');
     }

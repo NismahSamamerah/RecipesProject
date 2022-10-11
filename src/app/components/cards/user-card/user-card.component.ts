@@ -21,7 +21,7 @@ export class UserCardComponent implements OnInit {
     @Input() recipe: IRecipe | undefined;
     @Input() cocktail: ICocktail | undefined;
     flag: boolean = false;
-    
+
     constructor(
         private recipeService: RecipeService,
         private cocktailService: CocktailService,
@@ -35,6 +35,7 @@ export class UserCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
     deleteRecipe(recipe: any) {
@@ -48,10 +49,10 @@ export class UserCardComponent implements OnInit {
 
     deleteCocktail(cocktail: any) {
         this.cocktailService.deleteCocktail(cocktail);
-    } 
+    }
 
     changeFlag (recipe: any){
         this.route.navigate(['/share', {data: JSON.stringify(recipe) }]);
     }
-    
+
 }

@@ -46,10 +46,10 @@
             <label for="instructions">Instructions</label>
             <textarea id="instructions" #instructions formControlName="instructions" class="form-control"  style="height: 100px"></textarea>
         </div>
-        <!-- <form class="imgForm">
+        <div class="imgForm">
           <label for="img">choose image:</label>
-          <input  type="file" formControlName="image" name="img" #img (change)="onFileSelect($event)">
-        </form> -->
+          <input type="file" (click)="onFileSelect($event)" formControlName="image" name="img" accept="image/*">
+        </div>
         <button class="col-md-8"  aria-hidden="true" data-bs-toggle="modal"
         data-bs-target="#submitModalToggle" type="submit" style="max-height:50px ">{{editMode? 'Update Recipe' : 'Submit Your Recipe'}}</button>
     </form>

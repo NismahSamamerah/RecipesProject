@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     recipeImg: any;
     cocktailImgs: any[] = [];
     recipeImgs: any[] = [];
-    
+
 
     constructor(private route: Router,
         private cocktail: CocktailService,
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         const subR = this.recipe.getRecipes().subscribe(recipes => {
             this.recipes = recipes;
-            subR.unsubscribe();            
+            subR.unsubscribe();
         });
         const subC = this.cocktail.getCocktails().subscribe(cocktails => {
             this.cocktails = cocktails;
@@ -44,21 +44,20 @@ export class HomeComponent implements OnInit {
         const cSub = this.api.getImage('cocktail').subscribe(res => {
             this.cocktailImg = res;
             cSub.unsubscribe();
-        })
+        });
         const rSub = this.api.getImage('recipe').subscribe(res => {
             this.recipeImg = res;
             rSub.unsubscribe();
-        })
-        
-        setTimeout(() =>{  
+        });
+
+        setTimeout(() =>{
             for (let i = 0; i < 3; i++) {
                 this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random()*10)].urls.regular)
                 this.cocktailImgs.push(this.cocktailImg.results[Math.floor(Math.random()*10)].urls.regular)
                 this.cocktailsShow.push(this.cocktails[Math.floor(Math.random() * this.cocktails.length)])
-                this.recipesShow.push(this.recipes[Math.floor(Math.random() * this.recipes.length)])    
+                this.recipesShow.push(this.recipes[Math.floor(Math.random() * this.recipes.length)])
             }
-          this.loader = false;
-        },8000)
+        },7000)
     }
     getRecipeDetails(recipe: any) {
         if (this.auth.userID) {

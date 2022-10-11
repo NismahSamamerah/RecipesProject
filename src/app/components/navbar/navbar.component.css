@@ -56,3 +56,23 @@ color: var(--primary-color);
 color: var(--primary-color);
 
 }
+.profile{
+  margin: auto;
+  font-weight: bold;
+}
+
+.circle{
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  margin: auto;
+    text-align: center;
+}
+.circle span{
+  margin: auto;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+

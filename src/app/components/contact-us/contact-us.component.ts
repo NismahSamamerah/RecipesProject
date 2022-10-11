@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-us',
@@ -29,6 +30,15 @@ export class ContactUsComponent implements OnInit {
   saveInfo(item:any){
     this.userService.contactInfo(item).then(res => {
       console.log(item);
+      this.contactUsForm.reset();
+      Swal.fire({
+        
+        icon: 'success',
+        title: 'Thank You',
+        text : 'We will review your message as soon as possible',
+        showConfirmButton: false,
+        timer: 2000
+      })
   }).catch(err => {
       console.log(err);
   })
