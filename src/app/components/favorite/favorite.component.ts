@@ -16,10 +16,10 @@ export class FavoriteComponent implements OnInit {
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
     filterForm: FormGroup = new FormGroup({
-    filter:new FormControl ('', Validators.required)
+        filter: new FormControl('', Validators.required)
     });
     filterValue: string = '';
-  loader: boolean = true;
+    loader: boolean = true;
 
 
 
@@ -32,15 +32,15 @@ export class FavoriteComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        setTimeout(()=>{
+        setTimeout(() => {
             this.loader = false;
-          },2000)
+        }, 2000)
 
 
-        if (this.filterValue == ''){
+        if (this.filterValue == '') {
             const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
-            this.favorites = favorites;
-            sub.unsubscribe();
+                this.favorites = favorites;
+                sub.unsubscribe();
             })
         }
     }
@@ -74,14 +74,36 @@ export class FavoriteComponent implements OnInit {
         })
         this.favorites = [];
     }
+    deleteAlert(favorite: IFavorite) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#308000',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.deleteFromFavorite(favorite);
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+}
 
-    deleteFromFavorite(favorite: IFavorite) {
-      this.favoriteService.deleteFromFavorite(favorite );
+deleteFromFavorite(favorite: IFavorite) {
+    this.favorites = this.favorites.filter(item => item != favorite)
+    this.favoritesSearch = this.favoritesSearch.filter(item => item != favorite)
+    this.favoriteService.deleteFromFavorite(favorite);
 
-    }
-    getRecipeDetails(recipe: any ) {
-        this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
-      console.log(recipe);
+}
+getRecipeDetails(recipe: any) {
+    this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+    console.log(recipe);
 
-    }
+}
 }
