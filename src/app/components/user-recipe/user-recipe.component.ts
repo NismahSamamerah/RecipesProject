@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICocktail } from 'src/app/interfaces/cocktail';
@@ -19,7 +20,7 @@ export class UserRecipeComponent implements OnInit {
     cocktails: ICocktail[] = [];
     cocktailSearch: ICocktail[] = [];
     searchValue: string = '';
-    public data: IRecipe | ICocktail | any;
+    data: IRecipe | ICocktail | any;
     loader :boolean =true;
 
     constructor(public route: Router,
@@ -82,5 +83,13 @@ export class UserRecipeComponent implements OnInit {
 
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+    }
+
+    public deleteRecipe(recipe: any){
+        this.recipes = this.recipes.filter(item => item != recipe)  
+    }
+
+    public deleteCocktail(recipe: any){
+        this.cocktails = this.cocktails.filter(item => item != recipe)  
     }
 }

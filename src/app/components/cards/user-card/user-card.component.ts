@@ -10,6 +10,8 @@ import { CocktailService } from 'src/app/services/cocktail.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
+import { UserRecipeComponent } from '../../user-recipe/user-recipe.component';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class UserCardComponent implements OnInit {
         private cocktailService: CocktailService,
         private route: Router,
         private auth: AuthService,
-        ) {
+        public userRecipeComponent: UserRecipeComponent
+    ) {
         const sub = this.auth.user.subscribe(user => {
             this.auth.userID = user?.uid;
             sub.unsubscribe();
@@ -37,9 +40,44 @@ export class UserCardComponent implements OnInit {
     ngOnInit(): void {
 
     }
+    deleteAlert(recipe: any) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#308000',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (recipe.hasOwnProperty('title')) {
+                    this.deleteRecipe(recipe);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                } else {
+                    this.deleteCocktail(recipe);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            }
+        })
+    }
 
-    deleteRecipe(recipe: any) {
+    deleteRecipe(recipe: IRecipe) {
+        this.userRecipeComponent.deleteRecipe(recipe)
         this.recipeService.delete(recipe);
+    }
+
+    deleteCocktail(cocktail: ICocktail) {
+        this.userRecipeComponent.deleteCocktail(cocktail)
+        this.cocktailService.deleteCocktail(cocktail);
     }
 
     getUserRecipeDetails(recipe: any) {
@@ -47,12 +85,8 @@ export class UserCardComponent implements OnInit {
         console.log(recipe);
     }
 
-    deleteCocktail(cocktail: any) {
-        this.cocktailService.deleteCocktail(cocktail);
-    }
-
-    changeFlag (recipe: any){
-        this.route.navigate(['/share', {data: JSON.stringify(recipe) }]);
+    changeFlag(recipe: any) {
+        this.route.navigate(['/share', { data: JSON.stringify(recipe) }]);
     }
 
 }
