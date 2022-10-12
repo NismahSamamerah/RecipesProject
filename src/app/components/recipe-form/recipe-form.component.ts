@@ -34,7 +34,7 @@ export class RecipeFormComponent implements OnInit {
     ingredients: new FormArray([]),
     servings: new FormControl('', [Validators.required]),
     instructions: new FormControl('', [Validators.required ,Validators.maxLength(100)]),
-    image: new FormControl(null, [Validators.required]),
+    // image: new FormControl(null, [Validators.required]),
   });
 
   ingredientItem: FormGroup = new FormGroup({
@@ -164,7 +164,7 @@ export class RecipeFormComponent implements OnInit {
       ingredients: this.getIngredientsArrayValues(),
       servings: this.recipeForm.value.servings,
       instructions: this.recipeForm.value.instructions,
-      image : this.recipeForm.value.image,
+      image : '',
     };
     this.recipeForm.reset();
     this.recipeService
@@ -190,7 +190,7 @@ export class RecipeFormComponent implements OnInit {
       name: this.recipeForm.value.name,
       ingredients: this.getIngredientsArrayValues(),
       instructions: this.recipeForm.value.instructions,
-      image : this.recipeForm.value.image,
+      image : '',
     };
     this.recipeForm.reset();
     this.cocktailService
