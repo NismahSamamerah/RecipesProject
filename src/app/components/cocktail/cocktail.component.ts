@@ -17,7 +17,7 @@ export class CocktailComponent implements OnInit {
     cocktail: string = '';
     cocktailImg: any;
     cocktailImgs: any[] = [];
-    
+
     constructor(
         public router: Router,
         public apiService: ApiService,
@@ -42,7 +42,7 @@ export class CocktailComponent implements OnInit {
                     this.cocktailImgs.push(this.cocktailImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             });
-        }, 6000)
+        }, 3000)
     }
 
     loadCocktail(): void {
@@ -50,7 +50,7 @@ export class CocktailComponent implements OnInit {
                 (data: any) => {
                     this.cocktails = data;
                     console.log(this.cocktails);
-                    
+
                     fsub.unsubscribe()
                 })
             const cSub = this.apiService.getImage(`${this.cocktail} cocktail`).subscribe(res => {

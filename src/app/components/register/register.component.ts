@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
         ]),
     });
 
-    constructor(public auth: AuthService, 
-        private userService: UserService, 
+    constructor(public auth: AuthService,
+        private userService: UserService,
         public route: Router) {
     }
 
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         icon: 'info',
         title: 'Proccing ..',
         showConfirmButton: false,
-        timer: 7000
+        timer: 2000
       })
         const newUser: IUser = {
             id: '',
