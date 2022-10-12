@@ -32,7 +32,7 @@
     <ul>
         <li class="card mt-3" *ngFor="let fav of favoritesSearch">
             <div class="image">
-                <i class="fa fa-star" aria-hidden="true" (click)="deleteFromFavorite(fav)"></i>
+                <i class="fa fa-star" aria-hidden="true" (click)="deleteAlert(fav)"></i>
                 <img *ngIf="fav.typeS == 'recipe'" src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                 <img *ngIf="fav.typeS == 'cocktail'" src="assets/images/smothi.jpg" class="card-img-top" alt="..." />
             </div>
@@ -46,7 +46,7 @@
         </li>
         <li class="card mt-3" *ngFor="let fav of favorites">
             <div class="image">
-                <i class="fa fa-star" (click)="deleteFromFavorite(fav)" type="checkbox"  ></i>
+                <i class="fa fa-star" (click)="deleteAlert(fav)" type="checkbox"  ></i>
                 <img *ngIf="fav.typeS == 'recipe'" src="assets/images/food03.jpg" class="card-img-top" alt="..." />
                 <img *ngIf="fav.typeS == 'cocktail'" src="assets/images/smothi.jpg" class="card-img-top" alt="..." />
             </div>

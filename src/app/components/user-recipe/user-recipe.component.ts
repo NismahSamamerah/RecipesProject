@@ -21,75 +21,74 @@ export class UserRecipeComponent implements OnInit {
     cocktailSearch: ICocktail[] = [];
     searchValue: string = '';
     data: IRecipe | ICocktail | any;
-    loader :boolean =true;
+    loader: boolean = true;
 
     constructor(public route: Router,
         private cocktailService: CocktailService,
         private recipeService: RecipeService,
         private auth: AuthService,
         private router: ActivatedRoute) {
-            const sub = this.auth.user.subscribe(user => {
-                this.auth.userID = user?.uid;
-                sub.unsubscribe();
-            })
-        }
+        const sub = this.auth.user.subscribe(user => {
+            this.auth.userID = user?.uid;
+            sub.unsubscribe();
+        })
+    }
 
     ngOnInit(): void {
-
-        this.type = this.router.snapshot.paramMap.get('data');
-        if (this.type == 'Cocktail') {
-            const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
-                this.cocktails = cocktails;
-                sub.unsubscribe();
-            });
-        } else if (this.type == 'Recipe') {
-            const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
-                this.recipes = recipes;
-                sub.unsubscribe();
-            });
-        }
-        setTimeout(()=>{
-          this.loader = false;
-          console.log(this.recipes[1].image);
-        },5000)
-      }
+        setTimeout(() => {
+            this.type = this.router.snapshot.paramMap.get('data');
+            if (this.type == 'Cocktail') {
+                const sub = this.cocktailService.getUserCocktails(this.auth.userID as string).subscribe(cocktails => {
+                    this.cocktails = cocktails;
+                    sub.unsubscribe();
+                });
+            } else if (this.type == 'Recipe') {
+                const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
+                    this.recipes = recipes;
+                    sub.unsubscribe();
+                });
+            }
+            this.loader = false;
+            console.log(this.recipes[1].image);
+        }, 5000)
+    }
 
     searchByName() {
         if (this.type == 'Cocktail') {
             this.searchCocktailByName();
-        }else{
+        } else {
             this.searchRecipeByName();
         }
-        this.recipes =[]
+        this.recipes = []
     }
 
     searchCocktailByName() {
         this.cocktailSearch = this.cocktails.filter(recipe => {
             return recipe.name.toLowerCase().includes(this.searchValue.toLowerCase());
         })
-        this.cocktails=[];
+        this.cocktails = [];
     }
 
     searchRecipeByName() {
         this.recipeSearch = this.recipes.filter(recipe => {
             return recipe.title.toLowerCase().includes(this.searchValue.toLowerCase());
         })
-        this.recipes=[];
+        this.recipes = [];
     }
 
     addNewRecipe() {
-            this.route.navigate(["/recipe-form", { id: this.type }])
+        this.route.navigate(["/recipe-form", { id: this.type }])
     }
 
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
     }
 
-    public deleteRecipe(recipe: any){
-        this.recipes = this.recipes.filter(item => item != recipe)  
+    public deleteRecipe(recipe: any) {
+        this.recipes = this.recipes.filter(item => item != recipe)
     }
 
-    public deleteCocktail(recipe: any){
-        this.cocktails = this.cocktails.filter(item => item != recipe)  
+    public deleteCocktail(recipe: any) {
+        this.cocktails = this.cocktails.filter(item => item != recipe)
     }
 }
