@@ -46,6 +46,12 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
     }
     register() {
+      Swal.fire({
+        icon: 'info',
+        title: 'Proccing ..',
+        showConfirmButton: false,
+        timer: 7000
+      })
         const newUser: IUser = {
             id: '',
             first_name: this.registerForm.value.firstName,
@@ -58,10 +64,16 @@ export class RegisterComponent implements OnInit {
         this.auth.register(newUser.email, this.registerForm.value.password).then(res => {
             this.userService.saveUserInfo(newUser).then(res => {
                 console.log(res);
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Registerd Succussfly',
+                  showConfirmButton: false,
+                  timer: 15000
+                })
                 this.route.navigate(['/recipe'])
             }).catch(err => {
                 console.log(err);
-                
+
             })
         }).catch(err => {
             console.log(err);
