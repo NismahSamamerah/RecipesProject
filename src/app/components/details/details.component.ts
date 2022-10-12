@@ -72,7 +72,6 @@ export class DetailsComponent implements OnInit {
 
         this.getRating();
         this.getComments();
-        // this.editRecipe();
 
     }
 
@@ -109,12 +108,19 @@ export class DetailsComponent implements OnInit {
     }
 
     getComments() {
-        this.type == 'recipe' ? this.getRecipeComments() : this.getCocktailComments();
+        this.type == 'Recipe' ? this.getRecipeComments() : this.getCocktailComments();
     }
 
     getRecipeComments(): void {
+      console.log(1);
+console.log(this.type_id);
         const sub = this.commentService.getRecipeComments(this.type_id).subscribe(comments => {
-            this.comments = comments;
+
+
+          console.log(2);
+          console.log(comments);
+
+          this.comments = comments;
             sub.unsubscribe();
         });
     }

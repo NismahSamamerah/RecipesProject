@@ -12,14 +12,14 @@ export class CommentService {
     saveCommentInfo(comment: any) {
         return this.angularFirestore.collection("comment").doc(comment.id).set(comment);
     }
-    
+
     getRecipeComments(recipeId: string): Observable<any[]> {
-        return this.angularFirestore.collection(`comment`, ref => ref.where('type', '==', 'recipe').where('type_id', '==', recipeId)).valueChanges();
+        return this.angularFirestore.collection(`comment`, ref => ref.where('type', '==', 'Recipe').where('type_id', '==', recipeId)).valueChanges();
     }
-    
+
     getCocktailComments(cocktailId: string): Observable<any[]> {
-        return this.angularFirestore.collection(`comment`, ref => ref.where('type', '==', 'cocktail').where('type_id', '==', cocktailId)).valueChanges();
+        return this.angularFirestore.collection(`comment`, ref => ref.where('type', '==', 'Cocktail').where('type_id', '==', cocktailId)).valueChanges();
     }
-    
+
 
 }
