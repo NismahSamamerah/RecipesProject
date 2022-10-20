@@ -46,8 +46,8 @@ export class UserCardComponent implements OnInit {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#308000',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d54215',
+            cancelButtonColor: 'gray',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {

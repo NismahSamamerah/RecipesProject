@@ -26,21 +26,23 @@
                             routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}"></i> ContactUs</a>
                 </li>
             </ul>
-            
             <div *ngIf="isLoggedIn == true" class="profile">
                 <a class="nav-link" routerLink="suggest">
-                <div class="circle"><span><i class="fa fa-user" aria-hidden="true"></i></span></div></a>
+                <div class="circle"><span>
+                  <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+                  {{firstLetter|uppercase}}
+                </span></div></a>
                 <div class="dropdown">
                     <button class="dropbtn">{{name}}
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                      <a  routerLink="suggest" >Profile</a>
-                      <a (click)="goToUserRecipes()">My Recipes</a>
-                      <a (click)="goToUserCocktail()">My Cocktails</a>
-                      <a routerLink="favorite" >Favorite</a>
+                      <a  routerLink="suggest"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                      <a (click)="goToUserRecipes()"><i class="fa fa-cutlery"></i> Recipes</a>
+                      <a (click)="goToUserCocktail()"><i class="fa fa-glass"></i> My Cocktails</a>
+                      <a routerLink="favorite" ><i class="fa fa-heart-o" aria-hidden="true"></i> Favorite</a>
                     </div>
-                  </div> 
+                  </div>
             </div>
             <button class="btn" *ngIf="isLoggedIn == false" class="btn btn-outline me-2" routerLink="register">Sign Up ?</button>
             <button class="btn" *ngIf="isLoggedIn == false" class="btn btn-outline me-2" type="button"

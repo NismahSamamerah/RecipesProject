@@ -1,10 +1,19 @@
+import { animate, animation, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import Swiper from 'swiper';
 
 @Component({
   selector: 'app-slides',
   templateUrl: './slides.component.html',
-  styleUrls: ['./slides.component.css']
+  styleUrls: ['./slides.component.css'],
+  animations:[
+    trigger('fade',[
+      transition('void =>*',[
+        style({ opacity :0}),
+        animate(3000,style({opacity :1 }))
+      ])
+    ])
+  ]
 })
 export class SlidesComponent implements OnInit {
 
@@ -31,5 +40,5 @@ export class SlidesComponent implements OnInit {
   });
   }
   // images = [944, 1011, 984];
-  
+
 }

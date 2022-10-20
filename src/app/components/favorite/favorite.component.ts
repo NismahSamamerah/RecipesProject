@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class FavoriteComponent implements OnInit {
     favorites: IFavorite[] = [];
+    tempFav : IFavorite[] = [];
     favValue: string = '';
     favoritesSearch: IFavorite[] = [];
     filterForm: FormGroup = new FormGroup({
@@ -40,9 +41,11 @@ export class FavoriteComponent implements OnInit {
         if (this.filterValue == '') {
             const sub = this.favoriteService.getFavorites(this.auth.userID as string).subscribe(favorites => {
                 this.favorites = favorites;
+                this.tempFav = favorites;
                 sub.unsubscribe();
             })
         }
+
     }
 
     filter(filterValue: string) {
@@ -68,11 +71,15 @@ export class FavoriteComponent implements OnInit {
                 break;
         }
     }
-    search() {
-        this.favoritesSearch = this.favorites.filter(favorite => {
+    search(){
+        if(this.favValue){
+          this.favoritesSearch = this.favorites.filter(favorite => {
             return favorite.type_id.toLowerCase().includes(this.favValue.toLowerCase());
         })
-        this.favorites = [];
+          this.favorites =[];
+        }else{
+          this.favorites = this.tempFav;
+        }
     }
     deleteAlert(favorite: IFavorite) {
         Swal.fire({
@@ -80,8 +87,8 @@ export class FavoriteComponent implements OnInit {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#308000',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d54215',
+            cancelButtonColor: 'gray',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {

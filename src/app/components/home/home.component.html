@@ -1,8 +1,50 @@
 <app-slides></app-slides>
+<div></div>
 <div class="container">
-    <h1 class="h1 mt-3 mb-5 mt-5">What We Do !</h1>
+  <h1 class="special-heading">About Us</h1>
+    <h3>What We Do !</h3>
+    <section>
+    <div  class="section1">
+      <img  class="mint-img" src="assets/images/mint-removebg-preview.png" alt="">
+      <div class="background">
+        <div class="content">
+          <div class="text">
+            <h3 >Food & Desserts Recipes</h3>
+            we provide a variety of food and beverage recipes with high taste with famous chefs
+          </div>
+          <img @fade class="section-img" src="assets/images/pexels-jer-chung-2059152.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="section2">
+      <div class="background" >
+        <div class="content">
+          <img @fade class="section2-img" src="assets/images/pexels-roman-odintsov-4871285.jpg" alt="">
+          <div class="text">
+            <h3>Cocktails</h3>
+            we provide a variety of food and beverage recipes with high taste with famous chefs
+          </div>
+        </div>
+      </div>
+      <img  class="mint-img" src="assets/images/mint-removebg-preview.png" alt="">
+    </div>
+    <!-- <div class="section3">
+
+      <div class="background" >
+        <div class="content">
+          <div class="text">
+            <h3>Desserts</h3>
+            We offer you many easy and delicious recipes
+          </div>
+          <img class="section-img" src="assets/images/pexels-suzy-hazelwood-1126359.jpg" alt="">
+        </div>
+      </div>
+    </div> -->
+  </section>
 </div>
-<div class="container" id="home">
+
+<!-- <div class="container" id="home">
     <div class="home-card">
         <h3>Taste Deferent Cultures</h3>
         <img src="/assets/images/27.jpg" alt="">
@@ -16,9 +58,10 @@
         <img src="/assets/images/52.jpg" alt="">
     </div>
 
-</div>
+</div> -->
 <div class="container mt-5" id="most-Pupular">
-    <h1 class="h1 mt-5 mb-3">Most Popular Recipes</h1>
+    <h1 class="special-heading ">Most Popular </h1>
+    <h3>Recipes</h3>
     <ul>
         <li class="card mt-5" *ngFor=" let recipe of recipesShow, index as i">
             <div class="image">
@@ -26,6 +69,7 @@
             </div>
             <div class="card-text">
                 <h5 class="card-title">{{recipe.title}}</h5>
+                <i class="fa fa-star" aria-hidden="true"></i> :
                 <div class="details">
                     <a class="details" (click)="getRecipeDetails(recipe)">View Details </a>
                     <i class="fa fa-arrow-right"></i>
@@ -37,7 +81,8 @@
 </div>
 
 <div class="container mt-5" id="most-Pupular">
-    <h1 class="h1 mt-5 mb-3">Most Popular Cocktails</h1>
+  <h1 class="special-heading ">Most Popular </h1>
+  <h3>Cocktails</h3>
     <ul>
         <li class="card mt-5" *ngFor="let cocktail of cocktailsShow, index as i" >
             <div class="image">

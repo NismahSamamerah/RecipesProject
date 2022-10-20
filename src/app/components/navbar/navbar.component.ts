@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
     public isLoggedIn: boolean | null = null;
     public name: string = '';
-
+    public firstLetter = '';
 
     constructor(public auth: AuthService,
         public route: Router,
@@ -26,7 +26,10 @@ export class NavbarComponent implements OnInit {
                 this.auth.userID = user?.uid;
                 const subUser = this.userService.getUserById(this.auth.userID as string).subscribe(res => {
                     for (const item of res) {
+
                         this.name = item.first_name + ' ' + item.last_name;
+                        console.log(this.name);
+                        this.firstLetter = item.first_name[0] +item.last_name[0];
                     } subUser.unsubscribe();
                 })
             } else {
@@ -34,6 +37,8 @@ export class NavbarComponent implements OnInit {
             }
 
         });
+
+
     }
 
     goToUserRecipes() {

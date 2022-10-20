@@ -20,6 +20,4 @@ export class CommentService {
     getCocktailComments(cocktailId: string): Observable<any[]> {
         return this.angularFirestore.collection(`comment`, ref => ref.where('type', '==', 'Cocktail').where('type_id', '==', cocktailId)).valueChanges();
     }
-
-
 }

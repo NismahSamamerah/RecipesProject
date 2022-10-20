@@ -4,11 +4,20 @@ import { CocktailService } from 'src/app/services/cocktail.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.css'],
+    animations:[
+      trigger('fade',[
+        transition('void =>*',[
+          style({ opacity :0}),
+          animate(2000,style({backgroundColor :'white' ,opacity :1}))
+        ])
+      ])
+    ]
 })
 export class HomeComponent implements OnInit {
     recipes: any[] = [];
