@@ -15,6 +15,8 @@ import { UserService } from 'src/app/services/user.service';
 export class SuggestComponent implements OnInit {
     cocktails: ICocktail[] = [];
     recipes: IRecipe[] = [];
+    tempRecipes : IRecipe[] = [];
+    tempCocktails : ICocktail[] = [];
     recipeSearchArr :IRecipe[]  =[];
     cocktailSearchArr :ICocktail[]  =[];
     searchVal :string = '';
@@ -45,14 +47,18 @@ export class SuggestComponent implements OnInit {
                 if(item.type == 'cocktail'){
                     const csub = this.cocktailService.getCocktailById(item.recipe_id).subscribe(cocktails =>{
                         for (const cocktail of cocktails) {
-                            this.cocktails.push(cocktail)
-                        }csub.unsubscribe();
+                            this.cocktails.push(cocktail);
+                        }
+                        this.tempCocktails = cocktails;
+                        csub.unsubscribe();
                     })
                 }else if(item.type == 'recipe'){
                     const rsub = this.recipeService.getRecipeById(item.recipe_id).subscribe(recipes =>{
                         for (const recipe of recipes) {
                             this.recipes.push(recipe)
-                        } rsub.unsubscribe();
+                        }
+                        this.tempRecipes = recipes;
+                        rsub.unsubscribe();
                     })
                 }
             }
@@ -69,15 +75,23 @@ export class SuggestComponent implements OnInit {
       this.filterVal = filterVal;
     }
     searchRecipe() {
-      this.recipeSearchArr = this.recipes.filter(res  => {
+      if(this.searchVal){
+        this.recipeSearchArr = this.recipes.filter(res  => {
         return res.title.toLowerCase().includes(this.searchVal.toLowerCase());
       })
       this.recipes =[];
+      }else{
+        this.recipes = this.tempRecipes;
+      }
   }
   searchCocktail() {
-    this.cocktailSearchArr = this.cocktails.filter(res  => {
+    if(this.searchVal){
+      this.cocktailSearchArr = this.cocktails.filter(res  => {
       return res.name.toLowerCase().includes(this.searchVal.toLowerCase());
     })
     this.cocktails =[];
+    }else{
+      this.cocktails = this.tempCocktails;
+    }
 }
 }

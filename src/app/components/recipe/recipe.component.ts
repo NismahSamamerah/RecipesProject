@@ -47,12 +47,9 @@ export class RecipeComponent implements OnInit {
     }
 
     loadRecipe(): void {
-
             const fsub = this.apiService.getRecipesByName(`${this.recipe}`).subscribe(
                 (data: any) => {
                     this.recipes = data;
-                    console.log(this.recipes);
-
                     fsub.unsubscribe()
                 })
             const cSub = this.apiService.getImage(`${this.recipe} recipe`).subscribe(res => {

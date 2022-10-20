@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         icon: 'info',
         title: 'Proccing ..',
         showConfirmButton: false,
-        timer: 2000
+        timer: 7000
       })
         const newUser: IUser = {
             id: '',
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
                   icon: 'success',
                   title: 'Registerd Succussfly',
                   showConfirmButton: false,
-                  timer: 15000
+                  timer: 2000
                 })
                 this.route.navigate(['/recipe'])
             }).catch(err => {

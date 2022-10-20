@@ -29,6 +29,10 @@ import { UserCardComponent } from './components/cards/user-card/user-card.compon
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharePopComponent } from './components/share-pop/share-pop.component';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 
 
 
@@ -64,9 +68,14 @@ import { SharePopComponent } from './components/share-pop/share-pop.component';
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     BrowserAnimationsModule
   ],
-  providers: [RecipeComponent],
+  providers: [RecipeComponent,UserRecipeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
