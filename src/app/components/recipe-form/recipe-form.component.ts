@@ -14,8 +14,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 import { ICocktail } from 'src/app/interfaces/cocktail';
 import { IRecipe } from 'src/app/interfaces/recipe';
 import { Utils } from 'src/app/common/utils';
-import Swal from 'sweetalert2'
-import { reduce } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recipe-form',
@@ -34,7 +33,7 @@ export class RecipeFormComponent implements OnInit {
     ingredients: new FormArray([]),
     servings: new FormControl('', [Validators.required]),
     instructions: new FormControl('', [Validators.required ,Validators.maxLength(100)]),
-    // image: new FormControl(null, [Validators.required]),
+    //image: new FormControl(null, [Validators.required]),
   });
 
   ingredientItem: FormGroup = new FormGroup({

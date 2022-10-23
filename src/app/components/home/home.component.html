@@ -69,7 +69,7 @@
             </div>
             <div class="card-text">
                 <h5 class="card-title">{{recipe.title}}</h5>
-                <i class="fa fa-star" aria-hidden="true"></i> :
+                <i class="fa fa-star" aria-hidden="true"></i> : {{average[i]}}
                 <div class="details">
                     <a class="details" (click)="getRecipeDetails(recipe)">View Details </a>
                     <i class="fa fa-arrow-right"></i>
@@ -84,12 +84,13 @@
   <h1 class="special-heading ">Most Popular </h1>
   <h3>Cocktails</h3>
     <ul>
-        <li class="card mt-5" *ngFor="let cocktail of cocktailsShow, index as i" >
+        <li class="card mt-5" *ngFor="let cocktail of cocktailsShow, index as x" >
             <div class="image">
-                <img class="card-img-top" src="{{cocktailImgs[i]}}"  onerror="this.src='assets/images/ice cofee.jpg'" />
+                <img class="card-img-top" src="{{cocktailImgs[x]}}"  onerror="this.src='assets/images/ice cofee.jpg'" />
             </div>
             <div class="card-text">
                 <h5 class="card-title">{{cocktail.name}}</h5>
+                <i class="fa fa-star" aria-hidden="true"></i> : {{cAverage[x]}}
                 <div class="details">
                     <a class="details" (click)="getRecipeDetails(cocktail)">View Details </a>
                     <i class="fa fa-arrow-right"></i>
