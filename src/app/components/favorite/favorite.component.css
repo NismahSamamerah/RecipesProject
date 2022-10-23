@@ -1,3 +1,15 @@
+.title{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+  margin-top: -10px;
+}
+.title h1{
+  text-align: center;
+  width: 100%;
+}
 .searchbox{
     width: 70%;
     margin: auto;
@@ -48,7 +60,8 @@
 
 .card{
     box-shadow:  5px 5px 10px #c1c1c1;
-    width: 20vw;
+    width: 24vw;
+
 }
 .card-body{
     border: 1px solid lightgray;
@@ -123,7 +136,7 @@ span{
         margin: 10px auto;
     }
     .container{
-      margin-top: 70px;
+      margin-top: 50px;
     }
     ul{
       flex-direction: column !important;

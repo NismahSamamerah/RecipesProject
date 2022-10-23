@@ -31,7 +31,7 @@ export class SharePopComponent implements OnInit {
     ngOnInit(): void {
         this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
         this.getUsers();
-        
+
     }
     sharedArr(e: any) {
         console.log(e.target.value);
@@ -68,6 +68,7 @@ export class SharePopComponent implements OnInit {
     getUsers() {
         this.userService.getUsers().subscribe(users => {
             this.users = users;
+
         })
     }
 

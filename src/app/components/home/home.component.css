@@ -103,8 +103,9 @@ li{
 
 
 }
-.fa-star{
-  font-size: 30px;
+.fa-star-half-o{
+  padding-left: 5px;
+  font-size: 25px;
   color: gold;
 }
 .card-text .card-title{

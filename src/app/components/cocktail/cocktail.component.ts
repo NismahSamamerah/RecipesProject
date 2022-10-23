@@ -17,6 +17,7 @@ export class CocktailComponent implements OnInit {
     cocktail: string = '';
     cocktailImg: any;
     cocktailImgs: any[] = [];
+    loader :boolean =true;
 
     constructor(
         public router: Router,
@@ -42,7 +43,8 @@ export class CocktailComponent implements OnInit {
                     this.cocktailImgs.push(this.cocktailImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             });
-        }, 3000)
+            this.loader = false;
+        }, 4000)
     }
 
     loadCocktail(): void {

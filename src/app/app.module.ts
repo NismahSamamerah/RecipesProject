@@ -33,6 +33,7 @@ import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -58,6 +59,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
     UserCardComponent,
     NotFoundComponent,
     SharePopComponent,
+    ProfileComponent,
 
 
   ],
@@ -73,7 +75,8 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [RecipeComponent,UserRecipeComponent],
   bootstrap: [AppComponent]
