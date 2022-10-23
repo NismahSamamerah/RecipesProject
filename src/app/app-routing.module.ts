@@ -7,6 +7,7 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -33,8 +34,10 @@ const routes: Routes = [
   {path : "favorite" , component : FavoriteComponent , canActivate: [AuthGuard]},
   {path : "recipe-details" , component : DetailsComponent},
   {path : "share" , component : SharePopComponent},
+  {path : "profile" , component : ProfileComponent},
   {path : "**" , component : NotFoundComponent},
- 
+
+
 
 ];
 

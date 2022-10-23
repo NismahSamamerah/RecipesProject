@@ -3,13 +3,15 @@
   font-family: 'SF Pro Display bold';
   background-color: white;
   width: 100vw;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #d3d3d3;
+  box-shadow: 5px 2px 5px #dcdada;
 }
+
 .navbar-nav li a {
 text-decoration: none;
 color: black;
 transition: 0.5s;
-font-size: 15px;
+font-size: 18px;
 font-family: 'SF Pro Display regular';
 letter-spacing: 1px;
 
@@ -48,8 +50,8 @@ background-color: var(--primary-color);
 color: white;
 }
 img{
-width: 150px;
-height: 150px;
+  width: 130px;
+  height: 110px;
 }
 i:hover{
 color: var(--primary-color);

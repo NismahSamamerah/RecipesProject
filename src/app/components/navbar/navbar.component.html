@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white mb-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-white mb-2 navbar-expand-md sticky-top" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="assets/images/logo.png" alt="">
@@ -27,17 +27,17 @@
                 </li>
             </ul>
             <div *ngIf="isLoggedIn == true" class="profile">
-                <a class="nav-link" routerLink="suggest">
+                <a class="nav-link" routerLink="profile">
                 <div class="circle"><span>
                   <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
                   {{firstLetter|uppercase}}
                 </span></div></a>
                 <div class="dropdown">
-                    <button class="dropbtn">{{name}}
+                    <button class="dropbtn">{{name|uppercase}}
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                      <a  routerLink="suggest"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                      <a  routerLink="profile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
                       <a (click)="goToUserRecipes()"><i class="fa fa-cutlery"></i> Recipes</a>
                       <a (click)="goToUserCocktail()"><i class="fa fa-glass"></i> My Cocktails</a>
                       <a routerLink="favorite" ><i class="fa fa-heart-o" aria-hidden="true"></i> Favorite</a>

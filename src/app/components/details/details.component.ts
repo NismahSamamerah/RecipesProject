@@ -30,6 +30,7 @@ export class DetailsComponent implements OnInit {
     isUsertype :string =''
     comments: any[] = [];
     recipes :IRecipe[] = [];
+    loader :boolean =true;
     public rateAverage: number = 0;
     editVal : string=''
     commentForm: FormGroup = new FormGroup({
@@ -52,7 +53,8 @@ export class DetailsComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
+      setTimeout(()=>{
+                this.data = JSON.parse(JSON.parse(JSON.stringify(this.router.snapshot.paramMap.get('data'))));
 
         if (this.data.hasOwnProperty('title')) {
             this.type = 'Recipe';
@@ -72,7 +74,8 @@ export class DetailsComponent implements OnInit {
 
         this.getRating();
         this.getComments();
-
+        this.loader = false;
+      },5000)
     }
 
     calculateRatingAverage() {
@@ -94,6 +97,8 @@ export class DetailsComponent implements OnInit {
     getRecipeRating() {
         const sub = this.ratingService.getRecipeRating(this.type_id).subscribe(res => {
             this.rating = res;
+            console.log(this.rating);
+
             this.calculateRatingAverage();
             sub.unsubscribe();
         });
@@ -112,14 +117,7 @@ export class DetailsComponent implements OnInit {
     }
 
     getRecipeComments(): void {
-      console.log(1);
-console.log(this.type_id);
         const sub = this.commentService.getRecipeComments(this.type_id).subscribe(comments => {
-
-
-          console.log(2);
-          console.log(comments);
-
           this.comments = comments;
             sub.unsubscribe();
         });
@@ -140,7 +138,6 @@ console.log(this.type_id);
             type: this.type,
         }
         this.ratingService.saveRatingInfo(rating);
-
     }
 
     saveComment(comment: any) {

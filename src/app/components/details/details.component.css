@@ -7,24 +7,29 @@
 h3{
   color: #d54215;
 }
+.image-side{
+  width: 50%;
+  background-color: white;
+  height: 80vh;
+}
 .content img{
-  width: 40%;
-  height: 70vh;
-  border-radius: 10px;
-  margin-top: 20px;
+  width: 100%;
+  height: 50vh;
 }
 .content .text{
   width: 50%;
   background-color: white;
-  padding: 20px;
-  border-left: 3px solid #d54215;
-  border-right: 3px solid #d54215;
+  padding: 5px 20px 40px 20px ;
   border-radius: none;
+  height: 80vh;
+}
+span{
+  color: rgb(92, 90, 90);
+  margin-right: 20px;
 }
 h2{
     font-size: 35px;
     border: none;
-    margin-top: 60px;
 }
 h5 {
   margin-top: 0;
@@ -188,10 +193,10 @@ button{
     align-content: center;
 }
 .customerreviews{
-    margin-top: 5vh;
-    margin-left: 17vw;
-    margin-right: 2vw;
-    font-size: 30px;
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
 }
 .reviews{
     display: flex;

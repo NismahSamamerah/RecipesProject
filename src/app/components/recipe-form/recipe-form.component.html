@@ -10,7 +10,7 @@
             <label  class="form-label" for="name" >Recipe Name</label>
             <input type="text" id="name" #name formControlName="name" class="form-control" >
             <p class="error-messege" *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched">
-                *{{
+                {{
                 recipeForm.get('name')?.errors?.['required'] ? 'this felid is required !' : ''
                 }}
             </p>

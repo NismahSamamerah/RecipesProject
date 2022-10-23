@@ -1,37 +1,46 @@
-<div class="container">
+<div id="spanner" *ngIf="loader"  role="status">
+  <img  src="assets/images/Spinner-1s-341px (1).svg">
+</div>
+<div class="container" *ngIf="!loader">
     <div>
         <div class="content">
-            <img src="../../../assets/images/detail-photo.png">
+          <div class="image-side">
+            <img  src="assets/images/pexels-engin-akyurt-1437812.jpg">
+
+            <form class="rating style">
+              <p class="customerreviews" >Customer Reviews</p>
+              <div class="rate">
+                  <div class="stars">
+                      <input type="radio" [checked]="rateAverage == 5" id="five" name="rate" value="5" (click)="setRate(5)">
+                      <label for="five"></label>
+                      <input type="radio" [checked]="rateAverage == 4" id="four" name="rate" value="4" (click)="setRate(4)">
+                      <label for="four"></label>
+                      <input type="radio" [checked]="rateAverage == 3" id="three" name="rate" value="3" (click)="setRate(3)">
+                      <label for="three"></label>
+                      <input type="radio" [checked]="rateAverage == 2" id="two" name="rate" value="2" (click)="setRate(2)">
+                      <label for="two"></label>
+                      <input type="radio" [checked]="rateAverage == 1" id="one" name="rate" value="1" (click)="setRate(1)">
+                      <label for="one"></label>
+                      <p>({{this.calculateRatingAverage()}})</p>
+                  </div>
+              </div>
+          </form>
+        </div>
             <div class="text">
               <h2>{{data?.name}}{{data?.title}}</h2>
+              <span>{{comments.length}} <i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+              <span><i class="fa fa-star-half-o" aria-hidden="true"></i>: {{this.calculateRatingAverage()}}</span>
               <hr>
-                <h3>Ingredients</h3>
+                <h3>Ingredients :</h3>
                 <p>{{data.ingredients}}</p>
-                <h3> Servings</h3>
-                <p>{{data. servings}}</p>
+                <h3> Servings :</h3>
+                <p>{{data.servings}}</p>
             </div>
         </div>
-        <form class="rating style">
-            <p class="customerreviews" style="font-size: 35px; margin-top:30px">Customer Reviews</p>
-            <div class="rate">
-                <div class="stars">
-                    <input type="radio" [checked]="rateAverage == 5" id="five" name="rate" value="5" (click)="setRate(5)">
-                    <label for="five"></label>
-                    <input type="radio" [checked]="rateAverage == 4" id="four" name="rate" value="4" (click)="setRate(4)">
-                    <label for="four"></label>
-                    <input type="radio" [checked]="rateAverage == 3" id="three" name="rate" value="3" (click)="setRate(3)">
-                    <label for="three"></label>
-                    <input type="radio" [checked]="rateAverage == 2" id="two" name="rate" value="2" (click)="setRate(2)">
-                    <label for="two"></label>
-                    <input type="radio" [checked]="rateAverage == 1" id="one" name="rate" value="1" (click)="setRate(1)">
-                    <label for="one"></label>
-                    <p>({{this.calculateRatingAverage()}})</p>
-                </div>
-            </div>
-        </form>
+
     </div>
     <div class="instruction">
-      <h3>Instructions</h3>
+      <h3>Instructions :</h3>
       <hr>
       <p>
           {{data.instructions}}
@@ -46,7 +55,7 @@
       <form class="textform" [formGroup]="commentForm" (ngSubmit)="saveComment(commentForm.value)">
           <textarea class="comment-text" formControlName="comment" name="comment" class="textarea" placeholder="Add Your Comment.." cols="30"
               rows="10"></textarea>
-          <button class="commentbutton" type="submit">Add Comment</button>
+          <button class="commentbutton" type="submit">Add Comment <i class="fa fa-commenting-o" aria-hidden="true"></i></button>
       </form>
   </div>
 </div>

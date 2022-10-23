@@ -35,6 +35,7 @@ export class UserRecipeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         setTimeout(() => {
             this.type = this.router.snapshot.paramMap.get('data');
             if (this.type == 'Cocktail') {
@@ -45,12 +46,14 @@ export class UserRecipeComponent implements OnInit {
             } else if (this.type == 'Recipe') {
                 const sub = this.recipeService.getUserRecipes(this.auth.userID as string).subscribe(recipes => {
                     this.recipes = recipes;
+                    console.log(this.recipes);
+
                     sub.unsubscribe();
                 });
             }
             this.loader = false;
-            console.log(this.recipes[1].image);
         }, 5000)
+
     }
 
     searchByName() {
@@ -82,6 +85,7 @@ export class UserRecipeComponent implements OnInit {
 
     getRecipeDetails(recipe: any) {
         this.route.navigate(['/recipe-details', { data: JSON.stringify(recipe) }]);
+
     }
 
     public deleteRecipe(recipe: any) {

@@ -3,25 +3,27 @@
 </div>
 <div *ngIf="!loader">
 <div class="header" >
-  <h2> Welcome <span>{{name}} !</span> <br>You can see recipes that have been shared with you by your friends</h2>
+  <h2> Hello<span> {{name |uppercase}} !</span> <br>You can see all the <span> All Recipes Suggested </span>to you by your friends</h2>
 </div>
 <div class="container">
-        <div class="search">
-        <div class="btn-group " role="group" >
-          <input type="radio"  (click)="onClick('all')" value="all" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline"  for="btnradio1">All</label>
 
-          <input type="radio"  (click)="onClick('recipes')" value="recipes" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn "  for="btnradio2">Recipes</label>
+        <div class="searchGroups">
 
-          <input type="radio" (click)="onClick('cocktails')" value="cocktails" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn"  for="btnradio3">Cocktails</label>
+          <div class="search_box">
+          <input type="text" [(ngModel)]="searchVal" class="form-control" placeholder="&#xf002; Find the Recipe "
+          style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
+          <button *ngIf="filterVal == 'recipes'" (click)="searchRecipe()"  type="button">Search</button>
+          <button *ngIf="filterVal == 'cocktails'" (click)="searchCocktail()"  type="button">Search</button>
         </div>
-        <div class="searchGroup">
-        <input type="text" [(ngModel)]="searchVal" class="form-control" placeholder="&#xf002; Search "
-            style="font-family: FontAwesome, Arial;  font-style: normal;height:40px" />
-            <button *ngIf="filterVal == 'recipes'" (click)="searchRecipe()"  type="button">Search</button>
-            <button *ngIf="filterVal == 'cocktails'" (click)="searchCocktail()"  type="button">Search</button>
+          <div class="btn-group " role="group" >
+            <input type="radio"  (click)="onClick('all')" value="all" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline"  for="btnradio1">All</label>
+
+            <input type="radio"  (click)="onClick('recipes')" value="recipes" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn "  for="btnradio2">Recipes</label>
+
+            <input type="radio" (click)="onClick('cocktails')" value="cocktails" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn"  for="btnradio3">Cocktails</label>
           </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 .header{
-  height: 400px;
-  padding: 20px;
+  height: 350px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,23 +8,28 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100% 100%;
-  background-image: linear-gradient(rgba(0,0,0,.5),rgba(121, 118, 118, 0.5)),url('src/assets/images/suggest.webp');
+  background-image: linear-gradient(rgba(0,0,0,.5),rgba(90, 87, 87, 0.481)),url('src/assets/images/suggest.webp');
 }
+
 h2 {
+font-size: 35px;
 color: white;
 margin: auto;
 text-align: center;
 margin-top: auto;
 margin-bottom: 40px;
-text-shadow: 5px 5px 4px #000000;
+font-weight: bold;
+background-color: rgba(0,0,0,.3);
 }
-
+span{
+  color: #ff521dec;
+  font-weight: bold;
+}
 .container{
   align-items: center;
   margin: 5vh 5vw;
   font-family: 'SF Pro Display regular';
 }
-
 h1{
   font-size: 40px;
   width: 50%;
@@ -38,12 +43,15 @@ p{margin-top: 3vh;
   font-family: 'SF Pro Display regular';
   letter-spacing: 2px;
 }
-.search{
-  display: flex;
-  justify-content: space-between;
+
+.searchGroups{
+    width: 90%;
+    margin: auto;
+    background-color: #f1f0f0;
+    padding: 20px 40px;
 }
-.searchGroup{
-  width: 50%;
+.search_box{
+  display: flex;
 }
 .card-text{
   padding: 5px;
@@ -102,7 +110,7 @@ ul{
 }
 input{
   margin-left: auto;
-  width: 50%;
+
 }
 button{
 
@@ -111,8 +119,9 @@ button{
   border-radius: 5px ;
 }
 .btn-group{
-  width: 50%;
-
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
 }
 .btn{
   color: white;
@@ -122,7 +131,7 @@ button{
 button{
   background-color: #d54215;
   color: white;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 

@@ -51,6 +51,9 @@ form{
   width: 50%;
   height: 70vh;
   position: relative;
+  background-image: linear-gradient(rgba(0,0,0,.5),rgba(90, 87, 87, 0.481)),url('src/assets/images/pexels-anthony-leong-2092906.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .login-container img{
   height: 70vh;
@@ -71,9 +74,11 @@ form{
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 50px;
+  font-weight: 900;
   margin: auto;
+  color: rgb(229, 229, 229);
   text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
