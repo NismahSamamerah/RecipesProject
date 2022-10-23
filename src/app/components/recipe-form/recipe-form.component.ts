@@ -1,11 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, } from '@angular/core';
+import {FormArray, FormControl, FormGroup, Validators,} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -124,7 +118,6 @@ export class RecipeFormComponent implements OnInit {
 
         })
       }
-
     }
   }
   editRecipe(){
