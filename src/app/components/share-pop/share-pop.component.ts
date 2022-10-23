@@ -67,8 +67,8 @@ export class SharePopComponent implements OnInit {
     }
     getUsers() {
         this.userService.getUsers().subscribe(users => {
-            this.users = users;
-        })
+             this.users= users.filter((user: { id: string | undefined; }) => user.id != this.auth.userID)
+        });
     }
 
 }
