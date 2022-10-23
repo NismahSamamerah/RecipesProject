@@ -17,9 +17,10 @@
     margin: 10px 0;
     box-shadow: 0 0 2px rgb(93, 93, 93);
 }
-.comment-card h6, .comment-card p{
+.comment-card h5, .comment-card p{
     margin-bottom: 1vh;
     margin-left: 3vh;
+    font-weight: bold;
 }
 .comment-footer{
     display: flex;

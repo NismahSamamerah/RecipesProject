@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
             this.cocktailImg = res;
             cSub.unsubscribe();
         });
-        const rSub = this.api.getImage('recipe').subscribe(res => {
+        const rSub = this.api.getImage('food').subscribe(res => {
             this.recipeImg = res;
             rSub.unsubscribe();
         });

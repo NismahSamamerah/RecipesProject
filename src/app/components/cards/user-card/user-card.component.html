@@ -1,5 +1,5 @@
 <li>
-    <div class="card mt-5">
+    <div class="user-card mt-5">
         <div class="image">
             <div class="icons">
                 <i class="fa fa-share-square-o"*ngIf="recipe" (click)="changeFlag(recipe)" ></i>
@@ -7,12 +7,14 @@
                 <i class="fa fa-minus-circle" *ngIf="recipe" (click)="deleteAlert(recipe)" ></i>
                 <i class="fa fa-minus-circle" *ngIf="cocktail" (click)="deleteAlert(cocktail)" ></i>
             </div>
-            <img *ngIf="recipe"  onerror="this.src='assets/images/food03.jpg'" class="img-fluid rounded-start">
+            <img *ngIf="recipe" src="assets/images/pexels-engin-akyurt-1437812.jpg" onerror="this.src='assets/images/food03.jpg'" class="img-fluid rounded-start">
             <img *ngIf="cocktail" src="assets/images/smothi3.jpg" onerror="this.src='assets/images/smothi3.jpg'" class="card-img-top" alt="..." />
           </div>
         <div class="card-text">
             <h5 class="card-title">{{recipe?.title}}</h5>
             <h5 class="card-title">{{cocktail?.name}}</h5>
+            <p class="card-more">Servings :{{recipe?.servings}} </p>
+
             <div class="details">
                 <a class="details" *ngIf="recipe" (click)="getUserRecipeDetails(recipe)">View Details </a>
                 <a class="details" *ngIf="cocktail" (click)="getUserRecipeDetails(cocktail)">View Details </a>
@@ -21,4 +23,5 @@
         </div>
     </div>
 </li>
+
 

@@ -65,6 +65,9 @@ form{
   width: 50%;
   height: 80vh;
   position: relative;
+  background-image: linear-gradient(rgba(0,0,0,.5),rgba(90, 87, 87, 0.481)),url('src/assets/images/pexels-sam-lion-5710204.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .register-container img{
   height: 80vh;
@@ -85,10 +88,16 @@ form{
   transform: translate(-50%, -50%);
   font-size: 40px;
   font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
   width: 90%;
   text-align: center;
-  color: var(--primary-color);
-  background:rgb(0, 0 , 0 ,.5);
+  color:rgb(214, 213, 213);
+  background:rgb(0, 0 , 0 ,.2);
 }
-
+span{
+  font-size: 30px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+}
 

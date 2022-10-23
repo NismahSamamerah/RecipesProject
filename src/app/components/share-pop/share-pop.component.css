@@ -1,20 +1,44 @@
 .modal-content{
+
    margin: auto;
     width: 50%;
+    background-color: white;
+    box-shadow: 4px 4px 4px #eeeeee;
+    height: 70vh;
+    margin-bottom: 50px;
+
+}
+h4{
+  width: 100%;
 }
 .modal-footer button{
     background-color: var(--primary-color);
+    margin: 30px 5px;
+    color: white;
   }
-  .modal-body {
+  .modal-body1 {
     font-size: 20px;
+    font-weight: bold;
   }
   .modal-title{
     font-weight: bold;
     text-align: center;
     margin: auto;
   }
-  input{
+  form input{
     accent-color: #d54215;
     margin: 10px;
   }
-  
+  label{
+    padding: 2px;
+  }
+.modal-header{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.modal-header input{
+  width: 70%;
+
+}

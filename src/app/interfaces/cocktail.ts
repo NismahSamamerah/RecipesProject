@@ -4,5 +4,5 @@ export interface ICocktail {
     name: string,
     ingredients: string[],
     instructions: string,
-    image: string
+    image :string
 }

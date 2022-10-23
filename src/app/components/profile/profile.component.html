@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="header">
+    <div class="header-content">
+    <div class="circle">
+      <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
+    <div class="name">
+      <h2>{{name|uppercase}}</h2>
+      <p>Food innovator <br><small>( 25 ) Recipes</small></p>
+
+    </div>
+
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-8">
+    <div class="content"><h3>
+        <a>Latest Recipes</a>
+        <!-- <a (click)="goToSuggest()" >Suggested</a> -->
+      </h3>
+    <ul>
+      <li *ngFor="let recipe of recipes">
+        <div class="recipe-card">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="assets/images/pexels-jer-chung-2059152.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+              <h4>{{recipe?.title}}</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="recipe-card">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="assets/images/pexels-jer-chung-2059152.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+              <h4>Cheese Pizza</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="recipe-card">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="assets/images/pexels-jer-chung-2059152.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+              <h4>Cheese Pizza</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="recipe-card">
+          <div class="row">
+            <div class="col-md-4">
+              <img  src="assets/images/pexels-engin-akyurt-1437812.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+              <h4>Cheese Pizza</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <div class="view-all">
+      <a (click)="viewAllRecipes()">View All Recipes <i class="fa fa-arrow-right"></i></a><br>
+
+    </div>
+    </ul>
+  </div>
+  </div>
+  <div class="col-md-4" style="border-left: 1px solid lightgrey;">
+    <h4>Your activities</h4>
+    <!-- <a routerLink="favorite"><button>Favorites List <i class="fa fa-heart-o" aria-hidden="true"></i></button></a> -->
+    <div class="activites">
+    <ul>
+      <li><a (click)="viewAllRecipes()">All Recipes</a></li>
+      <li><a (click)="getFavorites()">Favorites </a><i class="fa fa-heart-o" aria-hidden="true"></i></li>
+      <li><a (click)="goToSuggest()">Suggusted</a></li>
+      <li><a (click)="viewAllCocktails()">All Cocktails</a></li>
+    </ul>
+
+  </div>
+  <a  class="empty-card">
+    <div class="empty-card-content">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <p>Add new recipe</p>
+    </div>
+  </a>
+  <div class="members">
+    <h4>Our Top Members</h4>
+    <ul >
+      <li *ngFor="let user of users">
+        <a>
+        <div class="members-content">
+          <div class="circle">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="name">
+            <p>{{user.first_name}} {{user.last_name}}</p>
+            <span>Food innovator</span>
+          </div>
+        </div></a><hr>
+    </li>
+    </ul>
+  </div>
+</div>
+  </div>
+</div>

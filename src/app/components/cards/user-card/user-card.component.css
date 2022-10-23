@@ -2,7 +2,9 @@
 .card-text{
   padding: 10px;
 }
-
+h5{
+  font-weight: bold;
+}
 .fa-plus-square-o{
   font-size: 80px;
   color: #d54215;
@@ -18,20 +20,24 @@
   height: 100%;
 }
 .details{
-  font-weight: 700;
+  font-size: 20px;
+  width: 70%;
+  color: rgb(43, 43, 43);
 }
 .details:hover{
   color: #d54215;
 }
-.card{
+.user-card{
   box-shadow:  5px 5px 10px #c1c1c1;
-  width: 20vw;
+  width: 22vw;
   height: 45vh;
   max-height: 45vh;
-  max-width: 20vw;
+  max-width: 22vw;
+  background-color: white;
 }
 .card-body{
   border: 1px solid lightgray;
+  overflow: hidden;
 
 }
 ul{
@@ -40,19 +46,19 @@ ul{
   list-style: none;
 }
 li{
-  margin-left: 10px;
+  margin-left: 15px;
+  display: flex;
 
 }
 .details{
   text-decoration: none;
-  color: black;
 }
 .icons{
   position: absolute;
     z-index: 1;
     font-size: 25px;
     right: 10px;
-    color: black;
+    color: rgb(19, 19, 19);
 }
 .fa-share-square-o{
   margin-right: 10px;
@@ -82,6 +88,9 @@ li{
 input{
   accent-color: #d54215;
   margin: 10px;
+}
+p{
+  margin-bottom: 0;
 }
 /* .card2{
   width: 20vw;

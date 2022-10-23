@@ -17,6 +17,7 @@ export class RecipeComponent implements OnInit {
     recipe: string = '';
     recipeImg: any;
     recipeImgs: any[] = [];
+    loader :boolean =true;
 
     constructor(
         public route: Router,
@@ -29,8 +30,8 @@ export class RecipeComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-
-            const fsub = this.apiService.getRecipesByName('pizza').subscribe(
+      setTimeout(() =>{
+        const fsub = this.apiService.getRecipesByName('pizza').subscribe(
                 (data: any) => {
                     this.recipes = data;
                     fsub.unsubscribe()
@@ -43,7 +44,8 @@ export class RecipeComponent implements OnInit {
                     this.recipeImgs.push(this.recipeImg.results[Math.floor(Math.random() * 10)].urls.regular)
                 }
             });
-
+            this.loader =false;
+      },4000)
     }
 
     loadRecipe(): void {
